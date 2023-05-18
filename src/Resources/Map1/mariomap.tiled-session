@@ -1,0 +1,91 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "untitled.tmx",
+    "expandedProjectPaths": [
+        "."
+    ],
+    "file.lastUsedOpenFilter": "All Files (*)",
+    "fileStates": {
+        "C:/Users/huyha/AppData/Local/Temp/Temp1_DirectX-SuperMarioBros3-main.zip/DirectX-SuperMarioBros3-main/SuperMarioBros3/SuperMarioBros3/Resources/Maps/world-1-1-map.tmx": {
+            "scale": 0.25,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 1052,
+                "y": 968
+            }
+        },
+        "C:/Users/huyha/AppData/Local/Temp/Temp1_DirectX-SuperMarioBros3-main.zip/DirectX-SuperMarioBros3-main/SuperMarioBros3/SuperMarioBros3/Resources/Maps/world-1-1-map.tmx#world-1-1": {
+            "scaleInDock": 1
+        },
+        "C:/Users/huyha/AppData/Local/Temp/intro_x3_1__DBkEEq.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "C:/Users/huyha/Downloads/DirectX-SuperMarioBros3-main/SuperMarioBros3/SuperMarioBros3/Resources/GridTool/uploads/map.tmx": {
+            "scale": 0.75,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 4182.666666666666,
+                "y": 1218
+            }
+        },
+        "C:/Users/huyha/Downloads/DirectX-SuperMarioBros3-main/SuperMarioBros3/SuperMarioBros3/Resources/GridTool/uploads/map.tmx#world-1-1": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "C:/Users/huyha/Downloads/DirectX-SuperMarioBros3-main/SuperMarioBros3/SuperMarioBros3/Resources/Maps/world-1-1-map.tmx": {
+            "scale": 0.5,
+            "selectedLayer": 4,
+            "viewCenter": {
+                "x": 818,
+                "y": 1481
+            }
+        },
+        "C:/Users/huyha/Downloads/DirectX-SuperMarioBros3-main/SuperMarioBros3/SuperMarioBros3/Resources/Maps/world-1-1-map.tmx#world-1-1": {
+            "scaleInDock": 1
+        },
+        "C:/Users/huyha/Downloads/DirectX-SuperMarioBros3-main/SuperMarioBros3/SuperMarioBros3/Resources/Maps/world-map-1.tmx": {
+            "scale": 0.66796875,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 384.74853801169587,
+                "y": 336.09356725146193
+            }
+        },
+        "C:/Users/huyha/Downloads/DirectX-SuperMarioBros3-main/SuperMarioBros3/SuperMarioBros3/Resources/Maps/world-map-1.tmx#tileset(x3)": {
+            "scaleInDock": 1
+        },
+        "misc.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 2
+        },
+        "untitled.tmx": {
+            "scale": 0.5,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": -4766,
+                "y": 222
+            }
+        }
+    },
+    "last.imagePath": "C:/Users/huyha/AppData/Local/Temp",
+    "map.fixedSize": false,
+    "map.lastUsedFormat": "tmx",
+    "openFiles": [
+        "untitled.tmx"
+    ],
+    "project": "mariomap.tiled-project",
+    "recentFiles": [
+        "untitled.tmx",
+        "misc.tsx",
+        "C:/Users/huyha/Downloads/DirectX-SuperMarioBros3-main/SuperMarioBros3/SuperMarioBros3/Resources/GridTool/uploads/map.tmx",
+        "C:/Users/huyha/Downloads/DirectX-SuperMarioBros3-main/SuperMarioBros3/SuperMarioBros3/Resources/Maps/world-1-1-map.tmx",
+        "C:/Users/huyha/Downloads/DirectX-SuperMarioBros3-main/SuperMarioBros3/SuperMarioBros3/Resources/Maps/world-map-1.tmx",
+        "C:/Users/huyha/AppData/Local/Temp/intro_x3_1__DBkEEq.tsx",
+        "C:/Users/huyha/AppData/Local/Temp/Temp1_DirectX-SuperMarioBros3-main.zip/DirectX-SuperMarioBros3-main/SuperMarioBros3/SuperMarioBros3/Resources/Maps/world-1-1-map.tmx"
+    ],
+    "tileset.lastUsedFormat": "tsx"
+}
