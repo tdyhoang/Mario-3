@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "untitled.tmx",
+    "activeFile": "Map1.tmx",
     "expandedProjectPaths": [
         "."
     ],
@@ -58,16 +58,24 @@
         "C:/Users/huyha/Downloads/DirectX-SuperMarioBros3-main/SuperMarioBros3/SuperMarioBros3/Resources/Maps/world-map-1.tmx#tileset(x3)": {
             "scaleInDock": 1
         },
+        "Map1.tmx": {
+            "scale": 1.5,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": -4643.666666666666,
+                "y": 126.66666666666664
+            }
+        },
         "misc.tsx": {
             "scaleInDock": 1,
-            "scaleInEditor": 2
+            "scaleInEditor": 1
         },
         "untitled.tmx": {
-            "scale": 0.5,
-            "selectedLayer": 1,
+            "scale": 3,
+            "selectedLayer": 3,
             "viewCenter": {
-                "x": -4766,
-                "y": 222
+                "x": -4671.333333333333,
+                "y": 142.66666666666666
             }
         }
     },
@@ -75,12 +83,14 @@
     "map.fixedSize": false,
     "map.lastUsedFormat": "tmx",
     "openFiles": [
-        "untitled.tmx"
+        "misc.tsx",
+        "Map1.tmx"
     ],
     "project": "mariomap.tiled-project",
     "recentFiles": [
-        "untitled.tmx",
         "misc.tsx",
+        "Map1.tmx",
+        "untitled.tmx",
         "C:/Users/huyha/Downloads/DirectX-SuperMarioBros3-main/SuperMarioBros3/SuperMarioBros3/Resources/GridTool/uploads/map.tmx",
         "C:/Users/huyha/Downloads/DirectX-SuperMarioBros3-main/SuperMarioBros3/SuperMarioBros3/Resources/Maps/world-1-1-map.tmx",
         "C:/Users/huyha/Downloads/DirectX-SuperMarioBros3-main/SuperMarioBros3/SuperMarioBros3/Resources/Maps/world-map-1.tmx",
