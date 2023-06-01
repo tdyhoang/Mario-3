@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "Map1.tmx",
+    "activeFile": "D:/tmxlite-1.4.2/SFMLExample/assets/Map1.tmx",
     "expandedProjectPaths": [
         "."
     ],
@@ -58,12 +58,24 @@
         "C:/Users/huyha/Downloads/DirectX-SuperMarioBros3-main/SuperMarioBros3/SuperMarioBros3/Resources/Maps/world-map-1.tmx#tileset(x3)": {
             "scaleInDock": 1
         },
+        "D:/tmxlite-1.4.2/SFMLExample/assets/Map1.tmx": {
+            "scale": 1,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 275.5,
+                "y": 237
+            }
+        },
+        "D:/tmxlite-1.4.2/SFMLExample/assets/misc.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
         "Map1.tmx": {
             "scale": 1.5,
             "selectedLayer": 2,
             "viewCenter": {
-                "x": -4643.666666666666,
-                "y": 126.66666666666664
+                "x": -4627,
+                "y": 127.33333333333334
             }
         },
         "misc.tsx": {
@@ -83,11 +95,13 @@
     "map.fixedSize": false,
     "map.lastUsedFormat": "tmx",
     "openFiles": [
-        "misc.tsx",
-        "Map1.tmx"
+        "D:/tmxlite-1.4.2/SFMLExample/assets/Map1.tmx",
+        "D:/tmxlite-1.4.2/SFMLExample/assets/misc.tsx"
     ],
     "project": "mariomap.tiled-project",
     "recentFiles": [
+        "D:/tmxlite-1.4.2/SFMLExample/assets/misc.tsx",
+        "D:/tmxlite-1.4.2/SFMLExample/assets/Map1.tmx",
         "misc.tsx",
         "Map1.tmx",
         "untitled.tmx",
