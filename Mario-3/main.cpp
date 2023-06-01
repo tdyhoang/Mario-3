@@ -1,147 +1,131 @@
-#include <d3d9.h>
-#include <d3dx9.h>
-#include <Windows.h>
-#include <iostream>
-#include <sstream>
-#include <dinput.h>
-#include <windowsx.h>
-#include "GameComponents\GameGlobal.h"
-#include "GameComponents\GameTime.h"
-#include "GameComponents\Game.h"
+#define WIN32_LEAN_AND_MEAN
 
-using namespace std;
+#include <SDKDDKVer.h>
 
-#define WIN_NAME L"Game DirectX"
-#define WIN_TITLE L"Game DirectX"
-#define SCREEN_WIDTH 600
-#define SCREEN_HEIGHT 600
-#define FPS 60
-#define KEYBOARD_BUFFERD_SIZE 1024
+#include <windows.h>
 
-/*
+#include <stdlib.h>
+#include <malloc.h>
+#include <memory.h>
+#include <tchar.h>
 
-*/
-int initWindow(int cmdShow);
-int InitDevice();
-LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
+#include "Framework/GameComponents/Const.h"
+#include "Framework/GameComponents/Game.h"
+#include "Framework/Ultis/Ultis.h"
+#include "TinyXML/tinyxml2.h"
 
-LPDIRECT3D9             mDirect3D9;
-LPD3DXSPRITE            mSpriteHandler;
-PDIRECT3D9              mD3d;
-LPDIRECT3DDEVICE9       mDevice;
-HINSTANCE               mHInstance;
-int                     mCmdShow;
+#define MAX_LOADSTRING 100
 
-int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int cmdShow)
+// Global Variables:
+HINSTANCE hInst;                                // current instance
+WCHAR szTitle[MAX_LOADSTRING];                  // The title bar text
+WCHAR szWindowClass[MAX_LOADSTRING];            // the main window class name
+
+// Forward declarations of functions included in this code module:
+ATOM                MyRegisterClass(HINSTANCE hInstance);
+HWND                InitInstance(HINSTANCE, int);
+LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
+INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
+bool                LoadFileConfig(int& fps, int& screenWidth, int& screenHeight);
+
+
+
+int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
+    _In_opt_ HINSTANCE hPrevInstance,
+    _In_ LPWSTR    lpCmdLine,
+    _In_ int       nCmdShow)
 {
-    mHInstance = hInstance;
-    initWindow(cmdShow);
-    return 0;
-}
+    int fps, screenWidth, screenHeight;
+    if (LoadFileConfig(fps, screenWidth, screenHeight) == false)
+        return NULL;
+    MyRegisterClass(hInstance);
 
-int initWindow(int cmdShow)
-{
-    WNDCLASSEX wc;
-    wc.cbSize = sizeof(WNDCLASSEX);
-
-    wc.style = CS_HREDRAW | CS_VREDRAW;
-    wc.hInstance = mHInstance;
-
-    wc.lpfnWndProc = (WNDPROC)WndProc;
-    wc.cbClsExtra = 0;
-    wc.cbWndExtra = 0;
-    wc.hIcon = NULL;
-
-    wc.hCursor = LoadCursor(NULL, IDC_ARROW);
-    wc.hbrBackground = (HBRUSH)GetStockObject(WHITE_BRUSH);
-    wc.lpszMenuName = NULL;
-    wc.lpszClassName = WIN_NAME;
-    wc.hIconSm = NULL;
-
-    RegisterClassEx(&wc);
-
-    //WS_OVERLAPPEDWINDOW <=> WS_EX_TOPMOST | WS_POPUP | WS_VISIBLE
-    HWND hWnd = CreateWindow(
-        WIN_NAME,
-        WIN_NAME,
-        WS_OVERLAPPEDWINDOW,
-        CW_USEDEFAULT,
-        CW_USEDEFAULT,
-        SCREEN_WIDTH,
-        SCREEN_HEIGHT,
-        NULL,
-        NULL,
-        mHInstance,
-        NULL);
-
-    GameGlobal::SetCurrentHINSTACE(mHInstance);
-    GameGlobal::SetCurrentHWND(hWnd);
-
-    ShowWindow(hWnd, cmdShow);
-    UpdateWindow(hWnd);
-
-    if (InitDevice())
+    // Perform application initialization:
+    HWND hWnd = InitInstance(hInstance, nCmdShow);
+    if (!hWnd)
     {
-        Game* game = new Game(60);
+        return NULL;
     }
 
+    CGame::GetInstance()->InitDirectX(hWnd, screenWidth, screenHeight, fps);
+    CGame::GetInstance()->Init();
+    CGame::GetInstance()->Run();
+
     return 0;
 }
 
-int InitDevice()
+bool LoadFileConfig(int& fps, int& screenWidth, int& screenHeight)
 {
-    mD3d = Direct3DCreate9(D3D_SDK_VERSION);
-    D3DPRESENT_PARAMETERS d3dpp;
+    CGame::GetInstance()->ImportGameSource();
+    auto configFilePath = CGame::GetInstance()->GetFilePathByCategory("config", "global-config");
 
-    ZeroMemory(&d3dpp, sizeof(d3dpp));
+    tinyxml2::XMLDocument doc;
+    if (doc.LoadFile(configFilePath.c_str()) != tinyxml2::XML_SUCCESS)
+    {
+        OutputDebugStringW(ToLPCWSTR(doc.ErrorStr()));
+        return false;
+    }
+    if (auto* root = doc.RootElement(); root != nullptr)
+        if (auto* element = root->FirstChildElement(); element != nullptr)
+        {
+            std::string name = element->Attribute("name");
+            if (name.compare("frame-rate") == 0)
+                element->QueryIntAttribute("value", &fps);
+            else if (name.compare("resolution") == 0)
+            {
+                element->QueryIntAttribute("width", &screenWidth);
+                element->QueryIntAttribute("height", &screenHeight);
+            }
+        }
+    DebugOut(L"conf: %d, %d, %d\n", fps, screenWidth, screenHeight);
+}
+ATOM MyRegisterClass(HINSTANCE hInstance)
+{
+    WNDCLASSEXW wcex{};
 
-    d3dpp.Windowed = TRUE;
-    d3dpp.SwapEffect = D3DSWAPEFFECT_DISCARD;
-    d3dpp.BackBufferFormat = D3DFMT_A8R8G8B8;
-    d3dpp.BackBufferCount = 1;
-    d3dpp.BackBufferWidth = SCREEN_WIDTH;
-    d3dpp.BackBufferHeight = SCREEN_HEIGHT;
+    wcex.cbSize = sizeof(WNDCLASSEX);
 
-    HRESULT dvresult = mD3d->CreateDevice(D3DADAPTER_DEFAULT,
-        D3DDEVTYPE_HAL,
-        GameGlobal::getCurrentHWND(),
-        D3DCREATE_SOFTWARE_VERTEXPROCESSING,
-        &d3dpp,
-        &mDevice);
-    GameGlobal::SetCurrentDevice(mDevice);
+    wcex.style = CS_HREDRAW | CS_VREDRAW;
+    wcex.lpfnWndProc = WndProc;
+    wcex.cbClsExtra = 0;
+    wcex.cbWndExtra = 0;
+    wcex.hInstance = hInstance;
+    wcex.hCursor = LoadCursor(nullptr, IDC_ARROW);
+    wcex.hbrBackground = (HBRUSH)GetStockObject(BLACK_BRUSH);
+    wcex.lpszMenuName = NULL;
+    wcex.lpszClassName = TITLE;
 
-    D3DXCreateSprite(GameGlobal::GetCurrentDevice(), &mSpriteHandler);
-    GameGlobal::SetCurrentSpriteHandler(mSpriteHandler);
+    return RegisterClassExW(&wcex);
+}
 
-    return 1;
+HWND InitInstance(HINSTANCE hInstance, int nCmdShow)
+{
+    hInst = hInstance; // Store instance handle in our global variable
+
+    HWND hWnd = CreateWindowW(TITLE, TITLE, WS_OVERLAPPEDWINDOW,
+        CW_USEDEFAULT, CW_USEDEFAULT, SCREEN_WIDTH, SCREEN_HEIGHT, nullptr, nullptr, hInstance, nullptr);
+
+    if (!hWnd)
+    {
+        return NULL;
+    }
+
+    ShowWindow(hWnd, nCmdShow);
+    UpdateWindow(hWnd);
+
+    return hWnd;
 }
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
-    /*
-    su dung cac event cua window
-    */
     switch (message)
     {
     case WM_DESTROY:
-        GameGlobal::isGameRunning = false;
+        CGame::GetInstance()->End();
         PostQuitMessage(0);
         break;
-
-    case WM_LBUTTONDOWN:
-
-        break;
-
-    case WM_KEYDOWN:
-
-        break;
-
-    case WM_KEYUP:
-
-
     default:
         return DefWindowProc(hWnd, message, wParam, lParam);
     }
-
     return 0;
 }

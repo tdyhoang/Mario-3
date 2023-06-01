@@ -5,38 +5,161 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
     <Filter Include="Resource Files">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Framework">
+      <UniqueIdentifier>{62518cba-6e9a-4357-9a7a-986338fa588f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\GameComponents">
+      <UniqueIdentifier>{034f3eb0-e8a5-498c-b585-5c11483aa37e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TinyXML">
+      <UniqueIdentifier>{a012d3ce-2628-4ed7-bec3-1e3c19f5e7d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Ultis">
+      <UniqueIdentifier>{7fe17c2b-dd4e-421a-b180-c14ba9b609c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\GameComponents\Graphics">
+      <UniqueIdentifier>{7e0b033d-419a-4769-ae0b-32d36a9f8a0d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\GameComponents\Graphics\Texture">
+      <UniqueIdentifier>{7db7bd7c-06bf-4d47-8295-4508e3d15967}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\GameComponents\Scene">
+      <UniqueIdentifier>{23518c82-0e57-4cae-b438-0d8f65300677}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\GameComponents\GameObject">
+      <UniqueIdentifier>{5e3aa26f-9614-45be-9854-e46132913d41}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\GameComponents\Graphics\Animation">
+      <UniqueIdentifier>{3b6e305d-9020-4e04-981f-15f1ecdd658e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\GameComponents\Graphics\Sprite">
+      <UniqueIdentifier>{5bed7b5c-615b-4e3b-bb19-156b2648d72e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Scenes">
+      <UniqueIdentifier>{8c7343fd-852f-414e-a7af-bc2f667279ac}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GameComponents\GameGlobal.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Framework\GameComponents\Game.cpp">
+      <Filter>Framework\GameComponents</Filter>
     </ClCompile>
-    <ClCompile Include="GameComponents\GameTime.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="TinyXML\tinyxml2.cpp">
+      <Filter>TinyXML</Filter>
     </ClCompile>
-    <ClCompile Include="GameComponents\Game.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Framework\Ultis\Ultis.cpp">
+      <Filter>Framework\Ultis</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\GameComponents\Graphics\Texture\TextureManager.cpp">
+      <Filter>Framework\GameComponents\Graphics\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\GameComponents\Scene\Scene.cpp">
+      <Filter>Framework\GameComponents\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\GameComponents\GameObject\GameObject.cpp">
+      <Filter>Framework\GameComponents\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\GameComponents\Graphics\Animation\Animation.cpp">
+      <Filter>Framework\GameComponents\Graphics\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\GameComponents\Graphics\Animation\AnimationFrame.cpp">
+      <Filter>Framework\GameComponents\Graphics\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\GameComponents\Graphics\Sprite\Sprite.cpp">
+      <Filter>Framework\GameComponents\Graphics\Sprite</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\GameComponents\Graphics\Animation\AnimationManager.cpp">
+      <Filter>Framework\GameComponents\Graphics\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\GameComponents\Graphics\Sprite\SpriteManager.cpp">
+      <Filter>Framework\GameComponents\Graphics\Sprite</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\GameComponents\Scene\SceneManager.cpp">
+      <Filter>Framework\GameComponents\Scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="GameComponents\GameGlobal.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Framework\GameComponents\Game.h">
+      <Filter>Framework\GameComponents</Filter>
     </ClInclude>
-    <ClInclude Include="GameComponents\GameTime.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="TinyXML\tinyxml2.h">
+      <Filter>TinyXML</Filter>
     </ClInclude>
-    <ClInclude Include="GameComponents\Game.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Framework\Ultis\Ultis.h">
+      <Filter>Framework\Ultis</Filter>
     </ClInclude>
+    <ClInclude Include="Framework\GameComponents\Const.h">
+      <Filter>Framework\GameComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\GameComponents\Graphics\Texture\TextureManager.h">
+      <Filter>Framework\GameComponents\Graphics\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\GameComponents\Scene\Scene.h">
+      <Filter>Framework\GameComponents\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\GameComponents\GameObject\GameObject.h">
+      <Filter>Framework\GameComponents\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\GameComponents\Graphics\Animation\Animation.h">
+      <Filter>Framework\GameComponents\Graphics\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\GameComponents\Graphics\Animation\AnimationFrame.h">
+      <Filter>Framework\GameComponents\Graphics\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\GameComponents\Graphics\Sprite\Sprite.h">
+      <Filter>Framework\GameComponents\Graphics\Sprite</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\GameComponents\Graphics\Animation\AnimationManager.h">
+      <Filter>Framework\GameComponents\Graphics\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\GameComponents\Graphics\Sprite\SpriteManager.h">
+      <Filter>Framework\GameComponents\Graphics\Sprite</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\GameComponents\Scene\SceneManager.h">
+      <Filter>Framework\GameComponents\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Ultis\Transform.h">
+      <Filter>Framework\Ultis</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="Resources\config.xml">
+      <Filter>Resource Files</Filter>
+    </Xml>
+    <Xml Include="Resources\root.xml">
+      <Filter>Resource Files</Filter>
+    </Xml>
+    <Xml Include="Resources\Scenes\Map1.xml">
+      <Filter>Resource Files\Scenes</Filter>
+    </Xml>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Resources\Scenes\enemies.png">
+      <Filter>Resource Files\Scenes</Filter>
+    </Image>
+    <Image Include="Resources\Scenes\misc.png">
+      <Filter>Resource Files\Scenes</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Scenes\Map1.tmx">
+      <Filter>Resource Files\Scenes</Filter>
+    </None>
+    <None Include="Resources\Scenes\mariomap.tiled-project">
+      <Filter>Resource Files\Scenes</Filter>
+    </None>
+    <None Include="Resources\Scenes\mariomap.tiled-session">
+      <Filter>Resource Files\Scenes</Filter>
+    </None>
+    <None Include="Resources\Scenes\misc.tsx">
+      <Filter>Resource Files\Scenes</Filter>
+    </None>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>

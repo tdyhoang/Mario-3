@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Root>
+	<Root name="Scenes">
+		<Scene id="map-1" source="Resources/Scenes/Map1.xml"/>
+	</Root>
+	<Root name="Config">
+		<Config id="global-config" source="Resources/config.xml"/>
+	</Root>
+</Root>
