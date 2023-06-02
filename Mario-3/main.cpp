@@ -26,7 +26,7 @@ ATOM                MyRegisterClass(HINSTANCE hInstance);
 HWND                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
-bool                LoadFileConfig(int& fps, int& screenWidth, int& screenHeight);
+bool                LoadFileConfig(int& fps, int& displayWidth, int& displayHeight);
 
 
 
@@ -35,8 +35,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     _In_ LPWSTR    lpCmdLine,
     _In_ int       nCmdShow)
 {
-    int fps, screenWidth, screenHeight;
-    if (LoadFileConfig(fps, screenWidth, screenHeight) == false)
+    int fps, displayWidth, displayHeight;
+    if (LoadFileConfig(fps, displayWidth, displayHeight) == false)
         return NULL;
     MyRegisterClass(hInstance);
 
@@ -47,14 +47,14 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         return NULL;
     }
 
-    CGame::GetInstance()->InitDirectX(hWnd, screenWidth, screenHeight, fps);
+    CGame::GetInstance()->InitDirectX(hWnd, displayWidth, displayHeight, fps);
     CGame::GetInstance()->Init();
     CGame::GetInstance()->Run();
 
     return 0;
 }
 
-bool LoadFileConfig(int& fps, int& screenWidth, int& screenHeight)
+bool LoadFileConfig(int& fps, int& displayWidth, int& displayHeight)
 {
     CGame::GetInstance()->ImportGameSource();
     auto configFilePath = CGame::GetInstance()->GetFilePathByCategory("config", "global-config");
@@ -73,11 +73,11 @@ bool LoadFileConfig(int& fps, int& screenWidth, int& screenHeight)
                 element->QueryIntAttribute("value", &fps);
             else if (name.compare("resolution") == 0)
             {
-                element->QueryIntAttribute("width", &screenWidth);
-                element->QueryIntAttribute("height", &screenHeight);
+                element->QueryIntAttribute("width", &displayWidth);
+                element->QueryIntAttribute("height", &displayHeight);
             }
         }
-    DebugOut(L"conf: %d, %d, %d\n", fps, screenWidth, screenHeight);
+    DebugOut(L"conf: %d, %d, %d\n", fps, displayWidth, displayHeight);
 }
 ATOM MyRegisterClass(HINSTANCE hInstance)
 {
@@ -103,7 +103,7 @@ HWND InitInstance(HINSTANCE hInstance, int nCmdShow)
     hInst = hInstance; // Store instance handle in our global variable
 
     HWND hWnd = CreateWindowW(TITLE, TITLE, WS_OVERLAPPEDWINDOW,
-        CW_USEDEFAULT, CW_USEDEFAULT, SCREEN_WIDTH, SCREEN_HEIGHT, nullptr, nullptr, hInstance, nullptr);
+        CW_USEDEFAULT, CW_USEDEFAULT, DISPLAY_WIDTH, DISPLAY_HEIGHT, nullptr, nullptr, hInstance, nullptr);
 
     if (!hWnd)
     {

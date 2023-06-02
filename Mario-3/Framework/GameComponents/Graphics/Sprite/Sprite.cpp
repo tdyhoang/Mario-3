@@ -77,8 +77,3 @@ void CSprite::SetTranscolor(D3DXCOLOR transcolor)
 {
 	this->transcolor = transcolor;
 }
-
-CSprite::~CSprite()
-{
-	//delete texture;
-}

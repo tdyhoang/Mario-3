@@ -172,20 +172,23 @@
     <ClInclude Include="TinyXML\tinyxml2.h" />
   </ItemGroup>
   <ItemGroup>
+    <Xml Include="Resources\Animations\AMario.xml" />
     <Xml Include="Resources\config.xml" />
+    <Xml Include="Resources\Maps\Map1-1.xml" />
     <Xml Include="Resources\root.xml" />
-    <Xml Include="Resources\Scenes\Map1.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="Resources\Scenes\enemies.png" />
-    <Image Include="Resources\Scenes\misc.png" />
+    <Xml Include="Resources\Sprites\SMario.xml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="Resources\Scenes\Map1.tmx" />
-    <None Include="Resources\Scenes\mariomap.tiled-project" />
-    <None Include="Resources\Scenes\mariomap.tiled-session" />
-    <None Include="Resources\Scenes\misc.tsx" />
+    <None Include="Resources\Maps\Map1-1.tmx" />
+    <None Include="Resources\Maps\mariomap.tiled-project" />
+    <None Include="Resources\Maps\mariomap.tiled-session" />
+    <None Include="Resources\Maps\misc.tsx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Resources\Textures\enemies.png" />
+    <Image Include="Resources\Textures\mario.png" />
+    <Image Include="Resources\Textures\misc.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

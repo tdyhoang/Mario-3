@@ -5,10 +5,6 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
     <Filter Include="Framework">
       <UniqueIdentifier>{62518cba-6e9a-4357-9a7a-986338fa588f}</UniqueIdentifier>
     </Filter>
@@ -39,8 +35,21 @@
     <Filter Include="Framework\GameComponents\Graphics\Sprite">
       <UniqueIdentifier>{5bed7b5c-615b-4e3b-bb19-156b2648d72e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Resource Files\Scenes">
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Resource Files\Maps">
       <UniqueIdentifier>{8c7343fd-852f-414e-a7af-bc2f667279ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Textures">
+      <UniqueIdentifier>{a4d05187-147e-4243-a9de-e0e38e4c29bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Sprites">
+      <UniqueIdentifier>{b67d09c9-d86d-43ae-bb96-0859a1e02bd8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Animations">
+      <UniqueIdentifier>{b981385d-4afb-4b94-8bae-940b0d625214}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -135,31 +144,40 @@
     <Xml Include="Resources\root.xml">
       <Filter>Resource Files</Filter>
     </Xml>
-    <Xml Include="Resources\Scenes\Map1.xml">
-      <Filter>Resource Files\Scenes</Filter>
+    <Xml Include="Resources\Maps\Map1-1.xml">
+      <Filter>Resource Files\Maps</Filter>
+    </Xml>
+    <Xml Include="Resources\Animations\AMario.xml">
+      <Filter>Resource Files\Animations</Filter>
+    </Xml>
+    <Xml Include="Resources\Sprites\SMario.xml">
+      <Filter>Resource Files\Sprites</Filter>
     </Xml>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Resources\Scenes\enemies.png">
-      <Filter>Resource Files\Scenes</Filter>
-    </Image>
-    <Image Include="Resources\Scenes\misc.png">
-      <Filter>Resource Files\Scenes</Filter>
-    </Image>
+    <None Include="packages.config" />
+    <None Include="Resources\Maps\mariomap.tiled-project">
+      <Filter>Resource Files\Maps</Filter>
+    </None>
+    <None Include="Resources\Maps\mariomap.tiled-session">
+      <Filter>Resource Files\Maps</Filter>
+    </None>
+    <None Include="Resources\Maps\misc.tsx">
+      <Filter>Resource Files\Maps</Filter>
+    </None>
+    <None Include="Resources\Maps\Map1-1.tmx">
+      <Filter>Resource Files\Maps</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Scenes\Map1.tmx">
-      <Filter>Resource Files\Scenes</Filter>
-    </None>
-    <None Include="Resources\Scenes\mariomap.tiled-project">
-      <Filter>Resource Files\Scenes</Filter>
-    </None>
-    <None Include="Resources\Scenes\mariomap.tiled-session">
-      <Filter>Resource Files\Scenes</Filter>
-    </None>
-    <None Include="Resources\Scenes\misc.tsx">
-      <Filter>Resource Files\Scenes</Filter>
-    </None>
-    <None Include="packages.config" />
+    <Image Include="Resources\Textures\enemies.png">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="Resources\Textures\mario.png">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
+    <Image Include="Resources\Textures\misc.png">
+      <Filter>Resource Files\Textures</Filter>
+    </Image>
   </ItemGroup>
 </Project>

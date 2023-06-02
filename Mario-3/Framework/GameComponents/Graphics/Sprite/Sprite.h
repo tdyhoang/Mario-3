@@ -34,7 +34,6 @@ public:
 
 	D3DXCOLOR GetTranscolor();
 	void SetTranscolor(D3DXCOLOR transcolor);
-	~CSprite();
 };
 
 #endif

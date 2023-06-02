@@ -5,6 +5,7 @@
 #include <vector>
 #include <string>
 #include "../../../Ultis/Ultis.h"
+
 using namespace std;
 
 CAnimation::CAnimation(string aniID, DWORD defaultTime)
@@ -59,13 +60,13 @@ void CAnimation::Render(D3DXVECTOR2 position, int alpha)
 			if (currentFrame == animFrames.size() - 1 && isLoop == false)
 			{
 				isPlaying = false;
-
 			}
 			else if (isPlaying == true)
 			{
 				currentFrame++;
 				lastFrameTime = now;
-				if (currentFrame >= animFrames.size()) currentFrame = 0;
+				if (currentFrame >= animFrames.size())
+					currentFrame = 0;
 			}
 		}
 
@@ -77,10 +78,7 @@ void CAnimation::Render(D3DXVECTOR2 position, int alpha)
 void CAnimation::SetPlay(bool isPause)
 {
 	if (isPause == false && isPlaying == false)
-	{
-		// Reset lại frameTime
 		currentFrame = -1;
-	}
 	isPlaying = true;
 }
 

@@ -5,8 +5,8 @@
 #include "Scene/SceneManager.h"
 #include "Graphics/Animation/AnimationManager.h"
 #include "../Ultis/Ultis.h"
-
 #include "../../TinyXML/tinyxml2.h"
+
 CGame* CGame::instance = NULL;
 float CGame::deltaTime = 0.0f;
 float CGame::timeScale = 1.0f;
@@ -34,19 +34,19 @@ void CGame::Init()
 	DebugOut(L"[INFO] End Init Managers \n");
 }
 
-void CGame::InitDirectX(HWND hWnd, int scrWidth, int scrHeight, int fps)
+void CGame::InitDirectX(HWND hWnd, int disWidth, int disHeight, int fps)
 {
 	this->fps = fps;
 	this->hWnd = hWnd;
-	this->screenWidth = scrWidth;
-	this->screenHeight = scrHeight;
+	this->displayWidth = disWidth;
+	this->displayHeight = disHeight;
 	DebugOut(L"[INFO] Begin Init DirectX \n");
 	d3d = Direct3DCreate9(D3D_SDK_VERSION);
 
 	D3DPRESENT_PARAMETERS d3dpp;
 	ZeroMemory(&d3dpp, sizeof(d3dpp));
-	d3dpp.BackBufferWidth = screenWidth = scrWidth;
-	d3dpp.BackBufferHeight = screenHeight = scrHeight;
+	d3dpp.BackBufferWidth = displayWidth = disWidth;
+	d3dpp.BackBufferHeight = displayHeight = disHeight;
 	d3dpp.Flags = 0;
 	d3dpp.PresentationInterval = D3DPRESENT_INTERVAL_IMMEDIATE;
 	d3dpp.MultiSampleType = D3DMULTISAMPLE_NONE;

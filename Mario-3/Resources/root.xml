@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Root>
-	<Root name="Scenes">
-		<Scene id="map-1" source="Resources/Scenes/Map1.xml"/>
+	<Root name="Texture">
+		<Texture id="tex-mario" source="Resources/Textures/mario.png"/>
+		<Texture id="tex-enemies" source="Resources/Textures/enemies.png"/>
+	</Root>
+	<Root name="Sprite">
+		<Sprite id="spr-mario" source="Resources/Sprites/SMario.xml"/>
+	</Root>
+	<Root name="Animation">
+		<Animation id="ani-mario" source="Resources/Animations/AMario.xml"/>
 	</Root>
 	<Root name="Config">
 		<Config id="global-config" source="Resources/config.xml"/>

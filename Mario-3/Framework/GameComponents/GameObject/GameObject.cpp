@@ -1,7 +1,9 @@
 ﻿#include "GameObject.h"
 #include "../Game.h"
 #include "../Graphics/Texture/TextureManager.h"
+
 using namespace std;
+
 CGameObject::CGameObject()
 {
 	this->currentState = "";

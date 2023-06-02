@@ -14,8 +14,7 @@ private:
 	static LPAnimationManager instance;
 	std::map<std::string, LPAnimation> animations;
 public:
-	CAnimationManager();
-	bool Init();
+	void Init();
 	void Clear();
 	bool InitAnAnimationSet(std::string textureName, std::string filePath);
 	bool LoadAnimation(std::string texName, std::string filePath);
@@ -23,6 +22,5 @@ public:
 	LPAnimation Get(std::string id);
 	LPAnimation Clone(std::string id); // Cloning is neccessary, without it every object will have the same animation
 	static LPAnimationManager GetInstance();
-	~CAnimationManager();
 };
 #endif

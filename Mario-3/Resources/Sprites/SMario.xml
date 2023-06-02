@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Textures>
+	<Textures id="tex-mario">
+		<!--Small Mario-->
+		<Sprite id="spr-small-mario-idle" left="1" top="16"  width="16" height="16" frameTime="100"/>
+
+		<Sprite id="spr-small-mario-walk-0" left="1" top="16"  width="16" height="16" frameTime="100"/>
+		<Sprite id="spr-small-mario-walk-1" left="19" top="16"  width="16" height="16" frameTime="100"/>
+
+		<Sprite id="spr-small-mario-jump" left="37" top="16"  width="16" height="16" frameTime="100"/>
+
+		<Sprite id="spr-small-mario-run-0" left="55" top="16"  width="16" height="16" frameTime="100"/>
+		<Sprite id="spr-small-mario-run-1" left="73" top="16"  width="16" height="16" frameTime="100"/>
+
+		<Sprite id="spr-small-mario-high-jump" left="91" top="16"  width="16" height="16" frameTime="100"/>
+
+		<Sprite id="spr-small-mario-brake" left="109" top="16"  width="16" height="16" frameTime="100"/>
+
+		<Sprite id="spr-small-mario-idle-front" left="127" top="16"  width="16" height="16" frameTime="100"/>
+
+		<Sprite id="spr-small-mario-pick-up-0" left="145" top="16"  width="16" height="16" frameTime="100"/>
+		<Sprite id="spr-small-mario-pick-up-1" left="163" top="16"  width="16" height="16" frameTime="100"/>
+
+		<Sprite id="spr-small-mario-kick" left="181" top="16"  width="16" height="16" frameTime="100"/>
+
+		<Sprite id="spr-small-mario-slide" left="199" top="16"  width="16" height="16" frameTime="100"/>
+
+		<Sprite id="spr-small-mario-dive-0" left="217" top="16"  width="16" height="16" frameTime="100"/>
+		<Sprite id="spr-small-mario-dive-1" left="235" top="16"  width="16" height="16" frameTime="100"/>
+
+		<Sprite id="spr-small-mario-swim-0" left="253" top="16"  width="16" height="16" frameTime="100"/>
+		<Sprite id="spr-small-mario-swim-1" left="271" top="16"  width="16" height="16" frameTime="100"/>
+
+		<Sprite id="spr-small-mario-climb" left="289" top="16"  width="16" height="16" frameTime="100"/>
+
+		<Sprite id="spr-small-mario-die" left="307" top="16"  width="16" height="16" frameTime="100"/>
+
+
+		<!--Super Mario-->
+		<Sprite id="spr-super-mario-idle" left="1" top="88"  width="16" height="32" frameTime="100"/>
+
+		<Sprite id="spr-super-mario-walk-0" left="1" top="88"  width="16" height="32" frameTime="100"/>
+		<Sprite id="spr-super-mario-walk-1" left="19" top="88"  width="16" height="32" frameTime="100"/>
+		<Sprite id="spr-super-mario-walk-2" left="37" top="88"  width="16" height="32" frameTime="100"/>
+
+		<Sprite id="spr-super-mario-squat" left="55" top="96"  width="16" height="24" frameTime="100"/>
+
+		<Sprite id="spr-super-mario-jump" left="73" top="88"  width="16" height="32" frameTime="100"/>
+
+		<Sprite id="spr-super-mario-run-0" left="91" top="88"  width="24" height="32" frameTime="100"/>
+		<Sprite id="spr-super-mario-run-1" left="117" top="88"  width="24" height="32" frameTime="100"/>
+		<Sprite id="spr-super-mario-run-2" left="143" top="88"  width="24" height="32" frameTime="100"/>
+
+		<Sprite id="spr-super-mario-high-jump" left="169" top="88"  width="24" height="32" frameTime="100"/>
+
+		<Sprite id="spr-super-mario-brake" left="195" top="88"  width="16" height="32" frameTime="100"/>
+
+		<Sprite id="spr-super-mario-idle-front" left="213" top="88"  width="16" height="32" frameTime="100"/>
+		<Sprite id="spr-super-mario-idle-back" left="231" top="88"  width="16" height="32" frameTime="100"/>
+
+		<Sprite id="spr-super-mario-pick-up-0" left="249" top="88"  width="16" height="32" frameTime="100"/>
+		<Sprite id="spr-super-mario-pick-up-1" left="267" top="88"  width="16" height="32" frameTime="100"/>
+		<Sprite id="spr-super-mario-pick-up-2" left="285" top="88"  width="16" height="32" frameTime="100"/>
+
+		<Sprite id="spr-super-mario-kick" left="303" top="88"  width="24" height="32" frameTime="100"/>
+
+		<Sprite id="spr-super-mario-slide" left="329" top="88"  width="16" height="32" frameTime="100"/>
+
+		<Sprite id="spr-super-mario-dive-0" left="347" top="88"  width="24" height="32" frameTime="100"/>
+		<Sprite id="spr-super-mario-dive-1" left="373" top="88"  width="24" height="32" frameTime="100"/>
+
+		<Sprite id="spr-super-mario-swim-0" left="399" top="88"  width="24" height="32" frameTime="100"/>
+		<Sprite id="spr-super-mario-swim-1" left="425" top="88"  width="24" height="32" frameTime="100"/>
+		<Sprite id="spr-super-mario-swim-2" left="169" top="88"  width="24" height="32" frameTime="100"/>
+
+		<Sprite id="spr-super-mario-climb" left="451" top="88"  width="16" height="32" frameTime="100"/>
+
+		<Sprite id="spr-super-mario-roll-0" left="1" top="122"  width="24" height="32" frameTime="100"/>
+		<Sprite id="spr-super-mario-roll-1" left="27" top="122"  width="24" height="32" frameTime="100"/>
+		<Sprite id="spr-super-mario-roll-2" left="53" top="122"  width="24" height="32" frameTime="100"/>
+		<Sprite id="spr-super-mario-roll-3" left="79" top="122"  width="24" height="32" frameTime="100"/>
+		<Sprite id="spr-super-mario-roll-4" left="105" top="122"  width="24" height="32" frameTime="100"/>
+		<Sprite id="spr-super-mario-roll-5" left="131" top="122"  width="24" height="32" frameTime="100"/>
+		<Sprite id="spr-super-mario-roll-6" left="157" top="122"  width="24" height="32" frameTime="100"/>
+		<Sprite id="spr-super-mario-roll-7" left="183" top="122"  width="24" height="32" frameTime="100"/>
+
+		<Sprite id="spr-super-mario-shrink-0" left="183" top="122"  width="24" height="32" frameTime="100"/>
+		<Sprite id="spr-super-mario-shrink-1" left="1" top="16"  width="16" height="16" frameTime="100"/>
+	</Textures>
+</Textures>

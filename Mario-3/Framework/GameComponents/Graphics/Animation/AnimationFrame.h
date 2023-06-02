@@ -10,7 +10,7 @@ class CAnimationFrame
 {
 private:
 	LPSprite sprite;
-	DWORD time; // frame time
+	DWORD time;
 public:
 	CAnimationFrame(LPSprite sprite, DWORD time);
 	LPSprite GetSprite();

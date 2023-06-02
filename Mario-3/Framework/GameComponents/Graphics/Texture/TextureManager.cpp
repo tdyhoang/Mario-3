@@ -16,6 +16,8 @@ LPTexture CTextureManager::GetInstance()
 void CTextureManager::Init()
 {
 	auto root = CGame::GetInstance();
+	LoadTexture("tex-mario", root->GetFilePathByCategory("Texture", "tex-mario"));
+	LoadTexture("tex-enemies", root->GetFilePathByCategory("Texture", "tex-enemies"));
 }
 	
 void CTextureManager::Clear()

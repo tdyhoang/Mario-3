@@ -11,8 +11,8 @@
 class CGame
 {
 private:
-	int screenWidth;
-	int screenHeight;
+	int displayWidth;
+	int displayHeight;
 
 	int fps;
 
@@ -36,7 +36,7 @@ public:
 	static CGame* GetInstance();
 	~CGame();
 	void Init();
-	void InitDirectX(HWND hWnd, int scrWidth, int scrHeight, int fps);
+	void InitDirectX(HWND hWnd, int disWidth, int disHeight, int fps);
 
 	void Run(); // while-loop game
 	void End();
@@ -51,8 +51,8 @@ public:
 	void Render();
 	void Update();
 
-	int GetScreenWidth() { return screenWidth; }
-	int GetScreenHeight() { return screenHeight; }
+	int GetDisplayWidth() { return displayWidth; }
+	int GetDisplayHeight() { return displayHeight; }
 
 
 	LPDIRECT3DDEVICE9 GetDirect3DDevice() { return this->d3ddv; }
