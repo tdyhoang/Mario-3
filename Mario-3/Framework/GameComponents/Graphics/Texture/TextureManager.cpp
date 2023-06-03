@@ -22,7 +22,7 @@ void CTextureManager::Init()
 	
 void CTextureManager::Clear()
 {
-	for (auto t : textures)
+	for (auto& t : textures)
 	{
 		LPDIRECT3DTEXTURE9 tex = t.second;
 		if (tex != NULL) tex->Release();

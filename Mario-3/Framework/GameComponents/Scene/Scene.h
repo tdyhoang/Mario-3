@@ -13,12 +13,12 @@ class CScene
 protected:
 	std::vector<LPGameObject> gameObjects;
 	std::string id;
-	LPCWSTR filePath;
+	std::string filePath;
 public:
 	virtual void Load() = 0;
 	virtual void Unload();
 
-	virtual void Update(DWORD dt) = 0;
+	virtual void Update(DWORD dt);
 	virtual void Render();
 
 	std::string GetSceneId() { return this->id; }

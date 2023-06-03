@@ -14,14 +14,12 @@
 #include "Framework/Ultis/Ultis.h"
 #include "TinyXML/tinyxml2.h"
 
-#define MAX_LOADSTRING 100
+constexpr auto MAX_LOADSTRING = 100;
 
-// Global Variables:
-HINSTANCE hInst;                                // current instance
-WCHAR szTitle[MAX_LOADSTRING];                  // The title bar text
-WCHAR szWindowClass[MAX_LOADSTRING];            // the main window class name
+HINSTANCE hInst;
+WCHAR szTitle[MAX_LOADSTRING];
+WCHAR szWindowClass[MAX_LOADSTRING];
 
-// Forward declarations of functions included in this code module:
 ATOM                MyRegisterClass(HINSTANCE hInstance);
 HWND                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
@@ -40,7 +38,6 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         return NULL;
     MyRegisterClass(hInstance);
 
-    // Perform application initialization:
     HWND hWnd = InitInstance(hInstance, nCmdShow);
     if (!hWnd)
     {
@@ -51,13 +48,15 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     CGame::GetInstance()->Init();
     CGame::GetInstance()->Run();
 
+
+
     return 0;
 }
 
 bool LoadFileConfig(int& fps, int& displayWidth, int& displayHeight)
 {
     CGame::GetInstance()->ImportGameSource();
-    auto configFilePath = CGame::GetInstance()->GetFilePathByCategory("config", "global-config");
+    auto configFilePath = CGame::GetInstance()->GetFilePathByCategory("Config", "global-config");
 
     tinyxml2::XMLDocument doc;
     if (doc.LoadFile(configFilePath.c_str()) != tinyxml2::XML_SUCCESS)
@@ -66,7 +65,7 @@ bool LoadFileConfig(int& fps, int& displayWidth, int& displayHeight)
         return false;
     }
     if (auto* root = doc.RootElement(); root != nullptr)
-        if (auto* element = root->FirstChildElement(); element != nullptr)
+        for (auto* element = root->FirstChildElement(); element != nullptr; element = element->NextSiblingElement())
         {
             std::string name = element->Attribute("name");
             if (name.compare("frame-rate") == 0)
@@ -100,7 +99,7 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
 
 HWND InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
-    hInst = hInstance; // Store instance handle in our global variable
+    hInst = hInstance;
 
     HWND hWnd = CreateWindowW(TITLE, TITLE, WS_OVERLAPPEDWINDOW,
         CW_USEDEFAULT, CW_USEDEFAULT, DISPLAY_WIDTH, DISPLAY_HEIGHT, nullptr, nullptr, hInstance, nullptr);

@@ -34,7 +34,6 @@ private:
 
 public:
 	static CGame* GetInstance();
-	~CGame();
 	void Init();
 	void InitDirectX(HWND hWnd, int disWidth, int disHeight, int fps);
 

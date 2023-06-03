@@ -1,5 +1,6 @@
 ﻿#include "SceneManager.h"
 #include "../../Ultis/Ultis.h"
+
 LPSceneManager CSceneManager::instance = NULL;
 
 LPSceneManager CSceneManager::GetInstance()

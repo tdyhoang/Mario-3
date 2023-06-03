@@ -51,6 +51,21 @@
     <Filter Include="Resource Files\Animations">
       <UniqueIdentifier>{b981385d-4afb-4b94-8bae-940b0d625214}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game">
+      <UniqueIdentifier>{76abb395-375d-48a9-8ccc-54226943a57e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Worlds">
+      <UniqueIdentifier>{80b1e6fe-c9ea-4f95-83ab-31b7168b2c3a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\Worlds\World1">
+      <UniqueIdentifier>{cf5a5b7a-9960-42d1-af05-fcc988aa0df7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\GameObjects">
+      <UniqueIdentifier>{c59e6565-24d8-4769-b1ec-87bd62adea4e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\GameObjects\Mario">
+      <UniqueIdentifier>{92a12464-d9d6-4a8a-bbf0-7282f7155d6a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -91,6 +106,12 @@
     </ClCompile>
     <ClCompile Include="Framework\GameComponents\Scene\SceneManager.cpp">
       <Filter>Framework\GameComponents\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Worlds\World1\Scene1.cpp">
+      <Filter>Game\Worlds\World1</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\GameObjects\Mario\Mario.cpp">
+      <Filter>Game\GameObjects\Mario</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -135,6 +156,12 @@
     </ClInclude>
     <ClInclude Include="Framework\Ultis\Transform.h">
       <Filter>Framework\Ultis</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Worlds\World1\Scene1.h">
+      <Filter>Game\Worlds\World1</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameObjects\Mario\Mario.h">
+      <Filter>Game\GameObjects\Mario</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

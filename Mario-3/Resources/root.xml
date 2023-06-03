@@ -10,6 +10,9 @@
 	<Root name="Animation">
 		<Animation id="ani-mario" source="Resources/Animations/AMario.xml"/>
 	</Root>
+	<Root name="Scene">
+		<Scene id="scene1-1" source="Resources/Maps/Map1-1.xml"/>
+	</Root>
 	<Root name="Config">
 		<Config id="global-config" source="Resources/config.xml"/>
 	</Root>

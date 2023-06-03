@@ -6,6 +6,7 @@
 #include "Graphics/Animation/AnimationManager.h"
 #include "../Ultis/Ultis.h"
 #include "../../TinyXML/tinyxml2.h"
+#include "../../Game/Worlds/World1/Scene1.h"
 
 CGame* CGame::instance = NULL;
 float CGame::deltaTime = 0.0f;
@@ -17,21 +18,20 @@ CGame* CGame::GetInstance()
 	return instance;
 }
 
-CGame::~CGame()
-{
-	spriteHandler->Release();
-	backBuffer->Release();
-	d3ddv->Release();
-	d3d->Release();
-}
-
 void CGame::Init()
 {
-	DebugOut(L"[INFO] Begin Init Managers \n");
+	DebugOut(L"[INFO] Begin Init Manager \n");
+
+	fps = 60;
+
 	CTextureManager::GetInstance()->Init();
 	CSpriteManager::GetInstance()->Init();
 	CAnimationManager::GetInstance()->Init();
-	DebugOut(L"[INFO] End Init Managers \n");
+
+	CScene1* scene1 = new CScene1();
+	CSceneManager::GetInstance()->Load(scene1);
+
+	DebugOut(L"[INFO] End Init Manager \n");
 }
 
 void CGame::InitDirectX(HWND hWnd, int disWidth, int disHeight, int fps)
@@ -87,7 +87,6 @@ void CGame::Run()
 	DWORD frameStart = GetTickCount64();
 	DWORD tickPerFrame = 1000 / fps;
 
-	// Game Loop
 	while (!done)
 	{
 		if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
@@ -100,10 +99,10 @@ void CGame::Run()
 		}
 		else
 		{
-			DWORD currentTime = GetTickCount64(); // now
+			DWORD currentTime = GetTickCount64();
 			deltaTime = currentTime - frameStart;
 
-			if (deltaTime >= tickPerFrame) // new frame
+			if (deltaTime >= tickPerFrame)
 			{
 				frameStart = currentTime;
 				Update();
@@ -112,7 +111,7 @@ void CGame::Run()
 
 				if (deltaTime > tickPerFrame) deltaTime = 0;
 			}
-			else // not the time to create new frame yet
+			else
 			{
 				Sleep(tickPerFrame - deltaTime);
 			}
@@ -190,21 +189,18 @@ void CGame::DrawFlipY(D3DXVECTOR2 position, D3DXVECTOR2 pointCenter, LPDIRECT3DT
 
 void CGame::Render()
 {
-	d3ddv->Clear(0, NULL, D3DCLEAR_TARGET, D3DCOLOR_XRGB(0, 0, 0), 1.0f, 0);
+	D3DCOLOR bgColor = D3DCOLOR_XRGB(0, 0, 0);
+	RECT rect = { 0, 0, 600, 600 };
+	d3ddv->Clear(0, NULL, D3DCLEAR_TARGET, bgColor, 1.0f, 0);
 
-	if (d3ddv->BeginScene())
-	{
-		spriteHandler->Begin(D3DXSPRITE_ALPHABLEND);
+	d3ddv->BeginScene();
+	spriteHandler->Begin(D3DXSPRITE_ALPHABLEND);
+	auto activeScene = CSceneManager::GetInstance()->GetActiveScene();
+	if (activeScene != nullptr)
+		activeScene->Render();
+	spriteHandler->End();
 
-		auto activeScene = CSceneManager::GetInstance()->GetActiveScene();
-		if (activeScene != nullptr)
-			activeScene->Render();
-
-		spriteHandler->End();
-
-		d3ddv->EndScene();
-	}
-
+	d3ddv->EndScene();
 	d3ddv->Present(NULL, NULL, NULL, NULL);
 
 }
@@ -213,7 +209,6 @@ void CGame::Update()
 {
 	LPSceneManager sceneManger = CSceneManager::GetInstance();
 	LPScene activeScene = sceneManger->GetActiveScene();
-	// Scene Update -> GameObject Update -> Animation Update
 	if (activeScene != NULL)
 		activeScene->Update(deltaTime);
 }
@@ -228,14 +223,14 @@ bool CGame::ImportGameSource()
 		return false;
 	}
 	if (auto* root = doc.RootElement(); root != nullptr)
-		if (auto* element = root->FirstChildElement(); element != nullptr)
+		for (auto* element = root->FirstChildElement(); element != nullptr; element = element->NextSiblingElement())
 		{
 			std::string category = element->Attribute("name");
 			OutputDebugStringW(ToLPCWSTR(category + '\n'));
 
 			std::unordered_map<std::string, std::string> bucket;
 
-			if (auto item = element->FirstChildElement(); item != nullptr)
+			for (auto item = element->FirstChildElement(); item != nullptr; item = item->NextSiblingElement())
 			{
 				std::string id = item->Attribute("id");
 				std::string source = item->Attribute("source");
@@ -251,7 +246,7 @@ std::string CGame::GetFilePathByCategory(std::string category, std::string id)
 {
 	if (gameSource.find(category) != gameSource.end())
 	{
-		auto bucket = gameSource.at(category);
+		auto& bucket = gameSource.at(category);
 		if (bucket.find(id) != bucket.end())
 		{
 			return bucket.at(id);

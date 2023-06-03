@@ -1,11 +1,17 @@
 #include "Scene.h"
 #include "../../Ultis/Ultis.h"
+#include "../../../TinyXML/tinyxml2.h"
+
 using namespace std;
 
 void CScene::Unload()
 {
 	for (auto object : gameObjects)
 		delete object;
+}
+
+void CScene::Update(DWORD dt)
+{
 }
 
 void CScene::Render()
