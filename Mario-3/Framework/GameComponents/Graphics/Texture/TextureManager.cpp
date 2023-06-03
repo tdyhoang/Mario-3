@@ -68,10 +68,10 @@ void CTextureManager::Add(string id, std::string filePath, D3DCOLOR transparentC
 	LPDIRECT3DTEXTURE9 texture;
 
 	result = D3DXCreateTextureFromFileEx(
-		d3ddv,								// Pointer to Direct3D device object
-		ToLPCWSTR(filePath),							// Path to the image to load
-		info.Width,							// Texture width
-		info.Height,						// Texture height
+		d3ddv,
+		ToLPCWSTR(filePath),
+		info.Width,
+		info.Height,
 		1,
 		D3DUSAGE_DYNAMIC,
 		D3DFMT_UNKNOWN,
@@ -93,9 +93,4 @@ void CTextureManager::Add(string id, std::string filePath, D3DCOLOR transparentC
 
 	OutputDebugStringW(ToLPCWSTR("[INFO] Texture loaded Ok:  " + filePath + "\n"));
 	OutputDebugStringW(ToLPCWSTR("[INFO] Texture ID: " + id + "\n"));
-}
-
-CTextureManager::~CTextureManager()
-{
-
 }
