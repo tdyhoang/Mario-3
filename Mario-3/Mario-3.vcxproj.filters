@@ -66,6 +66,18 @@
     <Filter Include="Game\GameObjects\Mario">
       <UniqueIdentifier>{92a12464-d9d6-4a8a-bbf0-7282f7155d6a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Framework\GameComponents\Scene\Camera">
+      <UniqueIdentifier>{67bc50c3-7115-4d5e-a95e-6f02f5948edf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\GameComponents\Scene\Map">
+      <UniqueIdentifier>{3c61c3af-b360-41d3-bbf6-b0f0193cf402}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\GameComponents\Grid">
+      <UniqueIdentifier>{5532c294-cbfb-4e4a-942a-7d5d1c76ff42}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\GameComponents\Graph">
+      <UniqueIdentifier>{09977a6c-6256-4df7-b376-e213a9fc0de6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -112,6 +124,30 @@
     </ClCompile>
     <ClCompile Include="Game\GameObjects\Mario\Mario.cpp">
       <Filter>Game\GameObjects\Mario</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\GameComponents\Scene\Map\Map.cpp">
+      <Filter>Framework\GameComponents\Scene\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\GameComponents\Scene\Camera\Camera.cpp">
+      <Filter>Framework\GameComponents\Scene\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\GameComponents\Scene\Map\TileMap.cpp">
+      <Filter>Framework\GameComponents\Scene\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\GameComponents\Graph\Node.cpp">
+      <Filter>Framework\GameComponents\Graph</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\GameComponents\Graph\Graph.cpp">
+      <Filter>Framework\GameComponents\Graph</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\GameComponents\GameObject\ObjectPool.cpp">
+      <Filter>Framework\GameComponents\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\GameComponents\Grid\Cell.cpp">
+      <Filter>Framework\GameComponents\Grid</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\GameComponents\Grid\Grid.cpp">
+      <Filter>Framework\GameComponents\Grid</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -162,6 +198,36 @@
     </ClInclude>
     <ClInclude Include="Game\GameObjects\Mario\Mario.h">
       <Filter>Game\GameObjects\Mario</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\GameComponents\Scene\Map\Map.h">
+      <Filter>Framework\GameComponents\Scene\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\GameComponents\Scene\Camera\Camera.h">
+      <Filter>Framework\GameComponents\Scene\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Ultis\RectFrame.h">
+      <Filter>Framework\Ultis</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\GameComponents\Scene\Map\TileMap.h">
+      <Filter>Framework\GameComponents\Scene\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Ultis\Index.h">
+      <Filter>Framework\Ultis</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\GameComponents\Graph\Node.h">
+      <Filter>Framework\GameComponents\Graph</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\GameComponents\Graph\Graph.h">
+      <Filter>Framework\GameComponents\Graph</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\GameComponents\GameObject\ObjectPool.h">
+      <Filter>Framework\GameComponents\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\GameComponents\Grid\Cell.h">
+      <Filter>Framework\GameComponents\Grid</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\GameComponents\Grid\Grid.h">
+      <Filter>Framework\GameComponents\Grid</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -1,7 +1,14 @@
 ﻿#include "SceneManager.h"
 #include "../../Ultis/Ultis.h"
+#include "../Game.h"
+#include "../Const.h"
 
 LPSceneManager CSceneManager::instance = NULL;
+
+CSceneManager::CSceneManager()
+{
+	currentNodeID = -1;
+}
 
 LPSceneManager CSceneManager::GetInstance()
 {
@@ -9,10 +16,44 @@ LPSceneManager CSceneManager::GetInstance()
 	return instance;
 }
 
-//Load Resource
+void CSceneManager::Init()
+{
+	auto filePath = CGame::GetInstance()->GetFilePathByCategory("Scene", "ui-camera");
+	tinyxml2::XMLDocument doc;
+	if (doc.LoadFile(filePath.c_str()) != tinyxml2::XML_SUCCESS)
+	{
+		OutputDebugStringW(ToLPCWSTR(doc.ErrorStr()));
+		return;
+	}
+	if (auto* root = doc.RootElement(); root != nullptr)
+		for (auto* element = root->FirstChildElement(); element != nullptr; element = element->NextSiblingElement())
+		{
+			string name = element->Attribute("name");
+			if (name.compare("UICamera") == 0)
+			{
+				DebugOut(L"[INFO] Load UI camera \n");
+				int screenWidth = CGame::GetInstance()->GetScreenWidth();
+				int screenHeight = CGame::GetInstance()->GetScreenHeight();
+
+				D3DXVECTOR2 pos, posHUD;
+				element->QueryFloatAttribute("pos_x", &pos.x);
+				element->QueryFloatAttribute("pos_y", &pos.y);
+
+				if (auto* uiCam = element->FirstChildElement(); uiCam != nullptr)
+					if (std::string nameUICam = uiCam->Attribute("name"); nameUICam.compare("HUD") == 0)
+					{
+						uiCam->QueryFloatAttribute("pos_x", &posHUD.x);
+						uiCam->QueryFloatAttribute("pos_y", &posHUD.y);
+					}
+			}
+		}
+}
+
+
 void CSceneManager::Load(LPScene scene)
 {
-	DebugOut(L"[INFO] Begin Load Scene \n");
+	if (loadedScenes.find(scene->GetSceneId()) != loadedScenes.end())
+		loadedScenes.erase(scene->GetSceneId());
 	scene->Load();
 	loadedScenes.insert(make_pair(scene->GetSceneId(), scene));
 	activeSceneId = scene->GetSceneId();
@@ -36,11 +77,64 @@ std::string CSceneManager::GetActiveSceneId()
 
 LPScene CSceneManager::GetActiveScene()
 {
-	OutputDebugString(ToLPCWSTR("[INFO] Active Scene: " + activeSceneId + "\n"));
 	if (activeSceneId == "") return nullptr;
 	if (loadedScenes.find(activeSceneId) != loadedScenes.end())
 	{
 		return loadedScenes.at(activeSceneId);
 	}
 	return nullptr;
+}
+
+int CSceneManager::GetNodeID()
+{
+	return currentNodeID;
+}
+
+void CSceneManager::SetNodeID(int id)
+{
+	this->currentNodeID = id;
+}
+
+void CSceneManager::LoadRequestScene()
+{
+	if (requestedLoadScene.size() > 0)
+	{
+		auto scene = requestedLoadScene.at(0);
+		if (scene != NULL)
+		{
+			requestedLoadScene.erase(requestedLoadScene.begin());
+			Load(scene);
+		}
+	}
+}
+
+void CSceneManager::UnloadRequestScene()
+{
+	if (requestedUnloadScene.size() > 0)
+	{
+		auto scene = requestedUnloadScene.at(0);
+		if (scene != NULL)
+		{
+			requestedUnloadScene.erase(requestedUnloadScene.begin());
+			Unload(scene->GetSceneId());
+		}
+	}
+}
+
+void CSceneManager::SwitchScene(LPScene scene)
+{
+	auto activeScene = GetActiveScene();
+	if (activeScene == NULL)
+		return;
+	requestedUnloadScene.push_back(activeScene);
+	requestedLoadScene.push_back(scene);
+}
+
+CSceneManager::~CSceneManager()
+{
+	for (auto& s : loadedScenes)
+	{
+		delete s.second;
+	}
+	loadedScenes.clear();
 }

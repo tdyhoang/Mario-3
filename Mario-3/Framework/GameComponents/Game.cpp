@@ -5,11 +5,13 @@
 #include "Scene/SceneManager.h"
 #include "Graphics/Animation/AnimationManager.h"
 #include "../Ultis/Ultis.h"
-#include "../../TinyXML/tinyxml2.h"
+
 #include "../../Game/Worlds/World1/Scene1.h"
+#include "../../TinyXML/tinyxml2.h"
+#include <string>
 
 CGame* CGame::instance = NULL;
-float CGame::deltaTime = 0.0f;
+DWORD CGame::deltaTime = 0;
 float CGame::timeScale = 1.0f;
 
 CGame* CGame::GetInstance()
@@ -21,32 +23,34 @@ CGame* CGame::GetInstance()
 void CGame::Init()
 {
 	DebugOut(L"[INFO] Begin Init Manager \n");
-
-	fps = 60;
-
 	CTextureManager::GetInstance()->Init();
 	CSpriteManager::GetInstance()->Init();
 	CAnimationManager::GetInstance()->Init();
-
-	CScene1* scene1 = new CScene1();
-	CSceneManager::GetInstance()->Load(scene1);
-
+	CSceneManager::GetInstance()->Init();
 	DebugOut(L"[INFO] End Init Manager \n");
 }
 
-void CGame::InitDirectX(HWND hWnd, int disWidth, int disHeight, int fps)
+void CGame::Request()
+{
+	CSceneManager::GetInstance()->LoadRequestScene();
+	auto activeScene = CSceneManager::GetInstance()->GetActiveScene();
+	if (activeScene != nullptr)
+		activeScene->FindUpdateObjects();
+}
+
+void CGame::InitDirectX(HWND hWnd, int scrWidth, int scrHeight, int fps)
 {
 	this->fps = fps;
 	this->hWnd = hWnd;
-	this->displayWidth = disWidth;
-	this->displayHeight = disHeight;
+	this->screenWidth = scrWidth;
+	this->screenHeight = scrHeight;
 	DebugOut(L"[INFO] Begin Init DirectX \n");
 	d3d = Direct3DCreate9(D3D_SDK_VERSION);
 
 	D3DPRESENT_PARAMETERS d3dpp;
 	ZeroMemory(&d3dpp, sizeof(d3dpp));
-	d3dpp.BackBufferWidth = displayWidth = disWidth;
-	d3dpp.BackBufferHeight = displayHeight = disHeight;
+	d3dpp.BackBufferWidth = screenWidth = scrWidth;
+	d3dpp.BackBufferHeight = screenHeight = scrHeight;
 	d3dpp.Flags = 0;
 	d3dpp.PresentationInterval = D3DPRESENT_INTERVAL_IMMEDIATE;
 	d3dpp.MultiSampleType = D3DMULTISAMPLE_NONE;
@@ -79,6 +83,19 @@ void CGame::InitDirectX(HWND hWnd, int disWidth, int disHeight, int fps)
 	DebugOut(L"[INFO] End Init DirectX \n");
 }
 
+void CGame::Draw(D3DXVECTOR2 position, D3DXVECTOR2 pointCenter, LPDIRECT3DTEXTURE9 texture, RECT rect, D3DXCOLOR transcolor)
+{
+	D3DXVECTOR3 pCenter((int)pointCenter.x, (int)pointCenter.y, 0);
+	D3DXVECTOR3 pInt((int)(position.x), (int)(position.y), 0);
+	spriteHandler->Draw(texture, &rect, &pCenter, &pInt, transcolor);
+}
+
+void CGame::Draw(D3DXVECTOR2 position, LPDIRECT3DTEXTURE9 texture, RECT rect, int alpha)
+{
+	D3DXVECTOR3 pInt((int)(position.x), (int)(position.y), 0);
+	spriteHandler->Draw(texture, &rect, NULL, &pInt, D3DCOLOR_ARGB(alpha, 255, 255, 255));
+}
+
 void CGame::Run()
 {
 	MSG msg;
@@ -105,6 +122,7 @@ void CGame::Run()
 			if (deltaTime >= tickPerFrame)
 			{
 				frameStart = currentTime;
+				Request();
 				Update();
 				Render();
 				Clean();
@@ -125,6 +143,7 @@ void CGame::End()
 	DebugOut(L"[INFO] Game Ending \n");
 
 	CSceneManager::GetInstance()->GetActiveScene()->Unload();
+	CSceneManager::GetInstance()->GetActiveScene()->DestroyObject();
 	CTextureManager::GetInstance()->Clear();
 	CSpriteManager::GetInstance()->Clear();
 	CAnimationManager::GetInstance()->Clear();
@@ -138,21 +157,10 @@ void CGame::End()
 
 void CGame::Clean()
 {
+	CSceneManager::GetInstance()->UnloadRequestScene();
 	auto activeScene = CSceneManager::GetInstance()->GetActiveScene();
-	// Clean scene
-}
-
-void CGame::Draw(D3DXVECTOR2 position, D3DXVECTOR2 pointCenter, LPDIRECT3DTEXTURE9 texture, RECT rect, D3DXCOLOR transcolor)
-{
-	D3DXVECTOR3 pCenter((int)pointCenter.x, (int)pointCenter.y, 0);
-	D3DXVECTOR3 pInt((int)(position.x), (int)(position.y), 0);
-	spriteHandler->Draw(texture, &rect, &pCenter, &pInt, transcolor);
-}
-
-void CGame::Draw(D3DXVECTOR2 position, LPDIRECT3DTEXTURE9 texture, RECT rect, int alpha)
-{
-	D3DXVECTOR3 pInt((int)(position.x), (int)(position.y), 0);
-	spriteHandler->Draw(texture, &rect, NULL, &pInt, D3DCOLOR_ARGB(alpha, 255, 255, 255));
+	if (activeScene != nullptr)
+		activeScene->DestroyObject();
 }
 
 void CGame::DrawFlipX(D3DXVECTOR2 position, D3DXVECTOR2 pointCenter, LPDIRECT3DTEXTURE9 texture, RECT rect, D3DXCOLOR transcolor)
@@ -191,11 +199,13 @@ void CGame::Render()
 {
 	D3DCOLOR bgColor = D3DCOLOR_XRGB(0, 0, 0);
 	RECT rect = { 0, 0, 600, 600 };
+	auto activeScene = CSceneManager::GetInstance()->GetActiveScene();
+	if (activeScene != nullptr)
+		bgColor = activeScene->GetBackgroundColor();
 	d3ddv->Clear(0, NULL, D3DCLEAR_TARGET, bgColor, 1.0f, 0);
 
 	d3ddv->BeginScene();
 	spriteHandler->Begin(D3DXSPRITE_ALPHABLEND);
-	auto activeScene = CSceneManager::GetInstance()->GetActiveScene();
 	if (activeScene != nullptr)
 		activeScene->Render();
 	spriteHandler->End();
