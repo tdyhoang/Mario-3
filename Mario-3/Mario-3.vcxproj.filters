@@ -229,6 +229,9 @@
     <ClInclude Include="Framework\GameComponents\Grid\Grid.h">
       <Filter>Framework\GameComponents\Grid</Filter>
     </ClInclude>
+    <ClInclude Include="Framework\GameComponents\GameObject\ObjectTag.h">
+      <Filter>Framework\GameComponents\GameObject</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Xml Include="Resources\config.xml">

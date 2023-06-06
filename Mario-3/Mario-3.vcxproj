@@ -170,6 +170,7 @@
     <ClInclude Include="Framework\GameComponents\Game.h" />
     <ClInclude Include="Framework\GameComponents\GameObject\GameObject.h" />
     <ClInclude Include="Framework\GameComponents\GameObject\ObjectPool.h" />
+    <ClInclude Include="Framework\GameComponents\GameObject\ObjectTag.h" />
     <ClInclude Include="Framework\GameComponents\Graphics\Animation\Animation.h" />
     <ClInclude Include="Framework\GameComponents\Graphics\Animation\AnimationFrame.h" />
     <ClInclude Include="Framework\GameComponents\Graphics\Animation\AnimationManager.h" />
