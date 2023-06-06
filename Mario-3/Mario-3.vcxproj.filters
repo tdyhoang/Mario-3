@@ -78,6 +78,9 @@
     <Filter Include="Framework\GameComponents\Graph">
       <UniqueIdentifier>{09977a6c-6256-4df7-b376-e213a9fc0de6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Framework\GameComponents\Collision">
+      <UniqueIdentifier>{64796174-4307-4f6b-a907-9cbbe1842a3c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -148,6 +151,9 @@
     </ClCompile>
     <ClCompile Include="Framework\GameComponents\Grid\Grid.cpp">
       <Filter>Framework\GameComponents\Grid</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\GameComponents\Collision\HitBox.cpp">
+      <Filter>Framework\GameComponents\Collision</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -231,6 +237,9 @@
     </ClInclude>
     <ClInclude Include="Framework\GameComponents\GameObject\ObjectTag.h">
       <Filter>Framework\GameComponents\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\GameComponents\Collision\HitBox.h">
+      <Filter>Framework\GameComponents\Collision</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
