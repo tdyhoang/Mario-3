@@ -1,8 +1,5 @@
 #pragma once
 
-#ifndef SCENE_H
-#define SCENE_H
-
 #include "Map/Map.h"
 #include "Camera/Camera.h"
 #include "../GameObject/ObjectPool.h"
@@ -84,9 +81,9 @@ public:
 	void SwitchBlockStateOnToOff(bool state);
 	bool IsLoaded();
 	bool IsSpacePartitioning();
+	bool CheckGlobalObject(ObjectTag tag);
 
 	void AddKeyboardTargetObject(CGameObject* gameObject);
 	std::vector<LPGameObject>  GetKeyboardTargetObject();
 	CGrid* GetGrid();
 };
-#endif

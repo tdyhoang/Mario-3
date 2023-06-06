@@ -35,7 +35,6 @@ private:
 
 public:
 	static CGame* GetInstance();
-	~CGame();
 	void InitDirectX(HWND hWnd, int scrWidth, int scrHeight, int fps);
 	void Draw(D3DXVECTOR2 position, D3DXVECTOR2 pointCenter, LPDIRECT3DTEXTURE9 texture, RECT rect, D3DXCOLOR transcolor = D3DCOLOR_XRGB(255, 0, 255));
 	void Draw(D3DXVECTOR2 position, LPDIRECT3DTEXTURE9 texture, RECT rect, int alpha = 253);

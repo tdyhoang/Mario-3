@@ -24,6 +24,7 @@ protected:
 	RectFrame currentBoundary;
 	std::unordered_map<int, CameraPropertySet> CameraPropertySets;
 public:
+	CCamera() = default;
 	CCamera(int wid, int hei);
 	virtual void Update();
 

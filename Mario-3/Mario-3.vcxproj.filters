@@ -81,6 +81,9 @@
     <Filter Include="Framework\GameComponents\Collision">
       <UniqueIdentifier>{64796174-4307-4f6b-a907-9cbbe1842a3c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\Scenes">
+      <UniqueIdentifier>{973dcbb5-521d-47d5-bd56-cbbfd4131660}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -255,14 +258,14 @@
     <Xml Include="Resources\root.xml">
       <Filter>Resource Files</Filter>
     </Xml>
-    <Xml Include="Resources\Maps\Map1-1.xml">
-      <Filter>Resource Files\Maps</Filter>
-    </Xml>
     <Xml Include="Resources\Animations\AMario.xml">
       <Filter>Resource Files\Animations</Filter>
     </Xml>
     <Xml Include="Resources\Sprites\SMario.xml">
       <Filter>Resource Files\Sprites</Filter>
+    </Xml>
+    <Xml Include="Resources\Scenes\Scene1-1.xml">
+      <Filter>Resource Files\Scenes</Filter>
     </Xml>
   </ItemGroup>
   <ItemGroup>

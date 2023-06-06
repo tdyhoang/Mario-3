@@ -13,7 +13,7 @@ CScene1::CScene1()
 void CScene1::Load()
 {
 	CScene::Load();
-	DebugOut(L"[INFO] Loaded Scene \n");
+	DebugOut(L"[INFO] Loaded Scene 1-1 \n");
 }
 
 void CScene1::Unload()

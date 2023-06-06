@@ -3,8 +3,8 @@
 #include "../../../TinyXML/tinyxml2.h"
 #include "../../../Game/GameObjects/Mario/Mario.h"
 #include "../Game.h"
-#include "../Const.h"
 #include "../GameObject/ObjectPool.h"
+
 #include <string>
 #include "SceneManager.h"
 
@@ -27,13 +27,13 @@ void CScene::SetRenderForeground(bool canRender)
 
 void CScene::Load()
 {
-	tinyxml2::XMLDocument sceneFile;
-	if (!sceneFile.LoadFile(filePath.c_str()))
+	tinyxml2::XMLDocument doc;
+	if (doc.LoadFile(filePath.c_str()) != tinyxml2::XML_SUCCESS)
 	{
 		DebugOut(L"[ERROR] Cannot load file \n");
 		return;
 	}
-	if (auto* root = sceneFile.RootElement(); root != nullptr)
+	if (auto* root = doc.RootElement(); root != nullptr)
 		for (auto* scene = root->FirstChildElement(); scene != nullptr; scene = scene->NextSiblingElement())
 		{
 			string name = scene->Attribute("name");
@@ -79,7 +79,7 @@ void CScene::Load()
 				}
 
 				DebugOut(L"[INFO] Load background color \n");
-				for (auto* color = scene->FirstChildElement(); color != nullptr; color = color->NextSiblingElement())
+				for (auto* color = scene->FirstChildElement(); color != NULL; color = color->NextSiblingElement())
 				{
 					int R, G, B;
 					color->QueryIntAttribute("R", &R);
@@ -128,6 +128,8 @@ void CScene::Load()
 				}
 			}
 		}
+	if (marioController != nullptr)
+		keyboardTargetObjects.push_back(marioController);
 	loaded = true;
 }
 
@@ -135,9 +137,15 @@ void CScene::Unload()
 {
 	loaded = false;
 	if (spaceParitioning == false)
+	{
 		if (gameObjects.size() > 0)
+		{
 			for (int i = 0; i < gameObjects.size(); i++)
+			{
 				gameObjects[i]->SetDestroy(true);
+			}
+		}
+	}
 }
 
 void CScene::DestroyObject()
@@ -146,12 +154,12 @@ void CScene::DestroyObject()
 	{
 		if (spaceParitioning == true)
 		{
-			marioController = NULL;
+			marioController = nullptr;
 			keyboardTargetObjects.clear();
 
 			if (globalObjects.size() > 0)
 				globalObjects.clear();
-			grid = NULL;
+			grid = nullptr;
 		}
 		else
 			gameObjects.clear();
@@ -159,7 +167,7 @@ void CScene::DestroyObject()
 		map = NULL;
 		camera = NULL;
 	}
-	if (spaceParitioning == false)
+	if (!spaceParitioning)
 		if (destroyObjects.size() > 0)
 			destroyObjects.clear();
 }
@@ -179,6 +187,7 @@ void CScene::Update(DWORD dt)
 		else
 			obj->Update(dt, camera, NULL);
 		oldPosition = obj->GetPosition();
+		obj->PhysicsUpdate(&updateObjects);
 		if (obj->IsInGrid() == true)
 			grid->Move(oldPosition, obj);
 	}
@@ -197,7 +206,10 @@ void CScene::Render()
 	{
 		if (obj->IsEnabled() == false)
 			continue;
+
 		obj->Render(camera);
+		if (obj->GetHitBox()->size() != 0)
+			obj->GetHitBox()->at(0)->Render(camera, -24);
 	}
 	if (canRenderForeground == true)
 		map->Render(camera, true);
@@ -211,22 +223,18 @@ void CScene::FindUpdateObjects()
 		auto activeCells = grid->FindActiveCells(camera);
 		int count = 0;
 		for (auto activeCell : activeCells)
-		{
 			for (auto gameObject : activeCell->GetListGameObject())
 			{
 				count++;
 				updateObjects.push_back(gameObject);
 			}
-		}
 		if (globalObjects.size() > 0)
-		{
 			for (auto obj : globalObjects)
 			{
 				if (camera != NULL && camera->CheckObjectInCamera(obj) == false)
 					continue;
 				updateObjects.push_back(obj);
 			}
-		}
 	}
 	else
 	{
@@ -245,14 +253,25 @@ void CScene::AddObject(LPGameObject gameObject)
 	if (gameObject == NULL)
 		return;
 	if (spaceParitioning == true)
-		globalObjects.push_back(gameObject);
+	{
+		if (CheckGlobalObject(gameObject->GetTag()) == false)
+		{
+			if (grid == NULL)
+				return;
+			if (gameObject->IsInGrid() == false)
+			{
+				grid->Insert(gameObject);
+				gameObject->SetInGrid(true);
+			}
+		}
+		else
+			globalObjects.push_back(gameObject);
+	}
 	else
 	{
 		auto gameObj = find(gameObjects.begin(), gameObjects.end(), gameObject);
 		if (gameObj == gameObjects.end())
-		{
 			gameObjects.push_back(gameObject);
-		}
 	}
 }
 
@@ -364,6 +383,19 @@ bool CScene::IsLoaded()
 bool CScene::IsSpacePartitioning()
 {
 	return spaceParitioning;
+}
+
+bool CScene::CheckGlobalObject(ObjectTag tag)
+{
+	if (tag == ObjectTag::Solid || tag == ObjectTag::GhostPlatform || tag == ObjectTag::Pipe || tag == ObjectTag::MovingPlatform)
+		return true;
+	if (tag == ObjectTag::Player || tag == ObjectTag::SmallPlayer || tag == ObjectTag::PlayerController)
+		return true;
+	if (tag == ObjectTag::RaccoonTail)
+		return true;
+	if (tag == ObjectTag::VenusFireBall || tag == ObjectTag::Boomerang)
+		return true;
+	return false;
 }
 
 void CScene::AddKeyboardTargetObject(CGameObject* gameObject)

@@ -201,8 +201,8 @@
   <ItemGroup>
     <Xml Include="Resources\Animations\AMario.xml" />
     <Xml Include="Resources\config.xml" />
-    <Xml Include="Resources\Maps\Map1-1.xml" />
     <Xml Include="Resources\root.xml" />
+    <Xml Include="Resources\Scenes\Scene1-1.xml" />
     <Xml Include="Resources\Sprites\SMario.xml" />
   </ItemGroup>
   <ItemGroup>

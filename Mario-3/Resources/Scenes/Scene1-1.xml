@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Scene>
+  <Scene name="Player" pos_x="130" pos_y="1247"/>
+  <Scene name="Map" source="Resources/Maps/" fileName = "Map1-1.tmx" gridSource ="Resources/Maps/" gridFile ="Map1-1.tmx">
+    <BackgroundColor R="156" G="252" B="240"/>
+  </Scene>
+  <Scene name="Camera" start="0" main="0" width="760" height="671">
+    <Boundary id="0" pos_x="94" pos_y="735" left="94" top="0" right="8350" bottom="1400.5" disX ="0" disY="0" autoX="0"/>
+    <Boundary id="1" pos_x="5877" pos_y="1366" left="5877" top="1366" right="7320" bottom="2279.5" disX ="0" disY="1"  autoX="0"/>
+  </Scene>
+</Scene>

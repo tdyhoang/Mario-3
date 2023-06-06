@@ -27,6 +27,9 @@ void CGame::Init()
 	CSpriteManager::GetInstance()->Init();
 	CAnimationManager::GetInstance()->Init();
 	CSceneManager::GetInstance()->Init();
+
+	CScene1* Scene1 = new CScene1();
+	CSceneManager::GetInstance()->Load(Scene1);
 	DebugOut(L"[INFO] End Init Manager \n");
 }
 
