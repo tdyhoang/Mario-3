@@ -1,14 +1,14 @@
 ﻿#pragma once
 
-#ifndef GAMEOBJECT_H
-#define GAMEOBJECT_H
-
 #include <d3d9.h>
 #include <d3dx9.h>
 #include <unordered_map>
 
 #include "../Graphics/Animation/Animation.h"
 #include "../Scene/Camera/Camera.h"
+#include "../Collision/PhysicsBody.h"
+#include "../Collision/HitBox.h"
+#include "ObjectTag.h"
 #include "../Scene/Scene.h"
 #include "../Graph/Node.h"
 #include "../../Ultis/Index.h"
@@ -16,11 +16,19 @@
 class CScene;
 typedef CScene* LPScene;
 
+class CPhysicsBody;
+typedef CPhysicsBody* LPPhysicsBody;
+
+class CHitBox;
+typedef CHitBox* LPHitBox;
+
 class CGameObject;
 typedef CGameObject* LPGameObject;
 
 class CCamera;
 typedef CCamera* LPCamera;
+
+struct CollisionEvent;
 
 class CAnimation;
 typedef CAnimation* LPAnimation;
@@ -44,7 +52,11 @@ protected:
 	bool isDestroyed;
 	bool isStatic;
 	bool isInGrid;
+	ObjectTag tag;
 	std::unordered_map<std::string, LPAnimation> animations;
+
+	std::vector<LPHitBox>* HitBoxs;
+	LPPhysicsBody PhysicsBody;
 	bool isCheckWithCollision;
 public:
 	CGameObject();
@@ -53,10 +65,12 @@ public:
 	bool IsDestroyed();
 	void SetDestroy(bool isDes);
 
+	virtual void PhysicsUpdate(std::vector<LPGameObject>* coObjects);
 	virtual void Update(DWORD dt, CCamera* cam, CCamera* uiCam);
 	virtual void Render(CCamera* cam, int alpha = 255);
 
 	void FrictionProcess(float& speed, DWORD dt, bool isStop);
+	void ResetTempValues();
 
 	std::string GetCurrentState();
 	void AddAnimation(std::string stateName, LPAnimation animation, bool isLoop = true);
@@ -78,8 +92,23 @@ public:
 	D3DXVECTOR2 GetPosition();
 	void SetPosition(D3DXVECTOR2 p);
 
+	LPPhysicsBody GetPhysicsBody();
+	void SetPhysicsBody(LPPhysicsBody p);
+
+	std::vector<LPHitBox>* GetHitBox();
+	void GetHitBox(std::vector<LPHitBox>* listHitBox);
+
 	std::string GetState();
 	void SetState(std::string state);
+
+	ObjectTag GetTag();
+	void SetTag(ObjectTag t);
+
+	virtual bool CanCollideWithThisObject(LPGameObject gO, ObjectTag tag);
+	bool MarioTag(ObjectTag tag);
+	bool StaticTag(ObjectTag tag);
+	bool GiftTag(ObjectTag tag);
+	bool PlayerAttackItemTag(ObjectTag tag);
 
 	bool IsStatic();
 	void SetStatic(bool setStatic);
@@ -89,5 +118,3 @@ public:
 	Index GetIndex();
 	void SetIndex(Index index);
 };
-
-#endif

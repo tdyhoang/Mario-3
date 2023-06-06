@@ -155,6 +155,9 @@
     <ClCompile Include="Framework\GameComponents\Collision\HitBox.cpp">
       <Filter>Framework\GameComponents\Collision</Filter>
     </ClCompile>
+    <ClCompile Include="Framework\GameComponents\Collision\PhysicsBody.cpp">
+      <Filter>Framework\GameComponents\Collision</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\GameComponents\Game.h">
@@ -239,6 +242,9 @@
       <Filter>Framework\GameComponents\GameObject</Filter>
     </ClInclude>
     <ClInclude Include="Framework\GameComponents\Collision\HitBox.h">
+      <Filter>Framework\GameComponents\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\GameComponents\Collision\PhysicsBody.h">
       <Filter>Framework\GameComponents\Collision</Filter>
     </ClInclude>
   </ItemGroup>

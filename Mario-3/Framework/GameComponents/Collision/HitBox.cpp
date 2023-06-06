@@ -23,7 +23,7 @@ void CHitBox::Render(CCamera* camera, int distance)
 	auto pos = GetWorldPosition();
 
 	auto tex = CTextureManager::GetInstance()->GetTexture("tex-bbox");
-	RECT bbRect;
+	RECT bbRect{};
 	bbRect.left = 0;
 	bbRect.top = 0;
 	bbRect.right = sizeBox.x;
@@ -118,7 +118,7 @@ void CHitBox::SetEnable(bool isEnable)
 RectFrame CHitBox::GetBoundingBox()
 {
 	auto pos = GetWorldPosition();
-	RectFrame r;
+	RectFrame r{};
 	r.left = pos.x - sizeBox.x * 0.5f;
 	r.right = pos.x + sizeBox.x * 0.5f;
 	r.top = pos.y - sizeBox.y * 0.5f;

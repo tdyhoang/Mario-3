@@ -8,6 +8,9 @@ using namespace std;
 CGameObject::CGameObject()
 {
 	this->currentState = "";
+	tag = ObjectTag::None;
+	PhysicsBody = new CPhysicsBody();
+	HitBoxs = new vector<CHitBox*>();
 	isEnabled = false;
 	ignoreTimeScale = false;
 	currentState = "IDLE";
@@ -17,9 +20,17 @@ CGameObject::CGameObject()
 	isStatic = true;
 }
 
+
 D3DXVECTOR2 CGameObject::GetGameObjectSize(CGameObject* gO)
 {
 	D3DXVECTOR2 size = D3DXVECTOR2(0, 0);
+	if (gO->GetHitBox()->size() > 0)
+	{
+		auto colBox = gO->GetHitBox()->at(0);
+		auto sizeBox = colBox->GetSizeBox();
+		size.x = sizeBox.x;
+		size.y = sizeBox.y;
+	}
 	if (size.x == 0 || size.y == 0)
 	{
 		auto anim = gO->GetAnimationByState(gO->GetCurrentState());
@@ -43,6 +54,18 @@ bool CGameObject::IsDestroyed()
 void CGameObject::SetDestroy(bool isDes)
 {
 	this->isDestroyed = isDes;
+}
+
+void CGameObject::PhysicsUpdate(std::vector<LPGameObject>* coObjects)
+{
+	if (PhysicsBody->IsDynamic() == false) return;
+	if (StaticTag(tag) == false && isEnabled == false)
+		return;
+	if (HitBoxs == NULL || HitBoxs->size() <= 0)
+		return;
+	PhysicsBody->Update(this);
+	PhysicsBody->PhysicsUpdate(this, coObjects);
+	ResetTempValues();
 }
 
 void CGameObject::Update(DWORD dt, CCamera* cam, CCamera* uiCam)
@@ -83,6 +106,11 @@ void CGameObject::FrictionProcess(float& speed, DWORD dt, bool isStop)
 		if (speed > 0)
 			speed = 0;
 	}
+}
+
+void CGameObject::ResetTempValues()
+{
+	PhysicsBody->SetAcceleration(0.0f);
 }
 
 std::string CGameObject::GetCurrentState()
@@ -152,6 +180,26 @@ void CGameObject::SetPosition(D3DXVECTOR2 p)
 	this->transform.position = p;
 }
 
+LPPhysicsBody CGameObject::GetPhysicsBody()
+{
+	return PhysicsBody;
+}
+
+void CGameObject::SetPhysicsBody(LPPhysicsBody p)
+{
+	this->PhysicsBody = p;
+}
+
+std::vector<LPHitBox>* CGameObject::GetHitBox()
+{
+	return HitBoxs;
+}
+
+void CGameObject::GetHitBox(std::vector<LPHitBox>* listHitBox)
+{
+	this->HitBoxs = listHitBox;
+}
+
 std::string CGameObject::GetState()
 {
 	return currentState;
@@ -164,6 +212,49 @@ void CGameObject::SetState(string state)
 	lastState = currentState;
 	currentState = state;
 	animations.at(state)->SetPlay(false);
+}
+
+ObjectTag CGameObject::GetTag()
+{
+	return tag;
+}
+
+void CGameObject::SetTag(ObjectTag t)
+{
+	this->tag = t;
+}
+
+bool CGameObject::CanCollideWithThisObject(LPGameObject gO, ObjectTag tag)
+{
+	return true;
+}
+
+bool CGameObject::MarioTag(ObjectTag tag)
+{
+	if (tag == ObjectTag::Player || tag == ObjectTag::SmallPlayer)
+		return true;
+	return false;
+}
+
+bool CGameObject::StaticTag(ObjectTag tag)
+{
+	if (tag == ObjectTag::Solid || tag == ObjectTag::QuestionBlock || tag == ObjectTag::Brick)
+		return true;
+	return false;
+}
+
+bool CGameObject::GiftTag(ObjectTag tag)
+{
+	if (tag == ObjectTag::Gift || tag == ObjectTag::SuperMushroom || tag == ObjectTag::Coin)
+		return true;
+	return false;
+}
+
+bool CGameObject::PlayerAttackItemTag(ObjectTag tag)
+{
+	if (tag == ObjectTag::RaccoonTail || tag == ObjectTag::MarioFireBall) // And Koopa Shell 
+		return true;
+	return false;
 }
 
 bool CGameObject::IsStatic()
