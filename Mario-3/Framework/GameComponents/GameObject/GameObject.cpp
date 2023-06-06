@@ -9,8 +9,8 @@ CGameObject::CGameObject()
 {
 	this->currentState = "";
 	tag = ObjectTag::None;
-	PhysicsBody = new CPhysicsBody();
-	HitBoxs = new vector<CHitBox*>();
+	physicsBody = new CPhysicsBody();
+	hitBoxs = new vector<CHitBox*>();
 	isEnabled = false;
 	ignoreTimeScale = false;
 	currentState = "IDLE";
@@ -58,13 +58,13 @@ void CGameObject::SetDestroy(bool isDes)
 
 void CGameObject::PhysicsUpdate(std::vector<LPGameObject>* coObjects)
 {
-	if (PhysicsBody->IsDynamic() == false) return;
+	if (physicsBody->IsDynamic() == false) return;
 	if (StaticTag(tag) == false && isEnabled == false)
 		return;
-	if (HitBoxs == NULL || HitBoxs->size() <= 0)
+	if (hitBoxs == NULL || hitBoxs->size() <= 0)
 		return;
-	PhysicsBody->Update(this);
-	PhysicsBody->PhysicsUpdate(this, coObjects);
+	physicsBody->Update(this);
+	physicsBody->PhysicsUpdate(this, coObjects);
 	ResetTempValues();
 }
 
@@ -110,7 +110,7 @@ void CGameObject::FrictionProcess(float& speed, DWORD dt, bool isStop)
 
 void CGameObject::ResetTempValues()
 {
-	PhysicsBody->SetAcceleration(0.0f);
+	physicsBody->SetAcceleration(0.0f);
 }
 
 std::string CGameObject::GetCurrentState()
@@ -182,22 +182,22 @@ void CGameObject::SetPosition(D3DXVECTOR2 p)
 
 LPPhysicsBody CGameObject::GetPhysicsBody()
 {
-	return PhysicsBody;
+	return physicsBody;
 }
 
 void CGameObject::SetPhysicsBody(LPPhysicsBody p)
 {
-	this->PhysicsBody = p;
+	this->physicsBody = p;
 }
 
 std::vector<LPHitBox>* CGameObject::GetHitBox()
 {
-	return HitBoxs;
+	return hitBoxs;
 }
 
 void CGameObject::GetHitBox(std::vector<LPHitBox>* listHitBox)
 {
-	this->HitBoxs = listHitBox;
+	this->hitBoxs = listHitBox;
 }
 
 std::string CGameObject::GetState()

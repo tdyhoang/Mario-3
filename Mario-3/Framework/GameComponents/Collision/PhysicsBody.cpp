@@ -76,13 +76,13 @@ void CPhysicsBody::Update(LPGameObject gameObject)
 	if (gameObject == NULL || gameObject->IsEnabled() == false)
 		return;
 	auto dt = CGame::GetInstance()->GetDeltaTime();
-	auto HitBoxs = gameObject->GetHitBox();
-	auto PhysicsBody = gameObject->GetPhysicsBody();
+	auto hitBoxs = gameObject->GetHitBox();
+	auto physicsBody = gameObject->GetPhysicsBody();
 
 	D3DXVECTOR2 distance;
-	distance.x = PhysicsBody->GetVelocity().x * dt;
-	distance.y = PhysicsBody->GetVelocity().y * dt;
-	HitBoxs->at(0)->SetDistance(distance);
+	distance.x = physicsBody->GetVelocity().x * dt;
+	distance.y = physicsBody->GetVelocity().y * dt;
+	hitBoxs->at(0)->SetDistance(distance);
 }
 
 bool CPhysicsBody::CheckAABB(RectFrame selfBox, RectFrame otherBox)

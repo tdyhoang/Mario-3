@@ -55,13 +55,14 @@ protected:
 	ObjectTag tag;
 	std::unordered_map<std::string, LPAnimation> animations;
 
-	std::vector<LPHitBox>* HitBoxs;
-	LPPhysicsBody PhysicsBody;
+	std::vector<LPHitBox>* hitBoxs;
+	LPPhysicsBody physicsBody;
 	bool isCheckWithCollision;
 public:
 	CGameObject();
 
 	static D3DXVECTOR2 GetGameObjectSize(CGameObject* gO);
+	virtual void Init() = 0;
 	bool IsDestroyed();
 	void SetDestroy(bool isDes);
 
@@ -72,9 +73,12 @@ public:
 	void FrictionProcess(float& speed, DWORD dt, bool isStop);
 	void ResetTempValues();
 
+	virtual void OnOverlappedEnter(CHitBox* selfHitBox, CHitBox* otherHitBox) = 0;
+
 	std::string GetCurrentState();
 	void AddAnimation(std::string stateName, LPAnimation animation, bool isLoop = true);
 	void SetRelativePositionOnScreen(D3DXVECTOR2);
+	virtual void EndAnimation() = 0;
 	LPAnimation GetAnimationByState(std::string state);
 
 	bool IsEnabled();
