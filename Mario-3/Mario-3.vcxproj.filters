@@ -84,6 +84,9 @@
     <Filter Include="Resource Files\Scenes">
       <UniqueIdentifier>{973dcbb5-521d-47d5-bd56-cbbfd4131660}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\GameObjects\Mario\States">
+      <UniqueIdentifier>{ddd16193-8e26-49de-80b0-c3b8e660b78a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -163,6 +166,9 @@
     </ClCompile>
     <ClCompile Include="Game\GameObjects\Mario\MarioHitBox.cpp">
       <Filter>Game\GameObjects\Mario</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\GameObjects\Mario\States\SmallMario.cpp">
+      <Filter>Game\GameObjects\Mario\States</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -258,6 +264,9 @@
     </ClInclude>
     <ClInclude Include="Game\GameObjects\Mario\MarioHitBox.h">
       <Filter>Game\GameObjects\Mario</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameObjects\Mario\States\SmallMario.h">
+      <Filter>Game\GameObjects\Mario\States</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
