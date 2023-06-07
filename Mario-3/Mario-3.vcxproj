@@ -161,6 +161,7 @@
     <ClCompile Include="Framework\GameComponents\Scene\Map\TileMap.cpp" />
     <ClCompile Include="Framework\GameComponents\Scene\Scene.cpp" />
     <ClCompile Include="Framework\GameComponents\Scene\SceneManager.cpp" />
+    <ClCompile Include="Framework\GameComponents\StateMachine\StateMachine.cpp" />
     <ClCompile Include="Framework\Ultis\Ultis.cpp" />
     <ClCompile Include="Game\GameObjects\Mario\Mario.cpp" />
     <ClCompile Include="Game\GameObjects\Mario\MarioHitBox.cpp" />
@@ -192,6 +193,8 @@
     <ClInclude Include="Framework\GameComponents\Scene\Map\TileMap.h" />
     <ClInclude Include="Framework\GameComponents\Scene\Scene.h" />
     <ClInclude Include="Framework\GameComponents\Scene\SceneManager.h" />
+    <ClInclude Include="Framework\GameComponents\StateMachine\IState.h" />
+    <ClInclude Include="Framework\GameComponents\StateMachine\StateMachine.h" />
     <ClInclude Include="Framework\Ultis\Index.h" />
     <ClInclude Include="Framework\Ultis\RectFrame.h" />
     <ClInclude Include="Framework\Ultis\Transform.h" />

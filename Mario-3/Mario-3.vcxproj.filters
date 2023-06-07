@@ -87,6 +87,9 @@
     <Filter Include="Game\GameObjects\Mario\States">
       <UniqueIdentifier>{ddd16193-8e26-49de-80b0-c3b8e660b78a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Framework\GameComponents\StateMachine">
+      <UniqueIdentifier>{7212b4b8-143f-47e2-ada4-1c8aa840e304}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -169,6 +172,9 @@
     </ClCompile>
     <ClCompile Include="Game\GameObjects\Mario\States\SmallMario.cpp">
       <Filter>Game\GameObjects\Mario\States</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\GameComponents\StateMachine\StateMachine.cpp">
+      <Filter>Framework\GameComponents\StateMachine</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -267,6 +273,12 @@
     </ClInclude>
     <ClInclude Include="Game\GameObjects\Mario\States\SmallMario.h">
       <Filter>Game\GameObjects\Mario\States</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\GameComponents\StateMachine\IState.h">
+      <Filter>Framework\GameComponents\StateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\GameComponents\StateMachine\StateMachine.h">
+      <Filter>Framework\GameComponents\StateMachine</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
