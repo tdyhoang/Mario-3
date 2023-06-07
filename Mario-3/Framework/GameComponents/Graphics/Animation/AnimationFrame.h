@@ -1,6 +1,5 @@
 #pragma once
-#ifndef ANIMATIONFRAME_H
-#define ANIMATIONFRAME_H
+
 #include <Windows.h>
 #include "../Sprite/Sprite.h"
 
@@ -16,5 +15,3 @@ public:
 	LPSprite GetSprite();
 	DWORD GetTime();
 };
-
-#endif

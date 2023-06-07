@@ -1,8 +1,5 @@
 #pragma once
 
-#ifndef SPRITEMANAGER_H
-#define SPRITEMANAGER_H
-
 #include <d3d9.h>
 #include <d3dx9.h>
 #include <unordered_map>
@@ -24,4 +21,3 @@ public:
 	LPSprite Get(std::string id);
 	static LPSpriteManager GetInstance();
 };
-#endif

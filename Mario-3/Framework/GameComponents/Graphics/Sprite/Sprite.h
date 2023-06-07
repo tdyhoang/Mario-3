@@ -1,6 +1,4 @@
 ﻿#pragma once
-#ifndef SPRITE_H
-#define SPRITE_H
 
 #include <d3d9.h>
 #include <d3dx9.h>
@@ -35,5 +33,3 @@ public:
 	D3DXCOLOR GetTranscolor();
 	void SetTranscolor(D3DXCOLOR transcolor);
 };
-
-#endif

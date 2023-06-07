@@ -4,12 +4,13 @@
 #include "../../../Framework/GameComponents/Game.h"
 #include "../../../Framework/Ultis/Ultis.h"
 #include "../../../Framework/GameComponents/Const.h"
+#include "MarioConst.h"
 #include "../../../Framework/GameComponents/Graphics/Sprite/Sprite.h"
 
 #include <cstdlib>
 #include <cctype> 
 #include <string>
-// #include "MarioHitBox.h"
+#include "MarioHitBox.h"
 #include "../../../Framework/GameComponents/Scene/SceneManager.h"
 // #include "MarioController.h"
 
@@ -155,13 +156,13 @@ DWORD CMario::GetTimeStartChangeAlpha()
 void CMario::Init()
 {
 	this->SetState("IDLE");
-	/*CMarioHitBox* hitBox = new CMarioHitBox();
+	CMarioHitBox* hitBox = new CMarioHitBox();
 	hitBox->SetSizeBox(SUPER_MARIO_BBOX);
 	hitBox->SetPosition(D3DXVECTOR2(0.0f, 0.0f));
 	hitBox->SetGameObjectAttach(this);
 	hitBox->SetName("Mario");
 	hitBox->SetDistance(D3DXVECTOR2(0.0f, 0.0f));
-	this->hitBoxs->push_back(hitBox);*/
+	this->hitBoxs->push_back(hitBox);
 }
 
 void CMario::InitProperties()

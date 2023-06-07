@@ -1,8 +1,5 @@
 #pragma once
 
-#ifndef SCENEMANAGER_H
-#define SCENEMANAGER_H
-
 #include "Scene.h"
 
 class CSceneManager;
@@ -37,5 +34,3 @@ public:
 	void SwitchScene(LPScene scene);
 	~CSceneManager();
 };
-
-#endif

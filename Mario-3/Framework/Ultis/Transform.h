@@ -1,6 +1,4 @@
 ﻿#pragma once
-#ifndef TRANSFORM_H
-#define TRANSFORM_H
 
 #include <d3d9.h>
 #include <d3dx9.h>
@@ -19,6 +17,3 @@ struct Transform
 		return result;
 	}
 };
-
-
-#endif

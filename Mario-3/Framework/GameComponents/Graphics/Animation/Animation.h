@@ -1,8 +1,5 @@
 ﻿#pragma once
 
-#ifndef ANIMATION_H
-#define ANIMATION_H
-
 #include <string>
 #include <vector>
 #include <d3d9.h>
@@ -55,5 +52,3 @@ public:
 	float GetRotation() { return transform.rotationAngle; }
 	LPAnimationFrame GetAnimFrame();
 };
-
-#endif

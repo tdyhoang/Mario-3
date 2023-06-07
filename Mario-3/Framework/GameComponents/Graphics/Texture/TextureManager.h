@@ -1,8 +1,5 @@
 #pragma once
 
-#ifndef TEXTUREMANAGER_H
-#define TEXTUREMANAGER_H
-
 #include <d3d9.h>
 #include <d3dx9.h>
 #include <unordered_map>
@@ -25,5 +22,3 @@ public:
 	LPDIRECT3DTEXTURE9 GetTexture(std::string id);
 	void Add(std::string id, std::string filePath, D3DCOLOR transparentColor);
 };
-
-#endif

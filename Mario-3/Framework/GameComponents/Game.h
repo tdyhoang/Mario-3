@@ -1,8 +1,5 @@
 #pragma once
 
-#ifndef GAME_H
-#define GAME_H
-
 #include <d3dx9.h>
 #include <d3d9.h>
 #include <dinput.h>
@@ -65,5 +62,3 @@ public:
 	bool ImportGameSource();
 	std::string GetFilePathByCategory(std::string category, std::string id);
 };
-
-#endif

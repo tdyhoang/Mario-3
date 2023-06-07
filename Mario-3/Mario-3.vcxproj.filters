@@ -161,6 +161,9 @@
     <ClCompile Include="Framework\GameComponents\Collision\PhysicsBody.cpp">
       <Filter>Framework\GameComponents\Collision</Filter>
     </ClCompile>
+    <ClCompile Include="Game\GameObjects\Mario\MarioHitBox.cpp">
+      <Filter>Game\GameObjects\Mario</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\GameComponents\Game.h">
@@ -249,6 +252,12 @@
     </ClInclude>
     <ClInclude Include="Framework\GameComponents\Collision\PhysicsBody.h">
       <Filter>Framework\GameComponents\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameObjects\Mario\MarioConst.h">
+      <Filter>Game\GameObjects\Mario</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameObjects\Mario\MarioHitBox.h">
+      <Filter>Game\GameObjects\Mario</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -1,6 +1,4 @@
 #pragma once
-#ifndef NODE_H
-#define NODE_H
 
 #include <d3dx9math.h>
 #include <vector>
@@ -30,5 +28,3 @@ public:
 	void AddAdjacencyNode(int adjIndex);
 	NodeTag GetNodeTag();
 };
-
-#endif

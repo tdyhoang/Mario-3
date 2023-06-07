@@ -1,8 +1,5 @@
 #pragma once
 
-#ifndef MAP_H
-#define MAP_H
-
 #include <string>
 #include <map>
 
@@ -35,5 +32,3 @@ public:
 	std::vector<LPGameObject> GetListGameObjects();
 	CTileMap* GetTileMap();
 };
-
-#endif

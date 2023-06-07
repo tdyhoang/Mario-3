@@ -1,6 +1,4 @@
 #pragma once
-#ifndef ANIMATIONMANAGER_H
-#define ANIMATIONMANAGER_H
 
 #include <map>
 
@@ -23,4 +21,3 @@ public:
 	LPAnimation Clone(std::string id); // Cloning is neccessary, without it every object will have the same animation
 	static LPAnimationManager GetInstance();
 };
-#endif

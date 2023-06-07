@@ -163,6 +163,7 @@
     <ClCompile Include="Framework\GameComponents\Scene\SceneManager.cpp" />
     <ClCompile Include="Framework\Ultis\Ultis.cpp" />
     <ClCompile Include="Game\GameObjects\Mario\Mario.cpp" />
+    <ClCompile Include="Game\GameObjects\Mario\MarioHitBox.cpp" />
     <ClCompile Include="Game\Worlds\World1\Scene1.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="TinyXML\tinyxml2.cpp" />
@@ -195,6 +196,8 @@
     <ClInclude Include="Framework\Ultis\Transform.h" />
     <ClInclude Include="Framework\Ultis\Ultis.h" />
     <ClInclude Include="Game\GameObjects\Mario\Mario.h" />
+    <ClInclude Include="Game\GameObjects\Mario\MarioConst.h" />
+    <ClInclude Include="Game\GameObjects\Mario\MarioHitBox.h" />
     <ClInclude Include="Game\Worlds\World1\Scene1.h" />
     <ClInclude Include="TinyXML\tinyxml2.h" />
   </ItemGroup>
