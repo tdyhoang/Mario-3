@@ -176,6 +176,9 @@
     <ClCompile Include="Framework\GameComponents\StateMachine\StateMachine.cpp">
       <Filter>Framework\GameComponents\StateMachine</Filter>
     </ClCompile>
+    <ClCompile Include="Game\GameObjects\Mario\MarioController.cpp">
+      <Filter>Game\GameObjects\Mario</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\GameComponents\Game.h">
@@ -279,6 +282,9 @@
     </ClInclude>
     <ClInclude Include="Framework\GameComponents\StateMachine\StateMachine.h">
       <Filter>Framework\GameComponents\StateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameObjects\Mario\MarioController.h">
+      <Filter>Game\GameObjects\Mario</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -12,7 +12,7 @@
 #include <string>
 #include "MarioHitBox.h"
 #include "../../../Framework/GameComponents/Scene/SceneManager.h"
-// #include "MarioController.h"
+#include "MarioController.h"
 
 using namespace std;
 
@@ -390,14 +390,14 @@ void CMario::ChangeLevelProcess()
 	auto activeScene = CSceneManager::GetInstance()->GetActiveScene();
 	auto obj = activeScene->GetMarioController();
 	if (obj == NULL) return;
-	/*CMarioController* marioController = static_cast<CMarioController*>(obj);
+	CMarioController* marioController = static_cast<CMarioController*>(obj);
 
 	if (marioController != NULL)
 	{
 		CGame::SetTimeScale(1.0f);
 
 		isChangeLevel = true;
-	}*/
+	}
 }
 
 void CMario::FallProcess()
@@ -540,6 +540,16 @@ void CMario::OnDie()
 	this->isDie = true;
 	isAutogo = true;
 	CGame::GetInstance()->SetTimeScale(0.0f);
+}
+
+void CMario::Access()
+{
+	this->isEnabled = true;
+}
+
+void CMario::Exit()
+{
+	this->isEnabled = false;
 }
 
 CMario::~CMario()

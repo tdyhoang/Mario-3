@@ -73,15 +73,15 @@ public:
 	void FrictionProcess(float& speed, DWORD dt, bool isStop);
 	void ResetTempValues();
 
-	virtual void OnOverlappedEnter(CHitBox* selfHitBox, CHitBox* otherHitBox) = 0;
+	virtual void OnOverlappedEnter(CHitBox* selfHitBox, CHitBox* otherHitBox) {}
 
 	std::string GetCurrentState();
 	void AddAnimation(std::string stateName, LPAnimation animation, bool isLoop = true);
 	void SetRelativePositionOnScreen(D3DXVECTOR2);
-	virtual void EndAnimation() = 0;
+	virtual void EndAnimation() {}
 	LPAnimation GetAnimationByState(std::string state);
 
-	virtual void OnKeyDown(int KeyCode) = 0;
+	virtual void OnKeyDown(int KeyCode) {}
 
 	bool IsEnabled();
 	void Enable(bool isEnabled);

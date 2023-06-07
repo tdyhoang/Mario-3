@@ -13,19 +13,19 @@ CSmallMario::CSmallMario()
 	tag = ObjectTag::SmallPlayer;
 	//marioStateTag = MarioStates::SmallMario;
 
-	canCrouch = false;
+	canSquat = false;
 	canAttack = false;
 }
 void CSmallMario::Init()
 {
 	LoadAnimation();
-	CMarioHitBox* collisionBox = new CMarioHitBox();
-	collisionBox->SetSizeBox(SMALL_MARIO_BBOX);
-	collisionBox->SetGameObjectAttach(this);
-	collisionBox->SetName("Small-Mario");
-	collisionBox->SetDistance(D3DXVECTOR2(0.0f, 0.0f));
+	CMarioHitBox* hitBox = new CMarioHitBox();
+	hitBox->SetSizeBox(SMALL_MARIO_BBOX);
+	hitBox->SetGameObjectAttach(this);
+	hitBox->SetName("Small-Mario");
+	hitBox->SetDistance(D3DXVECTOR2(0.0f, 0.0f));
 	SetRelativePositionOnScreen(D3DXVECTOR2(0.0f, SUPER_MARIO_BBOX.y / 2 - SMALL_MARIO_BBOX.y / 2));
-	hitBoxs->push_back(collisionBox);
+	hitBoxs->push_back(hitBox);
 }
 
 void CSmallMario::LoadAnimation()

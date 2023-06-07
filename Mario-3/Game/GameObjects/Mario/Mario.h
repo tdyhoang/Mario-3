@@ -1,10 +1,11 @@
 #pragma once
 
 #include "../../../Framework/GameComponents/GameObject/GameObject.h"
+#include "../../../Framework/GameComponents/StateMachine/IState.h"
 
 class CUICamera;
 
-class CMario : public CGameObject
+class CMario : public CGameObject, public IState
 {
 protected:
 	bool isInIntro;
@@ -14,7 +15,7 @@ protected:
 	bool canLowJumpContinous;
 	bool isHighJump, canHighJump, isJump;
 	int isSkid;
-	bool canCrouch;
+	bool canSquat;
 	D3DXVECTOR2 previousNormal;
 	D3DXVECTOR2 previousPosition;
 	bool canAttack, isAttack, canAttackContinious;
@@ -84,7 +85,7 @@ public:
 
 	void Init() override;
 	virtual void InitProperties();
-	void LoadAnimation();
+	virtual void LoadAnimation();
 	void EndAnimation() override;
 
 	void Update(DWORD dt, CCamera* cam, CCamera* uiCam) override;
@@ -114,6 +115,10 @@ public:
 	void OnDamaged();
 	void OnGoToWarpPipe();
 	void OnDie();
+
+	virtual void Access() override;
+	virtual void Process() override {}
+	virtual void Exit() override;
 
 	~CMario();
 };

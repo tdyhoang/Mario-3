@@ -3,8 +3,8 @@
 #include "../../../TinyXML/tinyxml2.h"
 #include "../../../Game/GameObjects/Mario/Mario.h"
 #include "../Game.h"
+#include "../../../Game/GameObjects/Mario/MarioController.h"
 #include "../GameObject/ObjectPool.h"
-
 #include <string>
 #include "SceneManager.h"
 
@@ -33,13 +33,27 @@ void CScene::Load()
 		DebugOut(L"[ERROR] Cannot load file \n");
 		return;
 	}
+	CMarioController* player = NULL;
 	if (auto* root = doc.RootElement(); root != nullptr)
 		for (auto* scene = root->FirstChildElement(); scene != nullptr; scene = scene->NextSiblingElement())
 		{
 			string name = scene->Attribute("name");
+			if (name.compare("Player") == 0)
+			{
+				DebugOut(L"[INFO] Begin Load player \n");
+				D3DXVECTOR2 startPosition;
+				scene->QueryFloatAttribute("pos_x", &startPosition.x);
+				scene->QueryFloatAttribute("pos_y", &startPosition.y);
+				player = new CMarioController();
+				player->AddStateObjectsToScene(this);
+				player->SetPosition(startPosition);
+				player->GetCurrentStateObject()->SetPosition(startPosition);
+				AddObject(player);
+				marioController = player;
+			}
 			if (name.compare("Map") == 0)
 			{
-				DebugOut(L"[INFO] Load map \n");
+				DebugOut(L"[INFO] Begin Load map \n");
 				string sourceMap;
 				string fileMap;
 
@@ -54,7 +68,7 @@ void CScene::Load()
 					fileMap = scene->Attribute("fileName");
 				}
 				this->map = NULL;
-				this->map = new CMap(sourceMap, fileMap, nullptr, this);
+				this->map = new CMap(sourceMap, fileMap, player, this);
 				auto tilemap = map->GetTileMap();
 
 				bricks = tilemap->GetBricks();

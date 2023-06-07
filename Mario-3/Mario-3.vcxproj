@@ -164,6 +164,7 @@
     <ClCompile Include="Framework\GameComponents\StateMachine\StateMachine.cpp" />
     <ClCompile Include="Framework\Ultis\Ultis.cpp" />
     <ClCompile Include="Game\GameObjects\Mario\Mario.cpp" />
+    <ClCompile Include="Game\GameObjects\Mario\MarioController.cpp" />
     <ClCompile Include="Game\GameObjects\Mario\MarioHitBox.cpp" />
     <ClCompile Include="Game\GameObjects\Mario\States\SmallMario.cpp" />
     <ClCompile Include="Game\Worlds\World1\Scene1.cpp" />
@@ -201,6 +202,7 @@
     <ClInclude Include="Framework\Ultis\Ultis.h" />
     <ClInclude Include="Game\GameObjects\Mario\Mario.h" />
     <ClInclude Include="Game\GameObjects\Mario\MarioConst.h" />
+    <ClInclude Include="Game\GameObjects\Mario\MarioController.h" />
     <ClInclude Include="Game\GameObjects\Mario\MarioHitBox.h" />
     <ClInclude Include="Game\GameObjects\Mario\States\SmallMario.h" />
     <ClInclude Include="Game\Worlds\World1\Scene1.h" />
