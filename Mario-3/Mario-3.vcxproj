@@ -156,6 +156,7 @@
     <ClCompile Include="Framework\GameComponents\Graph\Node.cpp" />
     <ClCompile Include="Framework\GameComponents\Grid\Cell.cpp" />
     <ClCompile Include="Framework\GameComponents\Grid\Grid.cpp" />
+    <ClCompile Include="Framework\GameComponents\Keyboard\KeyEventHandler.cpp" />
     <ClCompile Include="Framework\GameComponents\Scene\Camera\Camera.cpp" />
     <ClCompile Include="Framework\GameComponents\Scene\Map\Map.cpp" />
     <ClCompile Include="Framework\GameComponents\Scene\Map\TileMap.cpp" />
@@ -191,6 +192,7 @@
     <ClInclude Include="Framework\GameComponents\Graph\Node.h" />
     <ClInclude Include="Framework\GameComponents\Grid\Cell.h" />
     <ClInclude Include="Framework\GameComponents\Grid\Grid.h" />
+    <ClInclude Include="Framework\GameComponents\Keyboard\KeyEventHandler.h" />
     <ClInclude Include="Framework\GameComponents\Scene\Camera\Camera.h" />
     <ClInclude Include="Framework\GameComponents\Scene\Map\Map.h" />
     <ClInclude Include="Framework\GameComponents\Scene\Map\TileMap.h" />

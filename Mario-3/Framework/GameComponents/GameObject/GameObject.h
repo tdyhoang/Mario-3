@@ -81,7 +81,9 @@ public:
 	virtual void EndAnimation() {}
 	LPAnimation GetAnimationByState(std::string state);
 
+	virtual void KeyState() {}
 	virtual void OnKeyDown(int KeyCode) {}
+	virtual void OnKeyUp(int KeyCode) {}
 
 	bool IsEnabled();
 	void Enable(bool isEnabled);
