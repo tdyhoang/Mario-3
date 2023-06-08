@@ -203,6 +203,9 @@
     <ClCompile Include="Game\GameObjects\Misc\QuestionBlock.cpp">
       <Filter>Game\GameObjects\Misc</Filter>
     </ClCompile>
+    <ClCompile Include="Game\GameObjects\Misc\Pipe.cpp">
+      <Filter>Game\GameObjects\Misc</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\GameComponents\Game.h">
@@ -327,6 +330,12 @@
     </ClInclude>
     <ClInclude Include="Game\GameObjects\ItemInfo.h">
       <Filter>Game\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameObjects\Misc\Pipe.h">
+      <Filter>Game\GameObjects\Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameObjects\Misc\Misc.h">
+      <Filter>Game\GameObjects\Misc</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

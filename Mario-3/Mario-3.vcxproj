@@ -170,6 +170,7 @@
     <ClCompile Include="Game\GameObjects\Mario\MarioHitBox.cpp" />
     <ClCompile Include="Game\GameObjects\Mario\States\SmallMario.cpp" />
     <ClCompile Include="Game\GameObjects\Misc\Block.cpp" />
+    <ClCompile Include="Game\GameObjects\Misc\Pipe.cpp" />
     <ClCompile Include="Game\GameObjects\Misc\QuestionBlock.cpp" />
     <ClCompile Include="Game\GameObjects\Platforms\GhostPlatform.cpp" />
     <ClCompile Include="Game\GameObjects\Platforms\SolidBox.cpp" />
@@ -216,6 +217,8 @@
     <ClInclude Include="Game\GameObjects\Mario\MarioStateSet.h" />
     <ClInclude Include="Game\GameObjects\Mario\States\SmallMario.h" />
     <ClInclude Include="Game\GameObjects\Misc\Block.h" />
+    <ClInclude Include="Game\GameObjects\Misc\Misc.h" />
+    <ClInclude Include="Game\GameObjects\Misc\Pipe.h" />
     <ClInclude Include="Game\GameObjects\Misc\QuestionBlock.h" />
     <ClInclude Include="Game\GameObjects\Platforms\GhostPlatform.h" />
     <ClInclude Include="Game\GameObjects\Platforms\SolidBox.h" />
