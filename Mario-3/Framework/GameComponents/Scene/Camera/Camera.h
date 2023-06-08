@@ -22,7 +22,7 @@ protected:
 	bool isDisablePosY;
 	bool isAutoX;
 	RectFrame currentBoundary;
-	std::unordered_map<int, CameraPropertySet> cameraPropertieSets;
+	std::unordered_map<int, CameraPropertySet> cameraPropertySets;
 public:
 	CCamera(int wid, int hei);
 

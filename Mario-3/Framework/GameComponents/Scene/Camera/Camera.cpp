@@ -192,19 +192,19 @@ void CCamera::SetCurrentBoundary(RectFrame bound)
 
 CameraPropertySet CCamera::GetCameraProperties(int id)
 {
-    if (cameraPropertieSets.find(id) != cameraPropertieSets.end())
-        return cameraPropertieSets.at(id);
+    if (cameraPropertySets.find(id) != cameraPropertySets.end())
+        return cameraPropertySets.at(id);
     return CameraPropertySet::Empty();
 }
 
 void CCamera::AddCameraProperties(int id, D3DXVECTOR2 pos, RectFrame boundary, bool isDisableX, bool isDiableY)
 {
-    this->cameraPropertieSets.insert(make_pair(id, CameraPropertySet{ pos, boundary, isDisableX, isDiableY }));
+    this->cameraPropertySets.insert(make_pair(id, CameraPropertySet{ pos, boundary, isDisableX, isDiableY }));
 }
 
 void CCamera::AddCameraProperties(int id, CameraPropertySet camProps)
 {
-    this->cameraPropertieSets.insert(make_pair(id, camProps));
+    this->cameraPropertySets.insert(make_pair(id, camProps));
 }
 
 void CCamera::SetGameObject(LPGameObject gO)

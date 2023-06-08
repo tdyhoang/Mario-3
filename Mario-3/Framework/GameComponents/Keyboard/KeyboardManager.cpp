@@ -68,7 +68,7 @@ void CKeyboardManager::InitKeyboard(LPKeyEventHandler handler)
 
 	this->keyEventHandler = handler;
 
-	DebugOut(L"[INFO] Keyboard has been initialized successfully\n");
+	DebugOut(L"[INFO] End Init Keyboard\n");
 }
 
 void CKeyboardManager::ProcessKeyboard()
@@ -85,6 +85,7 @@ void CKeyboardManager::ProcessKeyboard()
 			{
 				CGame::SetTimeScale(1.0f);
 				DebugOut(L"[INFO] Keyboard re-acquired!\n");
+				// Still cannot receive input after re-acquire
 			}
 			else return;
 		}

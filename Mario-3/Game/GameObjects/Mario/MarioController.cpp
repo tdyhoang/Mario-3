@@ -10,6 +10,8 @@
 
 using namespace std;
 
+class CSmallMario;
+
 CMarioController::CMarioController()
 {
 	Init();

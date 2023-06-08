@@ -88,6 +88,7 @@ bool CAnimationManager::LoadAnimation(std::string texName, std::string filePath)
 
 			return true;
 		}
+	return false;
 }
 
 void CAnimationManager::AddAnimation(std::string id, LPAnimation ani)

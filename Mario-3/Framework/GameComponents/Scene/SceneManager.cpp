@@ -51,7 +51,6 @@ void CSceneManager::Init()
 				}
 			}
 		}
-
 }
 
 void CSceneManager::Load(LPScene scene)

@@ -90,6 +90,12 @@
     <Filter Include="Framework\GameComponents\StateMachine">
       <UniqueIdentifier>{7212b4b8-143f-47e2-ada4-1c8aa840e304}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\GameObjects\Misc">
+      <UniqueIdentifier>{7d34560d-d6da-4d4a-a7c2-30ec5cbdfb00}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game\GameObjects\Platforms">
+      <UniqueIdentifier>{d63ea5a7-725f-463e-9b64-cef04a45e6b6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -178,6 +184,21 @@
     </ClCompile>
     <ClCompile Include="Game\GameObjects\Mario\MarioController.cpp">
       <Filter>Game\GameObjects\Mario</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\GameComponents\Keyboard\KeyboardManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\GameComponents\Keyboard\KeyEventHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\GameObjects\Platforms\GhostPlatform.cpp">
+      <Filter>Game\GameObjects\Platforms</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\GameObjects\Platforms\SolidBox.cpp">
+      <Filter>Game\GameObjects\Platforms</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\GameObjects\Misc\Block.cpp">
+      <Filter>Game\GameObjects\Misc</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -285,6 +306,18 @@
     </ClInclude>
     <ClInclude Include="Game\GameObjects\Mario\MarioController.h">
       <Filter>Game\GameObjects\Mario</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\GameComponents\Keyboard\KeyboardManager.h" />
+    <ClInclude Include="Framework\GameComponents\Keyboard\KeyEventHandler.h" />
+    <ClInclude Include="Game\GameObjects\Mario\MarioStateSet.h" />
+    <ClInclude Include="Game\GameObjects\Platforms\GhostPlatform.h">
+      <Filter>Game\GameObjects\Platforms</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameObjects\Platforms\SolidBox.h">
+      <Filter>Game\GameObjects\Platforms</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameObjects\Misc\Block.h">
+      <Filter>Game\GameObjects\Misc</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

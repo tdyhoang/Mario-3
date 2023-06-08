@@ -30,6 +30,9 @@ void CGame::Init()
 	auto keyboardManager = CKeyboardManager::GetInstance();
 	keyboardManager->SetHWND(hWnd);
 	keyboardManager->InitKeyboard(keyEventHandler);
+
+	CScene1* scene1 = new CScene1();
+	CSceneManager::GetInstance()->Load(scene1);
 	DebugOut(L"[INFO] End Init Manager \n");
 }
 
@@ -83,7 +86,7 @@ void CGame::InitDirectX(HWND hWnd, int scrWidth, int scrHeight, int fps)
 		MessageBox(hWnd, L"Creating sprite handler failed!", L"Error", MB_OK | MB_ICONERROR);
 		return;
 	}
-	DebugOut(L"[INFO] Init DirectX Done \n");
+	DebugOut(L"[INFO] End Init DirectX \n");
 }
 
 void CGame::Draw(D3DXVECTOR2 position, D3DXVECTOR2 pointCenter, LPDIRECT3DTEXTURE9 texture, RECT rect, D3DXCOLOR transcolor)

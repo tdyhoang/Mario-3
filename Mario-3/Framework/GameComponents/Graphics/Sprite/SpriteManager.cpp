@@ -69,6 +69,7 @@ bool CSpriteManager::LoadSprite(std::string texName, std::string filePath)
 			}
 			return true;
 		}
+	return false;
 }
 
 LPSprite CSpriteManager::Get(string id)
