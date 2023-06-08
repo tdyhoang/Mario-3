@@ -65,6 +65,7 @@ public:
 	virtual void Init() {}
 	bool IsDestroyed();
 	void SetDestroy(bool isDes);
+	virtual void LoadAnimation() {}
 
 	virtual void PhysicsUpdate(std::vector<LPGameObject>* coObjects);
 	virtual void Update(DWORD dt, CCamera* cam, CCamera* uiCam);

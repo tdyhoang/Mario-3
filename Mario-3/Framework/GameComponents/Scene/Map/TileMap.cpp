@@ -7,9 +7,9 @@
 #include "../../Graphics/Texture/TextureManager.h"
 #include "../../../../Game/GameObjects/Platforms/SolidBox.h"
 #include "../../../../Game/GameObjects/Platforms/GhostPlatform.h"
-//#include "#include "../../../../Game/GameObjects/.../QuestionBlock.h"
-//#include "#include "../../../../Game/GameObjects/.../Pipe.h"
-//#include "#include "../../../../Game/GameObjects/.../EmptyBlock.h"
+#include "../../../../Game/GameObjects/Misc/QuestionBlock.h"
+//#include "../../../../Game/GameObjects/Misc/Pipe.h"
+//#include "../../../../Game/GameObjects/Misc/EmptyBlock.h"
 
 using namespace std;
 
@@ -187,13 +187,13 @@ CTileMap* CTileMap::LoadMap(std::string filePath, std::string fileMap, std::vect
 					{
 						gameObject = LoadGhostBox(position, size, nameObject, listGameObjects);
 					}
-					/*else if (name.compare("QuestionBlock") == 0)
+					else if (name.compare("QuestionBlock") == 0)
 					{
 						object->QueryIntAttribute("type", &type);
 						std::string questionBlockName = object->Attribute("name");
 						gameObject = LoadQuestionBlock(position, type, questionBlockName, listGameObjects);
 					}
-					else if (name.compare("Block") == 0)
+					/*else if (name.compare("Block") == 0)
 					{
 						gameObject = LoadEmptyBlock(position, listGameObjects);
 					}
@@ -276,22 +276,22 @@ CGameObject* CTileMap::LoadGhostBox(D3DXVECTOR2 position, D3DXVECTOR2 size, std:
 	return ghostPlatform;
 }
 
-//CGameObject* CTileMap::LoadQuestionBlock(D3DXVECTOR2 position, int type, std::string name, std::vector<LPGameObject>& listGameObjects)
-//{
-//	CQuestionBlock* solid = new CQuestionBlock();
-//	solid->SetPosition(position - translateConst);
-//	if (name.compare("coin") == 0)
-//	{
-//		solid->SetItemInfo({ ItemTag::Coin, type });
-//	}
-//	if (name.compare("powerup") == 0)
-//	{
-//		solid->SetItemInfo({ ItemTag::PowerUp, type });
-//	}
-//	solid->SetTarget(player);
-//	AddObjectToList(solid, listGameObjects);
-//	return solid;
-//}
+CGameObject* CTileMap::LoadQuestionBlock(D3DXVECTOR2 position, int type, std::string name, std::vector<LPGameObject>& listGameObjects)
+{
+	CQuestionBlock* solid = new CQuestionBlock();
+	solid->SetPosition(position - translateConst);
+	if (name.compare("coin") == 0)
+	{
+		solid->SetItemInfo({ ItemTag::Coin, type });
+	}
+	if (name.compare("powerup") == 0)
+	{
+		solid->SetItemInfo({ ItemTag::PowerUp, type });
+	}
+	solid->SetTarget(player);
+	AddObjectToList(solid, listGameObjects);
+	return solid;
+}
 
 //CGameObject* CTileMap::LoadPipe(D3DXVECTOR2 position, D3DXVECTOR2 size, std::string direction, std::vector<LPGameObject>& listGameObjects)
 //{
