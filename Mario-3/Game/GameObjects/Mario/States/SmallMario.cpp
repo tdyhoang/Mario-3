@@ -11,7 +11,7 @@ CSmallMario::CSmallMario()
 	CSmallMario::SetState("IDLE");
 
 	tag = ObjectTag::SmallPlayer;
-	//marioStateTag = MarioStates::SmallMario;
+	marioStateTag = MarioStates::SmallMario;
 
 	canSquat = false;
 	canAttack = false;

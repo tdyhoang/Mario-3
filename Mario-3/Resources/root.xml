@@ -2,6 +2,7 @@
 <Root>
 	<Root name="Texture">
 		<Texture id="tex-mario" source="Resources/Textures/mario.png"/>
+		<Texture id="tex-misc" source="Resources/Textures/misc.png"/>
 		<Texture id="tex-enemies" source="Resources/Textures/enemies.png"/>
 	</Root>
 	<Root name="Sprite">

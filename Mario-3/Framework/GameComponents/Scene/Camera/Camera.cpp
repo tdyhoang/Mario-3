@@ -32,6 +32,15 @@ void CCamera::Update()
     if (isAutoX == true)
     {
         posCam.x += 0.1 * dt;
+        if (x < posCam.x + 24)
+        {
+            x = posCam.x + 24;
+            auto mario = static_cast<CMario*>(gameObject);
+            MarioStateSet state;
+            state.move = MoveOnGroundStates::Walk;
+            state.jump = JumpOnAirStates::Stand;
+            mario->SetCurrentPhysicsState(state);
+        }
     }
     else
     {

@@ -1,15 +1,17 @@
 #pragma once
 
+#include "MarioStateSet.h"
 #include "../../../Framework/GameComponents/GameObject/GameObject.h"
 #include "../../../Framework/GameComponents/StateMachine/IState.h"
-
-class CUICamera;
+#include "../../../Framework/GameComponents/Keyboard/KeyboardManager.h"
 
 class CMario : public CGameObject, public IState
 {
 protected:
 	bool isInIntro;
+	MarioStates marioStateTag;
 	D3DXVECTOR2 targetVelocity, previousVelocity;
+	MarioStateSet currentPhysicsState, previousPhysicsState;
 	bool isOnGround;
 	bool isHighSpeed;
 	bool canLowJumpContinous;
@@ -41,7 +43,6 @@ protected:
 	bool isGoToWarpPipe, canGoToWarpPipe;
 	RectFrame ventDirection;
 	bool isAutogo;
-	CUICamera* uiCamera;
 	bool isHitGoalRoulette;
 	CGameObject* label;
 	bool isDie;
@@ -51,6 +52,9 @@ public:
 
 	void SetAutoGo(bool autoGo);
 	void SetIsInIntro(bool intro);
+	void SetPhysicsState(MarioStateSet physState);
+	MarioStateSet GetPhysicsState();
+	void SetCurrentPhysicsState(MarioStateSet state);
 	void SetPMeterCounting(int pMeterCounting);
 	void SetFeverState(int fState);
 	void SetDamageFlag(bool isDamaged);
@@ -96,6 +100,8 @@ public:
 
 	bool CanCollideWithThisObject(LPGameObject gO, ObjectTag tag) override;
 
+	void CrouchProcess(CKeyboardManager* keyboard);
+	void SkidProcess(D3DXVECTOR2 velocity);
 	void JumpProcess(float jumpForce, bool bounceAfterJumpOnEnemy);
 	void KickProcess(bool isKick);
 	void InvincibleProcess();
@@ -110,11 +116,17 @@ public:
 	void StopBounce(bool stopBounce);
 	bool StopBounce();
 
+	void OnKeyDown(int KeyCode);
 	void OnKeyUp(int KeyCode);
 
 	void OnDamaged();
 	void OnGoToWarpPipe();
 	void OnDie();
+
+	void SetMarioStateTag(MarioStates tag);
+	MarioStates GettMarioStateTag();
+
+	bool CanRun();
 
 	virtual void Access() override;
 	virtual void Process() override {}

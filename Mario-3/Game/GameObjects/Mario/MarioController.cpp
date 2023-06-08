@@ -44,6 +44,7 @@ void CMarioController::AddStateObjectsToScene(LPScene scene)
 	{
 		scene->AddObject(obj.second);
 		scene->AddKeyboardTargetObject(obj.second);
+		obj.second->AddObjectToScene(scene);
 	}
 }
 

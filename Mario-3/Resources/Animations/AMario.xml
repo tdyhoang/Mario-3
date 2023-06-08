@@ -19,8 +19,8 @@
 		<Animation aniId="ani-small-mario-high-jump" frameTime="100" name="HIGH-JUMP">
 			<Sprite id="spr-small-mario-high-jump" left="91" top="16"  width="16" height="16" frameTime="100"/>
 		</Animation>
-		<Animation aniId="ani-small-mario-brake" frameTime="100" name="BRAKE">
-			<Sprite id="spr-small-mario-brake" left="109" top="16"  width="16" height="16" frameTime="100"/>
+		<Animation aniId="ani-small-mario-skid" frameTime="100" name="SKID">
+			<Sprite id="spr-small-mario-skid" left="109" top="16"  width="16" height="16" frameTime="100"/>
 		</Animation>
 		<Animation aniId="ani-small-mario-idle-front" frameTime="100" name="IDLE-FRONT">
 			<Sprite id="spr-small-mario-idle-front" left="127" top="16"  width="16" height="16" frameTime="100"/>
@@ -80,8 +80,8 @@
 		<Animation aniId="ani-super-mario-high-jump" frameTime="100" name="HIGH-JUMP">
 			<Sprite id="spr-super-mario-high-jump" left="169" top="88"  width="24" height="32" frameTime="100"/>
 		</Animation>
-		<Animation aniId="ani-super-mario-brake" frameTime="100" name="BRAKE">
-			<Sprite id="spr-super-mario-brake" left="195" top="88"  width="16" height="32" frameTime="100"/>
+		<Animation aniId="ani-super-mario-skid" frameTime="100" name="SKID">
+			<Sprite id="spr-super-mario-skid" left="195" top="88"  width="16" height="32" frameTime="100"/>
 		</Animation>
 		<Animation aniId="ani-super-mario-idle-front" frameTime="100" name="IDLE-FRONT">
 			<Sprite id="spr-super-mario-idle-front" left="213" top="88"  width="16" height="32" frameTime="100"/>

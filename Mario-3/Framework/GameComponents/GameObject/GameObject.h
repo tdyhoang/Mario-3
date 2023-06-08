@@ -113,6 +113,8 @@ public:
 	ObjectTag GetTag();
 	void SetTag(ObjectTag t);
 
+	virtual void AddObjectToScene(LPScene scene) {}
+
 	virtual bool CanCollideWithThisObject(LPGameObject gO, ObjectTag tag);
 	bool MarioTag(ObjectTag tag);
 	bool StaticTag(ObjectTag tag);

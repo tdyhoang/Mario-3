@@ -1,6 +1,7 @@
 #pragma once
 #include "../../../Framework/GameComponents/Collision/HitBox.h"
 #include "Mario.h"
+
 class CMarioHitBox : public CHitBox
 {
 private:

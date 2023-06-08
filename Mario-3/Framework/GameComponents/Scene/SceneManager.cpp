@@ -22,7 +22,7 @@ void CSceneManager::Init()
 	tinyxml2::XMLDocument sceneFile;
 	if (sceneFile.LoadFile(filePath.c_str()) != tinyxml2::XML_SUCCESS)
 	{
-		DebugOut(L"[ERROR] Cannot load file \n");
+		DebugOut(L"[ERROR] Cannot load file ui-camera \n");
 		return;
 	}
 	if (auto* root = sceneFile.RootElement(); root != nullptr)

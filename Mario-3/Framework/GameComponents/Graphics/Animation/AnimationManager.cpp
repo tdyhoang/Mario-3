@@ -19,7 +19,7 @@ void CAnimationManager::Init()
 {
 	DebugOut(L"[INFO] Begin Animation Manager Init \n");
 	auto root = CGame::GetInstance();
-	if (InitAnAnimationSet("tex-mario", root->GetFilePathByCategory("Animation", "ani-mario")))
+	if (!InitAnAnimationSet("tex-mario", root->GetFilePathByCategory("Animation", "ani-mario")))
 	{
 		DebugOut(L"[ERROR] Can't Load Mario's Animation \n");
 		return;
