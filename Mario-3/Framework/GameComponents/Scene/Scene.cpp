@@ -4,7 +4,6 @@
 #include "../../../Game/GameObjects/Mario/Mario.h"
 #include "../Game.h"
 #include "../../../Game/GameObjects/Mario/MarioController.h"
-#include "../GameObject/ObjectPool.h"
 #include <string>
 #include "SceneManager.h"
 
@@ -27,20 +26,20 @@ void CScene::SetRenderForeground(bool canRender)
 
 void CScene::Load()
 {
-	tinyxml2::XMLDocument doc;
-	if (doc.LoadFile(filePath.c_str()) != tinyxml2::XML_SUCCESS)
+	tinyxml2::XMLDocument sceneFile;
+	if (sceneFile.LoadFile(filePath.c_str()) != tinyxml2::XML_SUCCESS)
 	{
 		DebugOut(L"[ERROR] Cannot load file \n");
 		return;
 	}
 	CMarioController* player = NULL;
-	if (auto* root = doc.RootElement(); root != nullptr)
+	if (auto* root = sceneFile.RootElement(); root != nullptr)
 		for (auto* scene = root->FirstChildElement(); scene != nullptr; scene = scene->NextSiblingElement())
 		{
 			string name = scene->Attribute("name");
 			if (name.compare("Player") == 0)
 			{
-				DebugOut(L"[INFO] Begin Load player \n");
+				DebugOut(L"[INFO] Load player \n");
 				D3DXVECTOR2 startPosition;
 				scene->QueryFloatAttribute("pos_x", &startPosition.x);
 				scene->QueryFloatAttribute("pos_y", &startPosition.y);
@@ -53,7 +52,7 @@ void CScene::Load()
 			}
 			if (name.compare("Map") == 0)
 			{
-				DebugOut(L"[INFO] Begin Load map \n");
+				DebugOut(L"[INFO] Load map \n");
 				string sourceMap;
 				string fileMap;
 
@@ -93,7 +92,7 @@ void CScene::Load()
 				}
 
 				DebugOut(L"[INFO] Load background color \n");
-				for (auto* color = scene->FirstChildElement(); color != NULL; color = color->NextSiblingElement())
+				for (auto* color = scene->FirstChildElement(); color != nullptr; color = color->NextSiblingElement())
 				{
 					int R, G, B;
 					color->QueryIntAttribute("R", &R);
@@ -112,7 +111,7 @@ void CScene::Load()
 
 				this->camera = new CCamera(viewportWidth, viewportHeight);
 
-				for (auto* boundary = scene->FirstChildElement(); boundary != NULL; boundary = boundary->NextSiblingElement())
+				for (auto* boundary = scene->FirstChildElement(); boundary != nullptr; boundary = boundary->NextSiblingElement())
 				{
 					int id, disX, disY, autoX;
 					RectFrame bound{};
@@ -140,9 +139,20 @@ void CScene::Load()
 						camera->SetAutoX(autoX);
 					}
 				}
+				if (player != NULL)
+				{
+					camera->SetGameObject(player->GetCurrentStateObject());
+				}
+			}
+			if (name.compare("Player-Map") == 0)
+			{
+				DebugOut(L"[INFO] Load player in map\n");
+				D3DXVECTOR2 startPosition;
+				scene->QueryFloatAttribute("pos_x", &startPosition.x);
+				scene->QueryFloatAttribute("pos_y", &startPosition.y);
 			}
 		}
-	if (marioController != nullptr)
+	if (marioController != NULL)
 		keyboardTargetObjects.push_back(marioController);
 	loaded = true;
 }
@@ -168,22 +178,27 @@ void CScene::DestroyObject()
 	{
 		if (spaceParitioning == true)
 		{
-			marioController = nullptr;
+			marioController = NULL;
 			keyboardTargetObjects.clear();
 
 			if (globalObjects.size() > 0)
+			{
 				globalObjects.clear();
-			grid = nullptr;
-		}
-		else
+			}
+			grid = NULL;
 			gameObjects.clear();
+		}
 		delete map;
 		map = NULL;
 		camera = NULL;
 	}
-	if (!spaceParitioning)
+	if (spaceParitioning == false)
+	{
 		if (destroyObjects.size() > 0)
+		{
 			destroyObjects.clear();
+		}
+	}
 }
 
 void CScene::Update(DWORD dt)
@@ -237,18 +252,22 @@ void CScene::FindUpdateObjects()
 		auto activeCells = grid->FindActiveCells(camera);
 		int count = 0;
 		for (auto activeCell : activeCells)
+		{
 			for (auto gameObject : activeCell->GetListGameObject())
 			{
 				count++;
 				updateObjects.push_back(gameObject);
 			}
+		}
 		if (globalObjects.size() > 0)
+		{
 			for (auto obj : globalObjects)
 			{
 				if (camera != NULL && camera->CheckObjectInCamera(obj) == false)
 					continue;
 				updateObjects.push_back(obj);
 			}
+		}
 	}
 	else
 	{
@@ -285,7 +304,9 @@ void CScene::AddObject(LPGameObject gameObject)
 	{
 		auto gameObj = find(gameObjects.begin(), gameObjects.end(), gameObject);
 		if (gameObj == gameObjects.end())
+		{
 			gameObjects.push_back(gameObject);
+		}
 	}
 }
 
@@ -294,12 +315,16 @@ void CScene::RemoveObject(LPGameObject gameObject)
 	if (gameObject == NULL)
 		return;
 	if (spaceParitioning == true)
+	{
 		grid->Remove(gameObject);
+	}
 	else
 	{
 		auto gameObj = find(gameObjects.begin(), gameObjects.end(), gameObject);
 		if (gameObj != gameObjects.end())
+		{
 			gameObjects.erase(gameObj);
+		}
 	}
 }
 
@@ -339,14 +364,18 @@ void CScene::RemoveBrick(CGameObject* gameObject)
 {
 	auto gameObj = find(bricks.begin(), bricks.end(), gameObject);
 	if (gameObj != bricks.end())
+	{
 		bricks.erase(gameObj);
+	}
 }
 
 void CScene::RemoveCoin(CGameObject* gO)
 {
 	auto gameObj = find(coins.begin(), coins.end(), gO);
 	if (gameObj != coins.end())
+	{
 		coins.erase(gameObj);
+	}
 }
 
 void CScene::AddBrick(CGameObject* gO)

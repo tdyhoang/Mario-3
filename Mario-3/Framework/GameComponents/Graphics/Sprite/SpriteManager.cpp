@@ -60,10 +60,10 @@ bool CSpriteManager::LoadSprite(std::string texName, std::string filePath)
 				OutputDebugStringW(ToLPCWSTR(spriteID + ':' + to_string(left) + ':' + to_string(top) + ':' + to_string(width) + ':' + to_string(height) + ':' + to_string(pivotX) + '\n'));
 
 				RECT rect{};
-				rect.left = left;
-				rect.top = top;
-				rect.right = (left + width);
-				rect.bottom = (top + height);
+				rect.left = left * 3;
+				rect.top = top * 3;
+				rect.right = (left + width) * 3;
+				rect.bottom = (top + height) * 3;
 
 				Add(spriteID, rect, tex, pivotX);
 			}

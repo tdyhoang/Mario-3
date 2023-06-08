@@ -1,5 +1,4 @@
 ﻿#include <Windows.h>
-
 #include "Animation.h"
 #include "../../Game.h"
 #include <vector>
@@ -51,26 +50,27 @@ void CAnimation::Render(D3DXVECTOR2 position, int alpha)
 		lastFrameTime = now;
 	}
 	else
-	{
-		DWORD t = animFrames[currentFrame]->GetTime();
-		auto timeScale = CGame::GetTimeScale() == 0.0f ? 1.0f : CGame::GetTimeScale();
-		t = t / timeScale;
-		if (now - lastFrameTime > t)
+		if (CGame::GetTimeScale() != 0.0f || gameObject->IsIgnoreTimeScale())
 		{
-			if (currentFrame == animFrames.size() - 1 && isLoop == false)
+			DWORD t = animFrames[currentFrame]->GetTime();
+			auto timeScale = (gameObject->IsIgnoreTimeScale() == false) ? CGame::GetTimeScale() : 1.0f;
+			t = t / timeScale;
+			if (now - lastFrameTime > t)
 			{
-				isPlaying = false;
-			}
-			else if (isPlaying == true)
-			{
-				currentFrame++;
-				lastFrameTime = now;
-				if (currentFrame >= animFrames.size())
-					currentFrame = 0;
+				if (currentFrame == animFrames.size() - 1 && isLoop == false)
+				{
+					gameObject->EndAnimation();
+					isPlaying = false;
+
+				}
+				else if (isPlaying == true)
+				{
+					currentFrame++;
+					lastFrameTime = now;
+					if (currentFrame >= animFrames.size()) currentFrame = 0;
+				}
 			}
 		}
-
-	}
 	if (animFrames[currentFrame]->GetSprite() != NULL)
 		animFrames[currentFrame]->GetSprite()->Draw(position, transform.scale, transform.rotationAngle, D3DXCOLOR(255, 255, 255, alpha));
 }

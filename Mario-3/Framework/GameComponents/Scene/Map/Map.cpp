@@ -1,11 +1,7 @@
 #include "Map.h"
 #include <d3dx9.h>
 #include <d3d9.h>
-
-#include "../../Graphics/Texture/TextureManager.h"
-#include "../../Const.h"
 #include "../../../Ultis/Ultis.h"
-#include "../../Game.h"
 
 using namespace std;
 
@@ -40,6 +36,7 @@ void CMap::Render(CCamera* camera, bool isRenderForeground)
 		DebugOut(L"[ERROR] Camera is NULL \n");
 		return;
 	}
+
 	tileMap->Render(camera, isRenderForeground);
 }
 

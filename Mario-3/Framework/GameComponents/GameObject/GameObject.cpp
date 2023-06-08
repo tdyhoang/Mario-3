@@ -252,7 +252,7 @@ bool CGameObject::GiftTag(ObjectTag tag)
 
 bool CGameObject::PlayerAttackItemTag(ObjectTag tag)
 {
-	if (tag == ObjectTag::RaccoonTail || tag == ObjectTag::MarioFireBall) // And Koopa Shell 
+	if (tag == ObjectTag::RaccoonTail || tag == ObjectTag::MarioFireBall)
 		return true;
 	return false;
 }

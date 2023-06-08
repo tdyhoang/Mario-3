@@ -4,7 +4,6 @@
 #include "../Sprite/SpriteManager.h"
 #include "../../Const.h"
 #include "../../Game.h"
-#include "../Texture/TextureManager.h"
 
 using namespace std;
 
@@ -20,7 +19,11 @@ void CAnimationManager::Init()
 {
 	DebugOut(L"[INFO] Begin Animation Manager Init \n");
 	auto root = CGame::GetInstance();
-	InitAnAnimationSet("tex-mario", root->GetFilePathByCategory("Animation", "ani-mario"));
+	if (InitAnAnimationSet("tex-mario", root->GetFilePathByCategory("Animation", "ani-mario")))
+	{
+		DebugOut(L"[ERROR] Can't Load Mario's Animation \n");
+		return;
+	}
 }
 
 bool CAnimationManager::InitAnAnimationSet(std::string textureName, std::string filePath)

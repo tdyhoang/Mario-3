@@ -6,19 +6,20 @@
 #include "../../../Ultis/Ultis.h"
 
 class CTextureManager;
-typedef CTextureManager* LPTexture;
+typedef CTextureManager* LPTextureManager;
 class CTextureManager
 {
 private:
-	static LPTexture instance;
+	static LPTextureManager instance;
 	std::unordered_map<std::string, LPDIRECT3DTEXTURE9> textures;
 
 public:
-	static LPTexture GetInstance();
+	static LPTextureManager GetInstance();
 	void Init();
 	void Clear();
 	void ClearTextureById(std::string texname);
 	void LoadTexture(std::string texName, std::string texPath);
 	LPDIRECT3DTEXTURE9 GetTexture(std::string id);
 	void Add(std::string id, std::string filePath, D3DCOLOR transparentColor);
+	~CTextureManager();
 };

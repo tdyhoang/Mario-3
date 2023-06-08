@@ -19,16 +19,16 @@ LPSceneManager CSceneManager::GetInstance()
 void CSceneManager::Init()
 {
 	auto filePath = CGame::GetInstance()->GetFilePathByCategory("Scene", "ui-camera");
-	tinyxml2::XMLDocument doc;
-	if (doc.LoadFile(filePath.c_str()) != tinyxml2::XML_SUCCESS)
+	tinyxml2::XMLDocument sceneFile;
+	if (sceneFile.LoadFile(filePath.c_str()) != tinyxml2::XML_SUCCESS)
 	{
-		OutputDebugStringW(ToLPCWSTR(doc.ErrorStr()));
+		DebugOut(L"[ERROR] Cannot load file \n");
 		return;
 	}
-	if (auto* root = doc.RootElement(); root != nullptr)
-		for (auto* element = root->FirstChildElement(); element != nullptr; element = element->NextSiblingElement())
+	if (auto* root = sceneFile.RootElement(); root != nullptr)
+		for (auto* ui = root->FirstChildElement(); ui != nullptr; ui = ui->NextSiblingElement())
 		{
-			string name = element->Attribute("name");
+			string name = ui->Attribute("name");
 			if (name.compare("UICamera") == 0)
 			{
 				DebugOut(L"[INFO] Load UI camera \n");
@@ -36,19 +36,23 @@ void CSceneManager::Init()
 				int screenHeight = CGame::GetInstance()->GetScreenHeight();
 
 				D3DXVECTOR2 pos, posHUD;
-				element->QueryFloatAttribute("pos_x", &pos.x);
-				element->QueryFloatAttribute("pos_y", &pos.y);
+				ui->QueryFloatAttribute("pos_x", &pos.x);
+				ui->QueryFloatAttribute("pos_y", &pos.y);
 
-				if (auto* uiCam = element->FirstChildElement(); uiCam != nullptr)
-					if (std::string nameUICam = uiCam->Attribute("name"); nameUICam.compare("HUD") == 0)
+				if (auto* uiCam = ui->FirstChildElement(); uiCam != nullptr)
+				{
+					std::string nameUICam = uiCam->Attribute("name");
+
+					if (nameUICam.compare("HUD") == 0)
 					{
 						uiCam->QueryFloatAttribute("pos_x", &posHUD.x);
 						uiCam->QueryFloatAttribute("pos_y", &posHUD.y);
 					}
+				}
 			}
 		}
-}
 
+}
 
 void CSceneManager::Load(LPScene scene)
 {
@@ -79,9 +83,7 @@ LPScene CSceneManager::GetActiveScene()
 {
 	if (activeSceneId == "") return nullptr;
 	if (loadedScenes.find(activeSceneId) != loadedScenes.end())
-	{
 		return loadedScenes.at(activeSceneId);
-	}
 	return nullptr;
 }
 
@@ -133,8 +135,6 @@ void CSceneManager::SwitchScene(LPScene scene)
 CSceneManager::~CSceneManager()
 {
 	for (auto& s : loadedScenes)
-	{
 		delete s.second;
-	}
 	loadedScenes.clear();
 }

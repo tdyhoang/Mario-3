@@ -1,7 +1,9 @@
 #include "Camera.h"
+#include "../../Keyboard/KeyboardManager.h"
 #include "../../Game.h"
 #include "../SceneManager.h"
 #include "../../../../Game/GameObjects/Mario/Mario.h"
+#include "../../../../Game/GameObjects/Mario/MarioConst.h"
 #include <vector>
 #include <map>
 #include "../../../Ultis/Ultis.h"
@@ -29,10 +31,7 @@ void CCamera::Update()
     y = gameObject->GetPosition().y;
     if (isAutoX == true)
     {
-        posCam.x += 0.1 * dt; // Camera horizontal velocity = 0.1
-
-        if (x < posCam.x + 24)
-            x = posCam.x + 24;
+        posCam.x += 0.1 * dt;
     }
     else
     {
@@ -48,7 +47,6 @@ void CCamera::Update()
             else if (x < currentBoundary.left + 24 && isDisablePosX == false)
                 x = currentBoundary.left + 24;
         }
-
     }
     if (posCam.x < currentBoundary.left)
         posCam.x = currentBoundary.left;
@@ -69,7 +67,7 @@ void CCamera::Update()
     if (y > posCam.y + heightCam || y > currentBoundary.bottom)
     {
         auto mario = static_cast<CMario*>(gameObject);
-        // mario->OnDie();
+        mario->OnDie();
     }
     gameObject->SetPosition(D3DXVECTOR2(x, y));
 }
@@ -86,9 +84,20 @@ D3DXVECTOR2 CCamera::TransformCamToWorld(D3DXVECTOR2 posInCam)
 
 bool CCamera::CheckObjectInCamera(LPGameObject gO)
 {
+    if (gO->GetTag() == ObjectTag::PlayerController || gO->GetTag() == ObjectTag::Effect)
+        return true;
+    if (gO->MarioTag(gO->GetTag()))
+        return true;
     D3DXVECTOR2 posObject = gO->GetPosition();
     auto size = CGameObject::GetGameObjectSize(gO);
     auto translate = 48 * 6;
+
+    if (gO->GetTag() == ObjectTag::Solid || gO->GetTag() == ObjectTag::GhostPlatform)
+    {
+        posObject -= size * 0.5f;
+    }
+    if (gO->GetTag() == ObjectTag::MovingPlatform)
+        translate = 150;
 
     if (posObject.x + size.x + translate < posCam.x || posObject.x > posCam.x + widthCam + translate)
         return false;
@@ -174,19 +183,19 @@ void CCamera::SetCurrentBoundary(RectFrame bound)
 
 CameraPropertySet CCamera::GetCameraProperties(int id)
 {
-    if (CameraPropertySets.find(id) != CameraPropertySets.end())
-        return CameraPropertySets.at(id);
+    if (cameraPropertieSets.find(id) != cameraPropertieSets.end())
+        return cameraPropertieSets.at(id);
     return CameraPropertySet::Empty();
 }
 
 void CCamera::AddCameraProperties(int id, D3DXVECTOR2 pos, RectFrame boundary, bool isDisableX, bool isDiableY)
 {
-    this->CameraPropertySets.insert(make_pair(id, CameraPropertySet{ pos, boundary, isDisableX, isDiableY }));
+    this->cameraPropertieSets.insert(make_pair(id, CameraPropertySet{ pos, boundary, isDisableX, isDiableY }));
 }
 
 void CCamera::AddCameraProperties(int id, CameraPropertySet camProps)
 {
-    this->CameraPropertySets.insert(make_pair(id, camProps));
+    this->cameraPropertieSets.insert(make_pair(id, camProps));
 }
 
 void CCamera::SetGameObject(LPGameObject gO)

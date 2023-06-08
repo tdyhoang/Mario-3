@@ -1,13 +1,13 @@
+#include <string>
 #include "TextureManager.h"
 #include "../../Game.h"
 #include "../../Const.h"
 
 using namespace std;
 
-LPTexture CTextureManager::instance = NULL;
+LPTextureManager CTextureManager::instance = NULL;
 
-
-LPTexture CTextureManager::GetInstance()
+LPTextureManager CTextureManager::GetInstance()
 {
 	if (instance == NULL) instance = new CTextureManager();
 	return instance;
@@ -17,12 +17,13 @@ void CTextureManager::Init()
 {
 	auto root = CGame::GetInstance();
 	LoadTexture("tex-mario", root->GetFilePathByCategory("Texture", "tex-mario"));
+	LoadTexture("tex-misc", root->GetFilePathByCategory("Texture", "tex-misc"));
 	LoadTexture("tex-enemies", root->GetFilePathByCategory("Texture", "tex-enemies"));
 }
-	
+
 void CTextureManager::Clear()
 {
-	for (auto& t : textures)
+	for (auto t : textures)
 	{
 		LPDIRECT3DTEXTURE9 tex = t.second;
 		if (tex != NULL) tex->Release();
@@ -81,7 +82,7 @@ void CTextureManager::Add(string id, std::string filePath, D3DCOLOR transparentC
 		transparentColor,
 		&info,
 		NULL,
-		&texture);								// Created texture pointer
+		&texture);
 
 	if (result != D3D_OK)
 	{

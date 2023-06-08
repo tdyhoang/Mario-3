@@ -48,8 +48,6 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     CGame::GetInstance()->Init();
     CGame::GetInstance()->Run();
 
-
-
     return 0;
 }
 

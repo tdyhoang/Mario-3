@@ -27,7 +27,7 @@ void CKeyboardManager::InitKeyboard(LPKeyEventHandler handler)
 	HRESULT
 		hr = DirectInput8Create
 		(
-			(HINSTANCE)GetWindowLong(hWnd, GWLP_HINSTANCE),
+			GetModuleHandle(NULL),
 			DIRECTINPUT_VERSION,
 			IID_IDirectInput8, (VOID**)&dInput, NULL
 		);

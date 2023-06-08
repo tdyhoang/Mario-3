@@ -1,11 +1,9 @@
 ﻿#include "Game.h"
-#include "Const.h"
 #include "Graphics/Texture/TextureManager.h"
 #include "Graphics/Sprite/SpriteManager.h"
-#include "Scene/SceneManager.h"
 #include "Graphics/Animation/AnimationManager.h"
+#include "Scene/SceneManager.h"
 #include "../Ultis/Ultis.h"
-
 #include "../../Game/Worlds/World1/Scene1.h"
 #include "../../TinyXML/tinyxml2.h"
 #include <string>
@@ -28,8 +26,10 @@ void CGame::Init()
 	CAnimationManager::GetInstance()->Init();
 	CSceneManager::GetInstance()->Init();
 
-	CScene1* Scene1 = new CScene1();
-	CSceneManager::GetInstance()->Load(Scene1);
+	CKeyEventHandler* keyEventHandler = new CKeyEventHandler();
+	auto keyboardManager = CKeyboardManager::GetInstance();
+	keyboardManager->SetHWND(hWnd);
+	keyboardManager->InitKeyboard(keyEventHandler);
 	DebugOut(L"[INFO] End Init Manager \n");
 }
 
@@ -83,7 +83,7 @@ void CGame::InitDirectX(HWND hWnd, int scrWidth, int scrHeight, int fps)
 		MessageBox(hWnd, L"Creating sprite handler failed!", L"Error", MB_OK | MB_ICONERROR);
 		return;
 	}
-	DebugOut(L"[INFO] End Init DirectX \n");
+	DebugOut(L"[INFO] Init DirectX Done \n");
 }
 
 void CGame::Draw(D3DXVECTOR2 position, D3DXVECTOR2 pointCenter, LPDIRECT3DTEXTURE9 texture, RECT rect, D3DXCOLOR transcolor)
@@ -126,6 +126,10 @@ void CGame::Run()
 			{
 				frameStart = currentTime;
 				Request();
+				auto keyboardManger = CKeyboardManager::GetInstance();
+				keyboardManger->ProcessKeyboard();
+				if (keyboardManger->CheckESCKey() == true)
+					continue;
 				Update();
 				Render();
 				Clean();
@@ -133,11 +137,8 @@ void CGame::Run()
 				if (deltaTime > tickPerFrame) deltaTime = 0;
 			}
 			else
-			{
 				Sleep(tickPerFrame - deltaTime);
-			}
 		}
-
 	}
 }
 
@@ -215,7 +216,6 @@ void CGame::Render()
 
 	d3ddv->EndScene();
 	d3ddv->Present(NULL, NULL, NULL, NULL);
-
 }
 
 void CGame::Update()
@@ -261,9 +261,7 @@ std::string CGame::GetFilePathByCategory(std::string category, std::string id)
 	{
 		auto& bucket = gameSource.at(category);
 		if (bucket.find(id) != bucket.end())
-		{
 			return bucket.at(id);
-		}
 		return "";
 	}
 	return "";

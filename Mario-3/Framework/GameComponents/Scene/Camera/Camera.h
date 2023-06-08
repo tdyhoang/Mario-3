@@ -22,10 +22,10 @@ protected:
 	bool isDisablePosY;
 	bool isAutoX;
 	RectFrame currentBoundary;
-	std::unordered_map<int, CameraPropertySet> CameraPropertySets;
+	std::unordered_map<int, CameraPropertySet> cameraPropertieSets;
 public:
-	CCamera() = default;
 	CCamera(int wid, int hei);
+
 	virtual void Update();
 
 	D3DXVECTOR2 Transform(D3DXVECTOR2 posWorld);

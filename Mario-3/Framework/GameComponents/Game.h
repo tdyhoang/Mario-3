@@ -4,8 +4,9 @@
 #include <d3d9.h>
 #include <dinput.h>
 #include <unordered_map>
+#include "Keyboard/KeyEventHandler.h"
 #include "Const.h"
-#include <string>
+#include "Keyboard/KeyboardManager.h"
 
 class CGame
 {
@@ -24,7 +25,6 @@ private:
 	LPDIRECT3D9 d3d = NULL;
 	LPDIRECT3DDEVICE9 d3ddv = NULL;
 
-	/*Draw*/
 	LPDIRECT3DSURFACE9 backBuffer = NULL;
 	LPD3DXSPRITE spriteHandler = NULL;
 

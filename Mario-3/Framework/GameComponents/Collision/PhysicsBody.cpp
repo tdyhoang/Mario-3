@@ -8,7 +8,7 @@
 
 using namespace std;
 
-CPhysicsBody::CPhysicsBody()
+CPhysicsBody::CPhysicsBody()	
 {
 	isTrigger = false;
 	velocity.x = 0;
@@ -21,10 +21,6 @@ CPhysicsBody::CPhysicsBody()
 	normal.y = 1;
 	bounceForce.x = 0;
 	bounceForce.y = 0;
-}
-
-CPhysicsBody::~CPhysicsBody()
-{
 }
 
 void CPhysicsBody::PhysicsUpdate(LPGameObject gameObject, std::vector<LPGameObject>* coObjects)
@@ -65,6 +61,11 @@ void CPhysicsBody::PhysicsUpdate(LPGameObject gameObject, std::vector<LPGameObje
 			pos.y += min_ty * distance.y + ny * 0.4f;
 		}
 		cO->CollisionHandle(dt, coEvents, this, velocity, min_tx, min_ty, nx, ny);
+
+		if (nx != 0 || ny != 0)
+		{
+			gameObject->OnCollisionEnter(cO, coEventsResult);
+		}
 		gameObject->SetPosition(pos);
 	}
 
@@ -87,9 +88,8 @@ void CPhysicsBody::Update(LPGameObject gameObject)
 
 bool CPhysicsBody::CheckAABB(RectFrame selfBox, RectFrame otherBox)
 {
-	return
-		((selfBox.left <= otherBox.right) && (selfBox.right >= otherBox.left) && (selfBox.top <= otherBox.bottom) && (selfBox.bottom >= otherBox.top)
-			|| (selfBox.left <= otherBox.left) && (selfBox.right >= otherBox.right) && (selfBox.top <= otherBox.top) && (selfBox.bottom >= otherBox.bottom));
+	return ((selfBox.left <= otherBox.right) && (selfBox.right >= otherBox.left) && (selfBox.top <= otherBox.bottom) && (selfBox.bottom >= otherBox.top)
+		|| (selfBox.left <= otherBox.left) && (selfBox.right >= otherBox.right) && (selfBox.top <= otherBox.top) && (selfBox.bottom >= otherBox.bottom));
 }
 
 void CPhysicsBody::SweptAABB(
@@ -134,7 +134,6 @@ void CPhysicsBody::SweptAABB(
 		dx_entry = sr - ml;
 		dx_exit = sl - mr;
 	}
-
 
 	if (dy > 0)
 	{
@@ -254,6 +253,15 @@ void CPhysicsBody::CalcPotentialCollisions(
 			continue;
 		if (coObject == cO)
 			continue;
+		if (coObjectGO->GetTag() != ObjectTag::Solid && gameObject->GetTag() != ObjectTag::Solid)
+		{
+			if (CheckAABB(cO->GetBoundingBox(), coObject->GetBoundingBox()) == true || CheckAABB(coObject->GetBoundingBox(), cO->GetBoundingBox()) == true)
+			{
+				gameObject->OnOverlappedEnter(cO, coObject);
+				coObjectGO->OnOverlappedEnter(coObject, cO);
+				continue;
+			}
+		}
 		if (gameObject->CanCollideWithThisObject(coObjectGO, coObjectGO->GetTag())
 			== false)
 			continue;
