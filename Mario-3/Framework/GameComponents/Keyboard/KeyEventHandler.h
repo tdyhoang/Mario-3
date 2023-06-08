@@ -3,6 +3,8 @@
 #include "../GameObject/GameObject.h"
 #include <vector>
 
+class CKeyEventHandler;
+typedef CKeyEventHandler* LPKeyEventHandler;
 class CKeyEventHandler
 {
 public:

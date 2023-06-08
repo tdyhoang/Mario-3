@@ -18,6 +18,6 @@ public:
 	bool LoadAnimation(std::string texName, std::string filePath);
 	void AddAnimation(std::string id, LPAnimation ani);
 	LPAnimation Get(std::string id);
-	LPAnimation Clone(std::string id); // Cloning is neccessary, without it every object will have the same animation
+	LPAnimation Clone(std::string id);
 	static LPAnimationManager GetInstance();
 };
