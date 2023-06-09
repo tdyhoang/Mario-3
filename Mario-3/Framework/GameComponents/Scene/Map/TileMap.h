@@ -67,6 +67,8 @@ struct TileSet
 	int columns;
 	LPDIRECT3DTEXTURE9 texture;
 	std::string textureID;
+	int margin;
+	int spacing;
 	void Clear()
 	{
 		CTextureManager::GetInstance()->ClearTextureById(textureID);

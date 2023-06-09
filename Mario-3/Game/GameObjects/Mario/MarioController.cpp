@@ -10,8 +10,6 @@
 
 using namespace std;
 
-class CSmallMario;
-
 CMarioController::CMarioController()
 {
 	Init();
@@ -24,9 +22,7 @@ void CMarioController::Init()
 	isEnabled = true;
 	CMario* marioStateObject;
 
-	DebugOut(L"STILL WORKING BEFORE MARIO!!!\n");
 	marioStateObject = new CSmallMario();
-	DebugOut(L"STILL WORKING AFTER MARIO!!!\n");
 	listMarioStates.insert(make_pair("SmallMario", marioStateObject));
 	listStateObjects.insert(make_pair("SmallMario", marioStateObject));
 	marioStateObject->Enable(false);

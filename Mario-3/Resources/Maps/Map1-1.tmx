@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.10" tiledversion="1.10.1" orientation="orthogonal" renderorder="right-down" width="334" height="20" tilewidth="48" tileheight="48" infinite="0" backgroundcolor="#b5ebf2" nextlayerid="9" nextobjectid="32">
  <editorsettings>
-  <export target="Map1.xml" format="tmx"/>
+  <export target="Map1-1.xml" format="tmx"/>
  </editorsettings>
  <tileset firstgid="1" source="misc.tsx"/>
  <layer id="1" name="Background" width="334" height="20">

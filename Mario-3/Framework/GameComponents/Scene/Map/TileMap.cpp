@@ -85,7 +85,7 @@ CTileMap* CTileMap::LoadMap(std::string filePath, std::string fileMap, std::vect
 {
 	currentGOIndex = Index({ -1, -1 });
 	string fullPath = filePath + fileMap;
-	if (tinyxml2::XMLDocument doc; doc.LoadFile(fullPath.c_str()) != tinyxml2::XML_SUCCESS)
+	if (tinyxml2::XMLDocument doc; doc.LoadFile(fullPath.c_str()) == tinyxml2::XML_SUCCESS)
 	{
 		OutputDebugString(L"Loading TMX \n");
 		if (auto* root = doc.RootElement(); root != nullptr)
@@ -113,13 +113,19 @@ CTileMap* CTileMap::LoadMap(std::string filePath, std::string fileMap, std::vect
 						tsroot->QueryFloatAttribute("tileheight", &tileSet->tileSize.y);
 						tsroot->QueryIntAttribute("tilecount", &tileSet->tileCount);
 						tsroot->QueryIntAttribute("columns", &tileSet->columns);
+						tsroot->QueryIntAttribute("margin", &tileSet->margin);
+						tsroot->QueryIntAttribute("spacing", &tileSet->spacing);
 
 						if (auto* imgDom = tsroot->FirstChildElement("image"); imgDom != nullptr)
 						{
 							string imgPath = imgDom->Attribute("source");
 							imgPath = filePath + imgPath;
 							tileSet->textureID = std::to_string(tileSet->firstgid);
-							CTextureManager::GetInstance()->Add(std::to_string(tileSet->firstgid), imgPath, D3DCOLOR_ARGB(0, 0, 0, 0));
+							string transcolor = imgDom->Attribute("trans");
+							int red = stoi(transcolor.substr(0, 2), nullptr, 16);
+							int green = stoi(transcolor.substr(2, 2), nullptr, 16);
+							int blue = stoi(transcolor.substr(4, 2), nullptr, 16);
+							CTextureManager::GetInstance()->Add(std::to_string(tileSet->firstgid), imgPath, D3DCOLOR_ARGB(0, red, green, blue));
 							tileSet->texture = CTextureManager::GetInstance()->GetTexture(std::to_string(tileSet->firstgid));
 							tileSets[tileSet->firstgid] = tileSet;
 						}

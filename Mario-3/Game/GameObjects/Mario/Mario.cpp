@@ -237,7 +237,6 @@ void CMario::InitProperties()
 void CMario::LoadAnimation()
 {
 	auto animationManager = CAnimationManager::GetInstance();
-	AddAnimation("DAMAGED", animationManager->Get("ani-mario-damaged"), false);
 }
 
 void CMario::EndAnimation()

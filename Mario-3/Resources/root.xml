@@ -4,6 +4,7 @@
 		<Texture id="tex-mario" source="Resources/Textures/mario.png"/>
 		<Texture id="tex-misc" source="Resources/Textures/misc.png"/>
 		<Texture id="tex-enemies" source="Resources/Textures/enemies.png"/>
+		<Texture id="tex-bbox" source="Resources/Textures/bbox.png"/>
 	</Root>
 	<Root name="Sprite">
 		<Sprite id="spr-mario" source="Resources/Sprites/SMario.xml"/>

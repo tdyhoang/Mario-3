@@ -19,6 +19,7 @@ void CTextureManager::Init()
 	LoadTexture("tex-mario", root->GetFilePathByCategory("Texture", "tex-mario"));
 	LoadTexture("tex-misc", root->GetFilePathByCategory("Texture", "tex-misc"));
 	LoadTexture("tex-enemies", root->GetFilePathByCategory("Texture", "tex-enemies"));
+	LoadTexture("tex-bbox", root->GetFilePathByCategory("Texture", "tex-bbox"));
 }
 
 void CTextureManager::Clear()
