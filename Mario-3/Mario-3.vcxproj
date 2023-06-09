@@ -227,10 +227,12 @@
   </ItemGroup>
   <ItemGroup>
     <Xml Include="Resources\Animations\AMario.xml" />
+    <Xml Include="Resources\Animations\AMisc.xml" />
     <Xml Include="Resources\config.xml" />
     <Xml Include="Resources\root.xml" />
     <Xml Include="Resources\Scenes\Scene1-1.xml" />
     <Xml Include="Resources\Sprites\SMario.xml" />
+    <Xml Include="Resources\Sprites\SMisc.xml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

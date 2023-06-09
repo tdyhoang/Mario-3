@@ -89,7 +89,7 @@ public:
 
 	void Init() override;
 	virtual void InitProperties();
-	void LoadAnimation();
+	virtual void LoadAnimation();
 	void EndAnimation() override;
 
 	void Update(DWORD dt, CCamera* cam, CCamera* uiCam) override;

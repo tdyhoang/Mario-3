@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Textures>
+	<Textures gameObjectId= "0" textureId="tex-misc">
+		<Animation aniId="ani-question-block" frameTime="100"  name = "QUESTION-BLOCK">
+			<Sprite id="spr-question-block-0" left="1140" top="35"  width="16" height="16"/>
+			<Sprite id="spr-question-block-1" left="1157" top="35"  width="16" height="16"/>
+			<Sprite id="spr-question-block-2" left="1174" top="35"  width="16" height="16"/>
+			<Sprite id="spr-question-block-3" left="1191" top="35"  width="16" height="16"/>
+		</Animation>
+
+		<Animation aniId="ani-empty-block" frameTime="100" name = "EMPTY-BLOCK">
+			<Sprite id="spr-empty-block" left="1208" top="1"  width="16" height="16"/>
+		</Animation>
+	</Textures>
+</Textures>

@@ -70,14 +70,6 @@ void CScene::Load()
 				this->map = new CMap(sourceMap, fileMap, player, this);
 				auto tilemap = map->GetTileMap();
 
-				bricks = tilemap->GetBricks();
-				coins = tilemap->GetCoins();
-				poolBricks = tilemap->GetPoolBricks();
-				poolCoins = tilemap->GetPoolCoins();
-				poolBricks->AddPoolToScene(this);
-				poolCoins->AddPoolToScene(this);
-				card = tilemap->GetCard();
-
 				if (spaceParitioning == true)
 				{
 					this->grid = map->GetTileMap()->GetGrid();

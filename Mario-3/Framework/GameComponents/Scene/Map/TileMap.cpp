@@ -22,9 +22,6 @@ CTileMap::CTileMap()
 	width = 1;
 	height = 1;
 	foreground = NULL;
-	poolBricks = new CObjectPool();
-	poolCoins = new CObjectPool();
-	card = NULL;
 	grid = NULL;
 }
 
@@ -35,9 +32,6 @@ CTileMap::CTileMap(int width, int height, int tileWidth, int tileHeight)
 	this->tileHeight = tileHeight;
 	this->tileWidth = tileWidth;
 	foreground = NULL;
-	poolBricks = new CObjectPool();
-	poolCoins = new CObjectPool();
-	card = NULL;
 	player = NULL;
 }
 
@@ -108,22 +102,28 @@ CTileMap* CTileMap::LoadMap(std::string filePath, std::string fileMap, std::vect
 			this->scene = scene;
 			for (auto* element = root->FirstChildElement("tileset"); element != nullptr; element = element->NextSiblingElement("tileset"))
 			{
-				TileSet* tileSet = new TileSet();
-				element->QueryIntAttribute("firstgid", &tileSet->firstgid);
-				element->QueryFloatAttribute("tilewidth", &tileSet->tileSize.x);
-				element->QueryFloatAttribute("tileheight", &tileSet->tileSize.y);
-				element->QueryIntAttribute("tilecount", &tileSet->tileCount);
-				element->QueryIntAttribute("columns", &tileSet->columns);
+				tinyxml2::XMLDocument tsdoc;
+				auto tspath = filePath + element->Attribute("source");
+				if (tsdoc.LoadFile(tspath.c_str()) == tinyxml2::XML_SUCCESS)
+					if (auto* tsroot = tsdoc.RootElement(); tsroot != nullptr)
+					{
+						TileSet* tileSet = new TileSet();
+						tsroot->QueryIntAttribute("firstgid", &tileSet->firstgid);
+						tsroot->QueryFloatAttribute("tilewidth", &tileSet->tileSize.x);
+						tsroot->QueryFloatAttribute("tileheight", &tileSet->tileSize.y);
+						tsroot->QueryIntAttribute("tilecount", &tileSet->tileCount);
+						tsroot->QueryIntAttribute("columns", &tileSet->columns);
 
-				if (auto* imgDom = element->FirstChildElement("image"); imgDom != nullptr)
-				{
-					string imgPath = imgDom->Attribute("source");
-					imgPath = filePath + imgPath;
-					tileSet->textureID = std::to_string(tileSet->firstgid);
-					CTextureManager::GetInstance()->Add(std::to_string(tileSet->firstgid), imgPath, D3DCOLOR_ARGB(0, 0, 0, 0));
-					tileSet->texture = CTextureManager::GetInstance()->GetTexture(std::to_string(tileSet->firstgid));
-					tileSets[tileSet->firstgid] = tileSet;
-				}
+						if (auto* imgDom = tsroot->FirstChildElement("image"); imgDom != nullptr)
+						{
+							string imgPath = imgDom->Attribute("source");
+							imgPath = filePath + imgPath;
+							tileSet->textureID = std::to_string(tileSet->firstgid);
+							CTextureManager::GetInstance()->Add(std::to_string(tileSet->firstgid), imgPath, D3DCOLOR_ARGB(0, 0, 0, 0));
+							tileSet->texture = CTextureManager::GetInstance()->GetTexture(std::to_string(tileSet->firstgid));
+							tileSets[tileSet->firstgid] = tileSet;
+						}
+					}
 			}
 
 			for (auto* element = root->FirstChildElement("layer"); element != nullptr; element = element->NextSiblingElement("layer"))
@@ -384,31 +384,6 @@ void CTileMap::RenderLayer(Layer* layer, int i, int j, int x, int y)
 CGraph* CTileMap::GetGraph()
 {
 	return graph;
-}
-
-std::vector<CGameObject*> CTileMap::GetBricks()
-{
-	return bricks;
-}
-
-std::vector<CGameObject*> CTileMap::GetCoins()
-{
-	return coins;
-}
-
-CObjectPool* CTileMap::GetPoolBricks()
-{
-	return poolBricks;
-}
-
-CObjectPool* CTileMap::GetPoolCoins()
-{
-	return poolCoins;
-}
-
-CGameObject* CTileMap::GetCard()
-{
-	return card;
 }
 
 void CTileMap::AddObjectToList(CGameObject* gO)

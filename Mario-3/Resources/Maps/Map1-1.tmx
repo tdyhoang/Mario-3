@@ -114,12 +114,12 @@
   <object id="20" x="1583.67" y="383.583" width="191.583" height="26.5"/>
  </objectgroup>
  <objectgroup id="8" name="QuestionBlock">
-  <object id="22" name="coin" x="543.485" y="545.091" width="14.3636" height="13.9091"/>
-  <object id="23" name="coin" x="590.333" y="545.091" width="14.0909" height="14.0909"/>
-  <object id="27" name="coin" x="689" y="401.091" width="14" height="13.9091"/>
-  <object id="28" name="powerup" x="738.242" y="399.091" width="14.0909" height="13.9091"/>
-  <object id="29" name="coin" x="1312.96" y="448.203" width="14" height="14.1739"/>
-  <object id="30" name="powerup" x="2128.33" y="639.531" width="14.0313" height="13.9375"/>
-  <object id="31" name="coin" x="2272.88" y="544.949" width="14.125" height="14.1875"/>
+  <object id="22" name="empty" type="1" x="543.485" y="545.091" width="14.3636" height="13.9091"/>
+  <object id="23" name="empty" type="1" x="590.333" y="545.091" width="14.0909" height="14.0909"/>
+  <object id="27" name="empty" type="1" x="689" y="401.091" width="14" height="13.9091"/>
+  <object id="28" name="empty" type="1" x="738.242" y="399.091" width="14.0909" height="13.9091"/>
+  <object id="29" name="empty" type="1" x="1312.96" y="448.203" width="14" height="14.1739"/>
+  <object id="30" name="empty" type="1" x="2128.33" y="639.531" width="14.0313" height="13.9375"/>
+  <object id="31" name="empty" type="1" x="2272.88" y="544.949" width="14.125" height="14.1875"/>
  </objectgroup>
 </map>

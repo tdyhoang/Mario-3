@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Textures>
+	<Textures id="tex-misc">
+		<Sprite id="spr-question-block-0" left="1140" top="35"  width="16" height="16"/>
+		<Sprite id="spr-question-block-1" left="1157" top="35"  width="16" height="16"/>
+		<Sprite id="spr-question-block-2" left="1174" top="35"  width="16" height="16"/>
+		<Sprite id="spr-question-block-3" left="1191" top="35"  width="16" height="16"/>
+		<Sprite id="spr-empty-block" left="235" top="1"  width="16" height="16"/>
+		<Sprite id="spr-pipe" left="69" top="35" width="224" height="64"/>
+	</Textures>
+</Textures>

@@ -7,9 +7,11 @@
 	</Root>
 	<Root name="Sprite">
 		<Sprite id="spr-mario" source="Resources/Sprites/SMario.xml"/>
+		<Sprite id="spr-misc" source="Resources/Sprites/SMisc.xml"/>
 	</Root>
 	<Root name="Animation">
 		<Animation id="ani-mario" source="Resources/Animations/AMario.xml"/>
+		<Animation id="ani-misc" source="Resources/Animations/AMisc.xml"/>
 	</Root>
 	<Root name="Scene">
 		<Scene id="scene1-1" source="Resources/Scenes/Scene1-1.xml"/>

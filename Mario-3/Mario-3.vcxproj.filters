@@ -96,6 +96,9 @@
     <Filter Include="Game\GameObjects\Platforms">
       <UniqueIdentifier>{d63ea5a7-725f-463e-9b64-cef04a45e6b6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Framework\GameComponents\Keyboard">
+      <UniqueIdentifier>{dfaebb40-4acd-4174-96de-cee4fc8fd1c5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -185,12 +188,6 @@
     <ClCompile Include="Game\GameObjects\Mario\MarioController.cpp">
       <Filter>Game\GameObjects\Mario</Filter>
     </ClCompile>
-    <ClCompile Include="Framework\GameComponents\Keyboard\KeyboardManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Framework\GameComponents\Keyboard\KeyEventHandler.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Game\GameObjects\Platforms\GhostPlatform.cpp">
       <Filter>Game\GameObjects\Platforms</Filter>
     </ClCompile>
@@ -205,6 +202,12 @@
     </ClCompile>
     <ClCompile Include="Game\GameObjects\Misc\Pipe.cpp">
       <Filter>Game\GameObjects\Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\GameComponents\Keyboard\KeyboardManager.cpp">
+      <Filter>Framework\GameComponents\Keyboard</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\GameComponents\Keyboard\KeyEventHandler.cpp">
+      <Filter>Framework\GameComponents\Keyboard</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -313,9 +316,6 @@
     <ClInclude Include="Game\GameObjects\Mario\MarioController.h">
       <Filter>Game\GameObjects\Mario</Filter>
     </ClInclude>
-    <ClInclude Include="Framework\GameComponents\Keyboard\KeyboardManager.h" />
-    <ClInclude Include="Framework\GameComponents\Keyboard\KeyEventHandler.h" />
-    <ClInclude Include="Game\GameObjects\Mario\MarioStateSet.h" />
     <ClInclude Include="Game\GameObjects\Platforms\GhostPlatform.h">
       <Filter>Game\GameObjects\Platforms</Filter>
     </ClInclude>
@@ -337,6 +337,15 @@
     <ClInclude Include="Game\GameObjects\Misc\Misc.h">
       <Filter>Game\GameObjects\Misc</Filter>
     </ClInclude>
+    <ClInclude Include="Framework\GameComponents\Keyboard\KeyboardManager.h">
+      <Filter>Framework\GameComponents\Keyboard</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\GameComponents\Keyboard\KeyEventHandler.h">
+      <Filter>Framework\GameComponents\Keyboard</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameObjects\Mario\MarioStateSet.h">
+      <Filter>Game\GameObjects\Mario</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Xml Include="Resources\config.xml">
@@ -353,6 +362,12 @@
     </Xml>
     <Xml Include="Resources\Scenes\Scene1-1.xml">
       <Filter>Resource Files\Scenes</Filter>
+    </Xml>
+    <Xml Include="Resources\Animations\AMisc.xml">
+      <Filter>Resource Files\Animations</Filter>
+    </Xml>
+    <Xml Include="Resources\Sprites\SMisc.xml">
+      <Filter>Resource Files\Sprites</Filter>
     </Xml>
   </ItemGroup>
   <ItemGroup>

@@ -24,6 +24,11 @@ void CAnimationManager::Init()
 		DebugOut(L"[ERROR] Can't Load Mario's Animation \n");
 		return;
 	}
+	if (!InitAnAnimationSet("tex-misc", root->GetFilePathByCategory("Animation", "ani-misc")))
+	{
+		DebugOut(L"[ERROR] Can't Load Misc's Animation \n");
+		return;
+	}
 }
 
 bool CAnimationManager::InitAnAnimationSet(std::string textureName, std::string filePath)
