@@ -3,113 +3,77 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "D:/tmxlite-1.4.2/SFMLExample/assets/Map1.tmx",
+    "activeFile": "Map1-1.tmx",
     "expandedProjectPaths": [
         "."
     ],
-    "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
-        "C:/Users/huyha/AppData/Local/Temp/Temp1_DirectX-SuperMarioBros3-main.zip/DirectX-SuperMarioBros3-main/SuperMarioBros3/SuperMarioBros3/Resources/Maps/world-1-1-map.tmx": {
+        "C:/Users/Admin/source/repos/tdyhoang/Mario-3/Mario-3/Resources/Maps/Map1-1.tmx": {
             "scale": 0.25,
-            "selectedLayer": 0,
+            "selectedLayer": 6,
             "viewCenter": {
-                "x": 1052,
-                "y": 968
+                "x": 1382,
+                "y": 672
             }
         },
-        "C:/Users/huyha/AppData/Local/Temp/Temp1_DirectX-SuperMarioBros3-main.zip/DirectX-SuperMarioBros3-main/SuperMarioBros3/SuperMarioBros3/Resources/Maps/world-1-1-map.tmx#world-1-1": {
-            "scaleInDock": 1
-        },
-        "C:/Users/huyha/AppData/Local/Temp/intro_x3_1__DBkEEq.tsx": {
+        "C:/Users/Admin/source/repos/tdyhoang/Mario-3/Mario-3/Resources/Maps/misc.tsx": {
+            "dynamicWrapping": false,
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
-        "C:/Users/huyha/Downloads/DirectX-SuperMarioBros3-main/SuperMarioBros3/SuperMarioBros3/Resources/GridTool/uploads/map.tmx": {
-            "scale": 0.75,
+        "Map1-1.tmx": {
+            "expandedObjectLayers": [
+                5
+            ],
+            "scale": 0.33,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 4182.666666666666,
-                "y": 1218
-            }
-        },
-        "C:/Users/huyha/Downloads/DirectX-SuperMarioBros3-main/SuperMarioBros3/SuperMarioBros3/Resources/GridTool/uploads/map.tmx#world-1-1": {
-            "scaleInDock": 1,
-            "scaleInEditor": 1
-        },
-        "C:/Users/huyha/Downloads/DirectX-SuperMarioBros3-main/SuperMarioBros3/SuperMarioBros3/Resources/Maps/world-1-1-map.tmx": {
-            "scale": 0.5,
-            "selectedLayer": 4,
-            "viewCenter": {
-                "x": 818,
-                "y": 1481
-            }
-        },
-        "C:/Users/huyha/Downloads/DirectX-SuperMarioBros3-main/SuperMarioBros3/SuperMarioBros3/Resources/Maps/world-1-1-map.tmx#world-1-1": {
-            "scaleInDock": 1
-        },
-        "C:/Users/huyha/Downloads/DirectX-SuperMarioBros3-main/SuperMarioBros3/SuperMarioBros3/Resources/Maps/world-map-1.tmx": {
-            "scale": 0.66796875,
-            "selectedLayer": 0,
-            "viewCenter": {
-                "x": 384.74853801169587,
-                "y": 336.09356725146193
-            }
-        },
-        "C:/Users/huyha/Downloads/DirectX-SuperMarioBros3-main/SuperMarioBros3/SuperMarioBros3/Resources/Maps/world-map-1.tmx#tileset(x3)": {
-            "scaleInDock": 1
-        },
-        "D:/tmxlite-1.4.2/SFMLExample/assets/Map1.tmx": {
-            "scale": 1,
-            "selectedLayer": 0,
-            "viewCenter": {
-                "x": 275.5,
-                "y": 237
-            }
-        },
-        "D:/tmxlite-1.4.2/SFMLExample/assets/misc.tsx": {
-            "scaleInDock": 1,
-            "scaleInEditor": 1
-        },
-        "Map1.tmx": {
-            "scale": 1.5,
-            "selectedLayer": 2,
-            "viewCenter": {
-                "x": -4627,
-                "y": 127.33333333333334
+                "x": 1046.969696969697,
+                "y": 1171.2121212121212
             }
         },
         "misc.tsx": {
-            "scaleInDock": 1,
+            "dynamicWrapping": true,
+            "scaleInDock": 0.33,
             "scaleInEditor": 1
         },
-        "untitled.tmx": {
-            "scale": 3,
-            "selectedLayer": 3,
+        "world-1-1-map.tmx": {
+            "scale": 0.33,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": -4671.333333333333,
-                "y": 142.66666666666666
+                "x": 3986.363636363636,
+                "y": 687.8787878787879
             }
+        },
+        "world-1-1-map.tmx#world-1-1": {
+            "scaleInDock": 1
         }
     },
-    "last.imagePath": "C:/Users/huyha/AppData/Local/Temp",
-    "map.fixedSize": false,
+    "last.externalTilesetPath": "D:/DirectX-SuperMarioBros3-main - Copy/SuperMarioBros3/SuperMarioBros3/Resources/Maps",
+    "last.imagePath": "D:/DirectX-SuperMarioBros3-main - Copy/SuperMarioBros3/SuperMarioBros3/Resources/Textures",
+    "map.height": 41,
     "map.lastUsedFormat": "tmx",
+    "map.tileHeight": 48,
+    "map.tileWidth": 48,
+    "map.width": 176,
     "openFiles": [
-        "D:/tmxlite-1.4.2/SFMLExample/assets/Map1.tmx",
-        "D:/tmxlite-1.4.2/SFMLExample/assets/misc.tsx"
+        "Map1-1.tmx"
     ],
     "project": "mariomap.tiled-project",
     "recentFiles": [
-        "D:/tmxlite-1.4.2/SFMLExample/assets/misc.tsx",
-        "D:/tmxlite-1.4.2/SFMLExample/assets/Map1.tmx",
+        "Map1-1.tmx",
+        "C:/Users/Admin/source/repos/tdyhoang/Mario-3/Mario-3/Resources/Maps/misc.tsx",
         "misc.tsx",
-        "Map1.tmx",
-        "untitled.tmx",
-        "C:/Users/huyha/Downloads/DirectX-SuperMarioBros3-main/SuperMarioBros3/SuperMarioBros3/Resources/GridTool/uploads/map.tmx",
-        "C:/Users/huyha/Downloads/DirectX-SuperMarioBros3-main/SuperMarioBros3/SuperMarioBros3/Resources/Maps/world-1-1-map.tmx",
-        "C:/Users/huyha/Downloads/DirectX-SuperMarioBros3-main/SuperMarioBros3/SuperMarioBros3/Resources/Maps/world-map-1.tmx",
-        "C:/Users/huyha/AppData/Local/Temp/intro_x3_1__DBkEEq.tsx",
-        "C:/Users/huyha/AppData/Local/Temp/Temp1_DirectX-SuperMarioBros3-main.zip/DirectX-SuperMarioBros3-main/SuperMarioBros3/SuperMarioBros3/Resources/Maps/world-1-1-map.tmx"
+        "world-1-1-map.tmx",
+        "C:/Users/Admin/source/repos/tdyhoang/Mario-3/Mario-3/Resources/Maps/Map1-1.tmx"
     ],
-    "tileset.lastUsedFormat": "tsx"
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.margin": 3,
+    "tileset.spacing": 3,
+    "tileset.tileSize": {
+        "height": 48,
+        "width": 48
+    },
+    "tileset.transparentColor": "#e0a3d8",
+    "tileset.useTransparentColor": true
 }

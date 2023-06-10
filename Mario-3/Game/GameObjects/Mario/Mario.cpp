@@ -13,6 +13,7 @@
 #include "MarioHitBox.h"
 #include "../../../Framework/GameComponents/Scene/SceneManager.h"
 #include "MarioController.h"
+#include "../../Worlds/World1/Scene1.h"
 
 using namespace std;
 
@@ -1000,6 +1001,8 @@ void CMario::OnDie()
 	this->isDie = true;
 	isAutogo = true;
 	CGame::GetInstance()->SetTimeScale(0.0f);
+	CScene1* scene = new CScene1();
+	CSceneManager::GetInstance()->Load(scene);
 }
 
 void CMario::SetMarioStateTag(MarioStates tag)

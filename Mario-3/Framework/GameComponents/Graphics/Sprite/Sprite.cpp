@@ -20,7 +20,7 @@ CSprite::CSprite(std::string id, int xPivot, RECT rect, LPDIRECT3DTEXTURE9 tex, 
 void CSprite::Draw(D3DXVECTOR2 position, D3DXVECTOR2 scale, float rotation, D3DXCOLOR transcolor)
 {
 	CGame* game = CGame::GetInstance();
-	if (scale.x < 0)
+	if (scale.x > 0)
 		game->DrawFlipX(position, pointCenter, texture, rect, transcolor);
 	else if (scale.y < 0)
 		game->DrawFlipY(position, pointCenter, texture, rect, transcolor);

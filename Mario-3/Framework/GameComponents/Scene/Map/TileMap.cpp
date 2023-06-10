@@ -121,11 +121,14 @@ CTileMap* CTileMap::LoadMap(std::string filePath, std::string fileMap, std::vect
 							string imgPath = imgDom->Attribute("source");
 							imgPath = filePath + imgPath;
 							tileSet->textureID = std::to_string(tileSet->firstgid);
+							OutputDebugString(L"Texture ID is: ");
+							OutputDebugString(ToLPCWSTR(imgPath));
+							OutputDebugString(L"\n");
 							string transcolor = imgDom->Attribute("trans");
 							int red = stoi(transcolor.substr(0, 2), nullptr, 16);
 							int green = stoi(transcolor.substr(2, 2), nullptr, 16);
 							int blue = stoi(transcolor.substr(4, 2), nullptr, 16);
-							CTextureManager::GetInstance()->Add(std::to_string(tileSet->firstgid), imgPath, D3DCOLOR_ARGB(0, red, green, blue));
+							CTextureManager::GetInstance()->Add(tileSet->textureID, imgPath, D3DCOLOR_ARGB(0, red, green, blue));
 							tileSet->texture = CTextureManager::GetInstance()->GetTexture(std::to_string(tileSet->firstgid));
 							tileSets[tileSet->firstgid] = tileSet;
 						}
