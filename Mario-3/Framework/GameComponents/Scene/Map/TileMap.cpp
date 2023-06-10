@@ -121,9 +121,6 @@ CTileMap* CTileMap::LoadMap(std::string filePath, std::string fileMap, std::vect
 							string imgPath = imgDom->Attribute("source");
 							imgPath = filePath + imgPath;
 							tileSet->textureID = std::to_string(tileSet->firstgid);
-							OutputDebugString(L"Texture ID is: ");
-							OutputDebugString(ToLPCWSTR(imgPath));
-							OutputDebugString(L"\n");
 							string transcolor = imgDom->Attribute("trans");
 							int red = stoi(transcolor.substr(0, 2), nullptr, 16);
 							int green = stoi(transcolor.substr(2, 2), nullptr, 16);
@@ -254,10 +251,10 @@ Layer* CTileMap::LoadLayer(tinyxml2::XMLElement* element)
 
 	for (int i = 0; i < layer->width; i++)
 	{
-		tiles[i] = new int[layer->height];
+		tiles[i] = new int[layer->height + i * 3];
 		for (int j = 0; j < layer->height; j++)
 		{
-			tiles[i][j] = stoi(splitted[i + static_cast<std::vector<std::string, std::allocator<std::string>>::size_type>(j) * layer->width]);
+			tiles[i][j] = stoi(splitted[i + static_cast<std::vector<std::string, std::allocator<std::string>>::size_type>(j) * layer->width]) + j * 3;
 		}
 	}
 	layer->tiles = tiles;
