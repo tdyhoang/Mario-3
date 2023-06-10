@@ -69,6 +69,7 @@ struct TileSet
 	std::string textureID;
 	int margin;
 	int spacing;
+	D3DCOLOR trans;
 	void Clear()
 	{
 		CTextureManager::GetInstance()->ClearTextureById(textureID);

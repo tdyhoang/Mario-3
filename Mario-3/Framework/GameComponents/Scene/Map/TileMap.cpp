@@ -125,7 +125,8 @@ CTileMap* CTileMap::LoadMap(std::string filePath, std::string fileMap, std::vect
 							int red = stoi(transcolor.substr(0, 2), nullptr, 16);
 							int green = stoi(transcolor.substr(2, 2), nullptr, 16);
 							int blue = stoi(transcolor.substr(4, 2), nullptr, 16);
-							CTextureManager::GetInstance()->Add(tileSet->textureID, imgPath, D3DCOLOR_ARGB(0, red, green, blue));
+							tileSet->trans = D3DCOLOR_ARGB(0, red, green, blue);
+							CTextureManager::GetInstance()->Add(tileSet->textureID, imgPath, tileSet->trans);
 							tileSet->texture = CTextureManager::GetInstance()->GetTexture(std::to_string(tileSet->firstgid));
 							tileSets[tileSet->firstgid] = tileSet;
 						}
@@ -383,7 +384,7 @@ void CTileMap::RenderLayer(Layer* layer, int i, int j, int x, int y)
 		r.top = ((id - firstGid - 1) / columns) * (tileSize.y + 3) + 3;
 		r.right = r.left + tileSize.x;
 		r.bottom = r.top + tileSize.y;
-		CGame::GetInstance()->Draw(D3DXVECTOR2(x, y), D3DXVECTOR2(tileSize.x / 2, tileSize.y / 2), texture, r, D3DCOLOR_ARGB(255, 255, 255, 255));
+		CGame::GetInstance()->Draw(D3DXVECTOR2(x, y), D3DXVECTOR2(tileSize.x / 2, tileSize.y / 2), texture, r, tileSet->trans);
 	}
 }
 
