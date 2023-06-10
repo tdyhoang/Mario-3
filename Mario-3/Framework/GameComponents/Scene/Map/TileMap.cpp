@@ -251,10 +251,10 @@ Layer* CTileMap::LoadLayer(tinyxml2::XMLElement* element)
 
 	for (int i = 0; i < layer->width; i++)
 	{
-		tiles[i] = new int[layer->height + i * 3];
+		tiles[i] = new int[layer->height];
 		for (int j = 0; j < layer->height; j++)
 		{
-			tiles[i][j] = stoi(splitted[i + static_cast<std::vector<std::string, std::allocator<std::string>>::size_type>(j) * layer->width]) + j * 3;
+			tiles[i][j] = stoi(splitted[i + j * layer->width]);
 		}
 	}
 	layer->tiles = tiles;
@@ -372,15 +372,15 @@ void CTileMap::RenderLayer(Layer* layer, int i, int j, int x, int y)
 	int id = layer->tiles[i % width][j % height];
 	auto tileSet = GetTileSetByTileID(id);
 	auto firstGid = tileSet->firstgid;
-	if (id >= firstGid)
+	if (id > firstGid)
 	{
 		auto columns = tileSet->columns;
 		auto texture = tileSet->texture;
 		auto tileSize = tileSet->tileSize;
 
 		RECT r{};
-		r.left = ((id - firstGid) % columns) * tileSize.x;
-		r.top = ((static_cast<float>(id) - firstGid) / columns) * tileSize.y;
+		r.left = ((id - firstGid - 1) % columns) * (tileSize.x + 3) + 3;
+		r.top = ((id - firstGid - 1) / columns) * (tileSize.y + 3) + 3;
 		r.right = r.left + tileSize.x;
 		r.bottom = r.top + tileSize.y;
 		CGame::GetInstance()->Draw(D3DXVECTOR2(x, y), D3DXVECTOR2(tileSize.x / 2, tileSize.y / 2), texture, r, D3DCOLOR_ARGB(255, 255, 255, 255));
