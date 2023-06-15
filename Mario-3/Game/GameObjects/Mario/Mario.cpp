@@ -957,7 +957,7 @@ void CMario::OnKeyDown(int KeyCode)
 		if (currentPhysicsState.jump == JumpOnAirStates::Stand && KeyCode == DIK_S)
 			currentPhysicsState.jump = JumpOnAirStates::Jump;
 	}
-	if ((KeyCode == DIK_Z || KeyCode == DIK_A) && canAttack == true && isAttack == false && currentPhysicsState.move != MoveOnGroundStates::Attack)
+	if (KeyCode == DIK_Z && canAttack == true && isAttack == false && currentPhysicsState.move != MoveOnGroundStates::Attack)
 	{
 		beginAttackTime = 0;
 		isAttack = true;

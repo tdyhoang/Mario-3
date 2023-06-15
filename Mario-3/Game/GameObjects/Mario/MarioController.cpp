@@ -2,6 +2,7 @@
 #include "../../../Framework/GameComponents/Game.h"
 #include "Mario.h"
 #include "States/SmallMario.h"
+#include "States/SuperMario.h"
 #include "../../../Framework/GameComponents/GameObject/ObjectTag.h"
 #include "MarioConst.h"
 #include "../../../Framework/GameComponents/Scene/SceneManager.h"
@@ -25,6 +26,11 @@ void CMarioController::Init()
 	marioStateObject = new CSmallMario();
 	listMarioStates.insert(make_pair("SmallMario", marioStateObject));
 	listStateObjects.insert(make_pair("SmallMario", marioStateObject));
+	marioStateObject->Enable(false);
+
+	marioStateObject = new CSuperMario();
+	listMarioStates.insert(make_pair("SuperMario", marioStateObject));
+	listStateObjects.insert(make_pair("SuperMario", marioStateObject));
 	marioStateObject->Enable(false);
 
 	hitBoxs->clear();
@@ -116,10 +122,10 @@ void CMarioController::OnKeyDown(int KeyCode)
 {
 	// For debugging
 	switch (KeyCode) {
-	case DIK_1: {SwitchToState("SuperMario"); break; }
-	case DIK_2: {SwitchToState("RaccoonMario"); break; }
-	case DIK_3: {SwitchToState("FireMario"); break; }
-	case DIK_4: {SwitchToState("SmallMario"); break; }
+	case DIK_1: {SwitchToState("SmallMario"); break; }
+	case DIK_2: {SwitchToState("SuperMario"); break; }
+	/*case DIK_3: {SwitchToState("RaccoonMario"); break; }
+	case DIK_4: {SwitchToState("FireMario"); break; }*/
 	}
 }
 

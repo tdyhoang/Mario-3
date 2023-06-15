@@ -169,6 +169,7 @@
     <ClCompile Include="Game\GameObjects\Mario\MarioController.cpp" />
     <ClCompile Include="Game\GameObjects\Mario\MarioHitBox.cpp" />
     <ClCompile Include="Game\GameObjects\Mario\States\SmallMario.cpp" />
+    <ClCompile Include="Game\GameObjects\Mario\States\SuperMario.cpp" />
     <ClCompile Include="Game\GameObjects\Misc\Block.cpp" />
     <ClCompile Include="Game\GameObjects\Misc\Brick.cpp" />
     <ClCompile Include="Game\GameObjects\Misc\Coin.cpp" />
@@ -219,6 +220,7 @@
     <ClInclude Include="Game\GameObjects\Mario\MarioHitBox.h" />
     <ClInclude Include="Game\GameObjects\Mario\MarioStateSet.h" />
     <ClInclude Include="Game\GameObjects\Mario\States\SmallMario.h" />
+    <ClInclude Include="Game\GameObjects\Mario\States\SuperMario.h" />
     <ClInclude Include="Game\GameObjects\Misc\Block.h" />
     <ClInclude Include="Game\GameObjects\Misc\Brick.h" />
     <ClInclude Include="Game\GameObjects\Misc\Coin.h" />

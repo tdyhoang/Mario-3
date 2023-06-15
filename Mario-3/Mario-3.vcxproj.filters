@@ -218,6 +218,9 @@
     <ClCompile Include="Game\GameObjects\Misc\Brick.cpp">
       <Filter>Game\GameObjects\Misc</Filter>
     </ClCompile>
+    <ClCompile Include="Game\GameObjects\Mario\States\SuperMario.cpp">
+      <Filter>Game\GameObjects\Mario\States</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\GameComponents\Game.h">
@@ -363,6 +366,9 @@
     </ClInclude>
     <ClInclude Include="Game\GameObjects\Misc\Brick.h">
       <Filter>Game\GameObjects\Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameObjects\Mario\States\SuperMario.h">
+      <Filter>Game\GameObjects\Mario\States</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
