@@ -10,6 +10,8 @@
 #include "../../../../Game/GameObjects/Misc/QuestionBlock.h"
 #include "../../../../Game/GameObjects/Misc/Pipe.h"
 #include "../../../../Game/GameObjects/Misc/EmptyBlock.h"
+#include "../../../../Game/GameObjects/Misc/Brick.h"
+#include "../../../../Game/GameObjects/Misc/Coin.h"
 
 using namespace std;
 
@@ -21,6 +23,8 @@ CTileMap::CTileMap()
 	tileHeight = 1;
 	width = 1;
 	height = 1;
+	poolBricks = new CObjectPool();
+	poolCoins = new CObjectPool();
 	foreground = NULL;
 	grid = NULL;
 }
@@ -32,6 +36,8 @@ CTileMap::CTileMap(int width, int height, int tileWidth, int tileHeight)
 	this->tileHeight = tileHeight;
 	this->tileWidth = tileWidth;
 	foreground = NULL;
+	poolBricks = new CObjectPool();
+	poolCoins = new CObjectPool();
 	player = NULL;
 }
 
@@ -201,6 +207,15 @@ CTileMap* CTileMap::LoadMap(std::string filePath, std::string fileMap, std::vect
 						std::string questionBlockName = object->Attribute("name");
 						gameObject = LoadQuestionBlock(position, type, questionBlockName, listGameObjects);
 					}
+					else if (name.compare("Brick") == 0)
+					{
+						std::string brickName = object->Attribute("name");
+						gameObject = LoadBrick(position, type, brickName, object, listGameObjects);
+					}
+					else if (name.compare("Coin") == 0)
+					{
+						gameObject = LoadCoin(position, type, object, listGameObjects);
+					}
 					else if (name.compare("Block") == 0)
 					{
 						gameObject = LoadEmptyBlock(position, listGameObjects);
@@ -301,6 +316,69 @@ CGameObject* CTileMap::LoadQuestionBlock(D3DXVECTOR2 position, int type, std::st
 	return solid;
 }
 
+CGameObject* CTileMap::LoadBrick(D3DXVECTOR2 position, int type, std::string name, tinyxml2::XMLElement* object, std::vector<LPGameObject>& listGameObjects)
+{
+	int amount;
+	if (auto* properties = object->FirstChildElement(); properties != nullptr)
+		for (auto* property = properties->FirstChildElement(); property != nullptr; property = property->NextSiblingElement())
+		{
+			std::string propName = property->Attribute("name");
+			if (propName.compare("amount") == 0)
+				property->QueryIntAttribute("value", &amount);
+		}
+
+	CBrick* solid = new CBrick();
+	solid->SetPosition(position - translateConst);
+	if (object->QueryIntAttribute("type", &type) == tinyxml2::XML_SUCCESS && type == 1)
+	{
+		bricks.push_back(solid);
+		CCoin* coin = new CCoin();
+		coin->SetType(type);
+
+		poolCoins->Add(coin);
+		poolBricks->Add(solid);
+
+		solid->Enable(true);
+	}
+	if (name.compare("bcoin") == 0)
+	{
+		solid->SetItemInfo({ ItemTag::Coin, amount });
+	}
+	if (name.compare("powerup") == 0)
+	{
+		solid->SetItemInfo({ ItemTag::PowerUp, amount });
+	}
+	if (name.compare("pswitch") == 0)
+	{
+		solid->SetItemInfo({ ItemTag::PSwitch, amount });
+	}
+	solid->SetTarget(player);
+	solid->SetType(type);
+	solid->GetObjectPool().AddPoolToScene(scene);
+	AddObjectToList(solid, listGameObjects);
+	return solid;
+}
+
+CGameObject* CTileMap::LoadCoin(D3DXVECTOR2 position, int type, tinyxml2::XMLElement* object, std::vector<LPGameObject>& listGameObjects)
+{
+	CCoin* solid = new CCoin();
+	solid->SetPosition(position - translateConst);
+	if (object->QueryIntAttribute("type", &type) == tinyxml2::XML_SUCCESS && type == 1)
+	{
+		coins.push_back(solid);
+		CBrick* brick = new CBrick();
+		brick->SetType(type);
+
+		poolBricks->Add(brick);
+		poolCoins->Add(solid);
+
+		solid->Enable(true);
+	}
+	solid->SetType(type);
+	AddObjectToList(solid, listGameObjects);
+	return solid;
+}
+
 CGameObject* CTileMap::LoadPipe(D3DXVECTOR2 position, D3DXVECTOR2 size, std::string direction, std::vector<LPGameObject>& listGameObjects)
 {
 	CPipe* pipe = new CPipe(size);
@@ -392,6 +470,26 @@ void CTileMap::RenderLayer(Layer* layer, int i, int j, int x, int y)
 CGraph* CTileMap::GetGraph()
 {
 	return graph;
+}
+
+std::vector<CGameObject*> CTileMap::GetBricks()
+{
+	return bricks;
+}
+
+std::vector<CGameObject*> CTileMap::GetCoins()
+{
+	return coins;
+}
+
+CObjectPool* CTileMap::GetPoolBricks()
+{
+	return poolBricks;
+}
+
+CObjectPool* CTileMap::GetPoolCoins()
+{
+	return poolCoins;
 }
 
 void CTileMap::AddObjectToList(CGameObject* gO)

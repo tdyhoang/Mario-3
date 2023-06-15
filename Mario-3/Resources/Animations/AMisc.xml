@@ -11,5 +11,12 @@
 		<Animation aniId="ani-empty-block" frameTime="100" name = "EMPTY-BLOCK">
 			<Sprite id="spr-empty-block" left="1208" top="1"  width="16" height="16"/>
 		</Animation>
+
+		<Animation aniId="ani-coin" frameTime="100" name = "COIN">
+			<Sprite id="spr-coin-0" left="952" top="69"  width="16" height="16"/>
+			<Sprite id="spr-coin-1" left="970" top="69"  width="16" height="16"/>
+			<Sprite id="spr-coin-2" left="987" top="69"  width="16" height="16"/>
+			<Sprite id="spr-coin-3" left="1004" top="69"  width="16" height="16"/>
+		</Animation>
 	</Textures>
 </Textures>

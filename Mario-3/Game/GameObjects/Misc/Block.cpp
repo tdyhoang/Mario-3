@@ -1,6 +1,5 @@
 #include "Block.h"
-
-const D3DXVECTOR2 BLOCK_BBOX(48, 48);
+#include "Misc.h"
 
 CBlock::CBlock()
 {

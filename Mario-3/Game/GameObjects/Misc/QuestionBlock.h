@@ -20,5 +20,5 @@ public:
 	virtual void Update(DWORD dt, CCamera* cam, CCamera* uiCam) override;
 	virtual void Render(CCamera* cam, int alpha = 255);
 	bool CanCollideWithThisObject(LPGameObject gO, ObjectTag tag) override;
-	void OnOverlappedEnter(CHitBox* selfCollisionBox, CHitBox* otherCollisionBox) override;
+	void OnOverlappedEnter(CHitBox* selfHitBox, CHitBox* otherHitBox) override;
 };

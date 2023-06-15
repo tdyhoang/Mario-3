@@ -212,6 +212,12 @@
     <ClCompile Include="Game\GameObjects\Misc\EmptyBlock.cpp">
       <Filter>Game\GameObjects\Misc</Filter>
     </ClCompile>
+    <ClCompile Include="Game\GameObjects\Misc\Coin.cpp">
+      <Filter>Game\GameObjects\Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\GameObjects\Misc\Brick.cpp">
+      <Filter>Game\GameObjects\Misc</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\GameComponents\Game.h">
@@ -350,6 +356,12 @@
       <Filter>Game\GameObjects\Mario</Filter>
     </ClInclude>
     <ClInclude Include="Game\GameObjects\Misc\EmptyBlock.h">
+      <Filter>Game\GameObjects\Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameObjects\Misc\Coin.h">
+      <Filter>Game\GameObjects\Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameObjects\Misc\Brick.h">
       <Filter>Game\GameObjects\Misc</Filter>
     </ClInclude>
   </ItemGroup>

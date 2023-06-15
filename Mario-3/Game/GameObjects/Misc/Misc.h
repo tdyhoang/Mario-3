@@ -14,3 +14,7 @@ enum class PipeDirection
 {
 	Left, Right, Up, Down
 };
+
+const D3DXVECTOR2 BLOCK_BBOX(48, 48);
+const D3DXVECTOR2 BRICK_BBOX(48, 48);
+const D3DXVECTOR2 COIN_BBOX(48, 48);

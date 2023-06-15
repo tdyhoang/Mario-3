@@ -95,9 +95,9 @@ bool CQuestionBlock::CanCollideWithThisObject(LPGameObject gO, ObjectTag tag)
 	return false;
 }
 
-void CQuestionBlock::OnOverlappedEnter(CHitBox* selfCollisionBox, CHitBox* otherCollisionBox)
+void CQuestionBlock::OnOverlappedEnter(CHitBox* selfHitBox, CHitBox* otherHitBox)
 {
-	if (otherCollisionBox->GetGameObjectAttach()->GetTag() == ObjectTag::RaccoonTail)
+	if (otherHitBox->GetGameObjectAttach()->GetTag() == ObjectTag::RaccoonTail)
 	{
 		Bounce();
 	}

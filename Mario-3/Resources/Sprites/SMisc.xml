@@ -7,5 +7,9 @@
 		<Sprite id="spr-question-block-3" left="1191" top="35"  width="16" height="16"/>
 		<Sprite id="spr-empty-block" left="235" top="1"  width="16" height="16"/>
 		<Sprite id="spr-pipe" left="69" top="35" width="224" height="64"/>
+		<Sprite id="spr-coin-0" left="952" top="69"  width="16" height="16"/>
+		<Sprite id="spr-coin-1" left="970" top="69"  width="16" height="16"/>
+		<Sprite id="spr-coin-2" left="987" top="69"  width="16" height="16"/>
+		<Sprite id="spr-coin-3" left="1004" top="69"  width="16" height="16"/>
 	</Textures>
 </Textures>
