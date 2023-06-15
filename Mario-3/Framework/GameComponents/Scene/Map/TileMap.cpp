@@ -9,7 +9,7 @@
 #include "../../../../Game/GameObjects/Platforms/GhostPlatform.h"
 #include "../../../../Game/GameObjects/Misc/QuestionBlock.h"
 #include "../../../../Game/GameObjects/Misc/Pipe.h"
-//#include "../../../../Game/GameObjects/Misc/EmptyBlock.h"
+#include "../../../../Game/GameObjects/Misc/EmptyBlock.h"
 
 using namespace std;
 
@@ -201,10 +201,10 @@ CTileMap* CTileMap::LoadMap(std::string filePath, std::string fileMap, std::vect
 						std::string questionBlockName = object->Attribute("name");
 						gameObject = LoadQuestionBlock(position, type, questionBlockName, listGameObjects);
 					}
-					/*else if (name.compare("Block") == 0)
+					else if (name.compare("Block") == 0)
 					{
 						gameObject = LoadEmptyBlock(position, listGameObjects);
-					}*/
+					}
 					else if (name.compare("Pipe") == 0)
 					{
 						std::string direction = object->Attribute("type");
@@ -359,13 +359,13 @@ CGameObject* CTileMap::LoadPipe(D3DXVECTOR2 position, D3DXVECTOR2 size, std::str
 	return pipe;
 }
 
-//CGameObject* CTileMap::LoadEmptyBlock(D3DXVECTOR2 position, std::vector<LPGameObject>& listGameObjects)
-//{
-//	CEmptyBlock* emptyBlock = new CEmptyBlock();
-//	emptyBlock->SetPosition(position - translateConst);
-//	AddObjectToList(emptyBlock, listGameObjects);
-//	return emptyBlock;
-//}
+CGameObject* CTileMap::LoadEmptyBlock(D3DXVECTOR2 position, std::vector<LPGameObject>& listGameObjects)
+{
+	CEmptyBlock* emptyBlock = new CEmptyBlock();
+	emptyBlock->SetPosition(position - translateConst);
+	AddObjectToList(emptyBlock, listGameObjects);
+	return emptyBlock;
+}
 
 void CTileMap::RenderLayer(Layer* layer, int i, int j, int x, int y)
 {

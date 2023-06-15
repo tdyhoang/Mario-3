@@ -47,7 +47,7 @@ public:
 
 	CGameObject* LoadQuestionBlock(D3DXVECTOR2 position, int type, std::string name, std::vector<LPGameObject>& listGameObjects);
 	CGameObject* LoadPipe(D3DXVECTOR2 position, D3DXVECTOR2 size, std::string direction, std::vector<LPGameObject>& listGameObjects);
-	/*CGameObject* LoadEmptyBlock(D3DXVECTOR2 position, std::vector<LPGameObject>& listGameObjects); */
+	CGameObject* LoadEmptyBlock(D3DXVECTOR2 position, std::vector<LPGameObject>& listGameObjects);
 
 	void Render(CCamera* camera, bool isRenderForeground);
 	void RenderLayer(Layer* layer, int i, int j, int x, int y);

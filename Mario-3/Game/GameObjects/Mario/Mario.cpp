@@ -962,6 +962,11 @@ void CMario::OnKeyDown(int KeyCode)
 		beginAttackTime = 0;
 		isAttack = true;
 	}
+	if (KeyCode == DIK_R)
+	{
+		CScene1* scene = new CScene1();
+		CSceneManager::GetInstance()->Load(scene);
+	}
 }
 
 void CMario::OnKeyUp(int KeyCode)
@@ -1001,8 +1006,6 @@ void CMario::OnDie()
 	this->isDie = true;
 	isAutogo = true;
 	CGame::GetInstance()->SetTimeScale(0.0f);
-	CScene1* scene = new CScene1();
-	CSceneManager::GetInstance()->Load(scene);
 }
 
 void CMario::SetMarioStateTag(MarioStates tag)

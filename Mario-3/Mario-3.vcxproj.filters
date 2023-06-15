@@ -209,6 +209,9 @@
     <ClCompile Include="Framework\GameComponents\Keyboard\KeyEventHandler.cpp">
       <Filter>Framework\GameComponents\Keyboard</Filter>
     </ClCompile>
+    <ClCompile Include="Game\GameObjects\Misc\EmptyBlock.cpp">
+      <Filter>Game\GameObjects\Misc</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\GameComponents\Game.h">
@@ -345,6 +348,9 @@
     </ClInclude>
     <ClInclude Include="Game\GameObjects\Mario\MarioStateSet.h">
       <Filter>Game\GameObjects\Mario</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameObjects\Misc\EmptyBlock.h">
+      <Filter>Game\GameObjects\Misc</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
