@@ -173,6 +173,7 @@
     <ClCompile Include="Game\GameObjects\Misc\Block.cpp" />
     <ClCompile Include="Game\GameObjects\Misc\Brick.cpp" />
     <ClCompile Include="Game\GameObjects\Misc\Coin.cpp" />
+    <ClCompile Include="Game\GameObjects\Misc\Effect\EffectObject.cpp" />
     <ClCompile Include="Game\GameObjects\Misc\EmptyBlock.cpp" />
     <ClCompile Include="Game\GameObjects\Misc\Pipe.cpp" />
     <ClCompile Include="Game\GameObjects\Misc\QuestionBlock.cpp" />
@@ -224,6 +225,7 @@
     <ClInclude Include="Game\GameObjects\Misc\Block.h" />
     <ClInclude Include="Game\GameObjects\Misc\Brick.h" />
     <ClInclude Include="Game\GameObjects\Misc\Coin.h" />
+    <ClInclude Include="Game\GameObjects\Misc\Effect\EffectObject.h" />
     <ClInclude Include="Game\GameObjects\Misc\EmptyBlock.h" />
     <ClInclude Include="Game\GameObjects\Misc\Misc.h" />
     <ClInclude Include="Game\GameObjects\Misc\Pipe.h" />

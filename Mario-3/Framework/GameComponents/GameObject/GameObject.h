@@ -74,7 +74,7 @@ public:
 	void FrictionProcess(float& speed, DWORD dt, bool isStop);
 	void ResetTempValues();
 
-	virtual void OnCollisionEnter(CHitBox* selfCollisionBox, std::vector<CollisionEvent*> otherCollisions) {}
+	virtual void OnCollisionEnter(CHitBox* selfHitBox, std::vector<CollisionEvent*> otherCollisions) {}
 	virtual void OnOverlappedEnter(CHitBox* selfHitBox, CHitBox* otherHitBox) {}
 
 	std::string GetCurrentState();

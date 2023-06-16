@@ -99,6 +99,9 @@
     <Filter Include="Framework\GameComponents\Keyboard">
       <UniqueIdentifier>{dfaebb40-4acd-4174-96de-cee4fc8fd1c5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\GameObjects\Misc\Effect">
+      <UniqueIdentifier>{b3044ec0-33a3-4221-827e-016fd2907a71}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -220,6 +223,9 @@
     </ClCompile>
     <ClCompile Include="Game\GameObjects\Mario\States\SuperMario.cpp">
       <Filter>Game\GameObjects\Mario\States</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\GameObjects\Misc\Effect\EffectObject.cpp">
+      <Filter>Game\GameObjects\Misc\Effect</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -369,6 +375,9 @@
     </ClInclude>
     <ClInclude Include="Game\GameObjects\Mario\States\SuperMario.h">
       <Filter>Game\GameObjects\Mario\States</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameObjects\Misc\Effect\EffectObject.h">
+      <Filter>Game\GameObjects\Misc\Effect</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

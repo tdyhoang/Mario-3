@@ -282,6 +282,13 @@ void CMario::Update(DWORD dt, CCamera* cam, CCamera* uiCam)
 
 			if (abs(velocity.x) < targetVelocity.x)
 				velocity.x += physicsBody->GetAcceleration() * dt;
+			if (abs(velocity.x) > targetVelocity.x)
+			{
+				if (velocity.x > 0)
+					velocity.x = targetVelocity.x;
+				else
+					velocity.x = -targetVelocity.x;
+			}
 
 
 			FrictionProcess(velocity.x, dt, false);

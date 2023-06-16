@@ -29,7 +29,6 @@ private:
 	bool isTrigger;
 public:
 	CPhysicsBody();
-	~CPhysicsBody();
 	void PhysicsUpdate(LPGameObject cO, std::vector<LPGameObject>* coObjects);
 	void Update(LPGameObject gO);
 
