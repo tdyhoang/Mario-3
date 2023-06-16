@@ -1,7 +1,6 @@
 #pragma once
 
 #include "EffectObject.h"
-#define TIME_HEAD_SHOT_ANIMATION	300
 
 class CHitEffect : public CEffectObject
 {

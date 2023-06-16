@@ -76,6 +76,7 @@ public:
 
 	virtual void OnCollisionEnter(CHitBox* selfHitBox, std::vector<CollisionEvent*> otherCollisions) {}
 	virtual void OnOverlappedEnter(CHitBox* selfHitBox, CHitBox* otherHitBox) {}
+	virtual void OnDie() {}
 
 	std::string GetCurrentState();
 	void AddAnimation(std::string stateName, LPAnimation animation, bool isLoop = true);

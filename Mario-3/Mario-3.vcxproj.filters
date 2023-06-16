@@ -245,6 +245,9 @@
     <ClCompile Include="Game\GameObjects\Misc\Effect\HitEffect.cpp">
       <Filter>Game\GameObjects\Misc\Effect</Filter>
     </ClCompile>
+    <ClCompile Include="Game\GameObjects\Enemy\Enemy.cpp">
+      <Filter>Game\GameObjects\Enemy</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\GameComponents\Game.h">
@@ -411,6 +414,9 @@
     </ClInclude>
     <ClInclude Include="Game\GameObjects\Misc\Effect\HitEffect.h">
       <Filter>Game\GameObjects\Misc\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameObjects\Enemy\Enemy.h">
+      <Filter>Game\GameObjects\Enemy</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
