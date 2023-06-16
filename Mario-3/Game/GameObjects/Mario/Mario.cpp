@@ -1,18 +1,18 @@
 #include "Mario.h"
-
 #include "../../../Framework/GameComponents/Graphics/Animation/AnimationManager.h"
 #include "../../../Framework/GameComponents/Game.h"
 #include "../../../Framework/Ultis/Ultis.h"
 #include "../../../Framework/GameComponents/Const.h"
 #include "MarioConst.h"
 #include "../../../Framework/GameComponents/Graphics/Sprite/Sprite.h"
-
+#include "../Enemy/Enemy.h"
 #include <cstdlib>
 #include <cctype> 
 #include <string>
 #include "MarioHitBox.h"
 #include "../../../Framework/GameComponents/Scene/SceneManager.h"
 #include "MarioController.h"
+#include "../Misc/QuestionBlock.h"
 #include "../../Worlds/World1/Scene1.h"
 
 using namespace std;
@@ -663,6 +663,12 @@ void CMario::OnCollisionEnter(CHitBox* selfHitBox, std::vector<CollisionEvent*> 
 		if (hitBox->GetGameObjectAttach()->GetTag() == ObjectTag::QuestionBlock && collisionEvent->ny > 0)
 		{
 			FallProcess();
+			auto questionBlock = static_cast<CQuestionBlock*>(hitBox->GetGameObjectAttach());
+			questionBlock->Bounce();
+		}
+		if (hitBox->GetGameObjectAttach()->GetTag() == ObjectTag::QuestionBlock && collisionEvent->ny > 0)
+		{
+			FallProcess();
 		}
 		if (hitBox->GetGameObjectAttach()->GetTag() == ObjectTag::Brick && collisionEvent->ny > 0)
 		{
@@ -818,8 +824,41 @@ void CMario::ChangeLevelProcess()
 		CGame::SetTimeScale(1.0f);
 
 		isChangeLevel = true;
+		switch (powerupItem)
+		{
+		case PowerupTag::None:
+		{
+			// Damaged
+			if (marioStateTag == MarioStates::RacoonMario || marioStateTag == MarioStates::FireMario)
+				marioController->SwitchToState("SuperMario");
+			else if (marioStateTag == MarioStates::SuperMario)
+				marioController->SwitchToState("SmallMario");
+			break;
+		}
+		case PowerupTag::SuperMushroom:
+		{
+			if (marioStateTag == MarioStates::SmallMario)
+				marioController->SwitchToState("SuperMario");
+			break;
+		}
+		case PowerupTag::SuperLeaf:
+		{
+			if (marioStateTag == MarioStates::SuperMario || marioStateTag == MarioStates::FireMario)
+				marioController->SwitchToState("RaccoonMario");
+			if (marioStateTag == MarioStates::SmallMario)
+				marioController->SwitchToState("SuperMario");
+			break;
+		}
+		case PowerupTag::FireFlower:
+		{
+			if (marioStateTag == MarioStates::SuperMario || marioStateTag == MarioStates::RacoonMario)
+				marioController->SwitchToState("FireMario");
+			if (marioStateTag == MarioStates::SmallMario)
+				marioController->SwitchToState("SuperMario");
+			break;
+		}
+		}
 	}
-
 }
 
 void CMario::FallProcess()

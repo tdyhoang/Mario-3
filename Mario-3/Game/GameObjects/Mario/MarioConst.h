@@ -14,6 +14,8 @@ const float  MARIO_RUNNING_SPEED = 0.5859375f;
 const float  MARIO_RUNNING_ACCELERATION = 0.001175f;
 const float  MARIO_WALKING_ACCELERATION = 0.01281738281f;
 
+const float  MARIO_DEFLECT_Y = 0.4f;
+
 const float  MARIO_PUSH_FORCE = 0.55f;
 
 const float DIE_VELOCITY_Y = 0.3f;

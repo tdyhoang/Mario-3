@@ -30,5 +30,9 @@
 			<Sprite id="spr-coin-2" left="987" top="69"  width="16" height="16"/>
 			<Sprite id="spr-coin-3" left="1004" top="69"  width="16" height="16"/>
 		</Animation>
+
+		<Animation aniId="ani-super-mushroom" frameTime="100" name = "SUPER-MUSHROOM">
+			<Sprite id="spr-super-mushroom" left="392" top="239"  width="16" height="16"/>
+		</Animation>
 	</Textures>
 </Textures>

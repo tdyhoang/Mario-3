@@ -5,7 +5,7 @@
 		<Sprite id="spr-question-block-1" left="1157" top="35"  width="16" height="16"/>
 		<Sprite id="spr-question-block-2" left="1174" top="35"  width="16" height="16"/>
 		<Sprite id="spr-question-block-3" left="1191" top="35"  width="16" height="16"/>
-		<Sprite id="spr-empty-block" left="235" top="1"  width="16" height="16"/>
+		<Sprite id="spr-empty-block" left="1208" top="1"  width="16" height="16"/>
 		<Sprite id="spr-pipe" left="69" top="35" width="224" height="64"/>
 		<Sprite id="spr-coin-0" left="952" top="69"  width="16" height="16"/>
 		<Sprite id="spr-coin-1" left="970" top="69"  width="16" height="16"/>
@@ -17,5 +17,6 @@
 		<Sprite id="spr-brick-3" left="1089" top="1"  width="16" height="16"/>
 		<Sprite id="spr-debris-0" left="1089" top="103" width="9" height="9"/>
 		<Sprite id="spr-debris-1" left="1098" top="103" width="9" height="9"/>
+		<Sprite id="spr-super-mushroom" left="392" top="239"  width="16" height="16"/>
 	</Textures>
 </Textures>
