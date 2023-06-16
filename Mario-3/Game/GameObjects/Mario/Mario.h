@@ -4,6 +4,7 @@
 #include "../../../Framework/GameComponents/GameObject/GameObject.h"
 #include "../../../Framework/GameComponents/StateMachine/IState.h"
 #include "../../../Framework/GameComponents/Keyboard/KeyboardManager.h"
+#include "../ItemInfo.h"
 
 class CMario : public CGameObject, public IState
 {
@@ -40,6 +41,7 @@ protected:
 	int countSmokeEffectActivate;
 	int countChangeAlpha;
 	bool isPowerUp;
+	PowerupTag powerupItem;
 	bool isGoToWarpPipe, canGoToWarpPipe;
 	RectFrame ventDirection;
 	bool isAutogo;
@@ -61,6 +63,7 @@ public:
 	void SetChangeSmokeEffectFlag(bool isChangeSmokeEffect);
 	void SetChangeLevelFlag(bool flag);
 	void SetPowerUp(bool pU);
+	void SetPowerUpItem(PowerupTag powerupItem);
 
 	void SetCountChangeAlpha(int count);
 	void SetCountSmokeEffectActivate(int count);
@@ -81,6 +84,7 @@ public:
 	bool GetCountSmokeEffectActivate();
 
 	bool IsPowerUp();
+	PowerupTag GetPowerupItem();
 
 	DWORD GetTimeStartDamaged();
 	DWORD GetTimeStartSmokeEffect();

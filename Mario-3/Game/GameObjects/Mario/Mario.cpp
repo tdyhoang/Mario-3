@@ -79,6 +79,11 @@ void CMario::SetPowerUp(bool pU)
 	this->isPowerUp = pU;
 }
 
+void CMario::SetPowerUpItem(PowerupTag powerupItem)
+{
+	this->powerupItem = powerupItem;
+}
+
 void CMario::SetCountChangeAlpha(int count)
 {
 	countChangeAlpha = count;
@@ -147,6 +152,11 @@ bool CMario::GetCountSmokeEffectActivate()
 bool CMario::IsPowerUp()
 {
 	return isPowerUp;
+}
+
+PowerupTag CMario::GetPowerupItem()
+{
+	return powerupItem;
 }
 
 DWORD CMario::GetTimeStartDamaged()
