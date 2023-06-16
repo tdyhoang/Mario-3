@@ -102,6 +102,9 @@
     <Filter Include="Game\GameObjects\Misc\Effect">
       <UniqueIdentifier>{b3044ec0-33a3-4221-827e-016fd2907a71}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\GameObjects\Enemy">
+      <UniqueIdentifier>{2be7d620-be10-42f6-9d2c-109e494f6d57}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -237,6 +240,9 @@
       <Filter>Game\GameObjects\Misc\Effect</Filter>
     </ClCompile>
     <ClCompile Include="Game\GameObjects\Misc\Effect\MushroomEffect.cpp">
+      <Filter>Game\GameObjects\Misc\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\GameObjects\Misc\Effect\HitEffect.cpp">
       <Filter>Game\GameObjects\Misc\Effect</Filter>
     </ClCompile>
   </ItemGroup>
@@ -401,6 +407,9 @@
       <Filter>Game\GameObjects\Misc\Effect</Filter>
     </ClInclude>
     <ClInclude Include="Game\GameObjects\Misc\Effect\MushroomEffect.h">
+      <Filter>Game\GameObjects\Misc\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameObjects\Misc\Effect\HitEffect.h">
       <Filter>Game\GameObjects\Misc\Effect</Filter>
     </ClInclude>
   </ItemGroup>

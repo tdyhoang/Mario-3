@@ -15,6 +15,9 @@ enum class PipeDirection
 	Left, Right, Up, Down
 };
 
+const int BOUNCE_TIME = 50;
+const int BOUNCE_DELTA = 24;
+const float BOUNCE_VEL = (float)BOUNCE_DELTA / (float)BOUNCE_TIME;
 const D3DXVECTOR2 BLOCK_BBOX(48, 48);
 const D3DXVECTOR2 BRICK_BBOX(48, 48);
 const D3DXVECTOR2 COIN_BBOX(48, 48);

@@ -2,6 +2,9 @@
 #include "../../../Framework/GameComponents/Graphics/Animation/AnimationManager.h"
 #include "Misc.h"
 #include "../../../Framework/GameComponents/Scene/SceneManager.h"
+#include "Effect/BrickEffect.h"
+#include "Effect/CoinEffect.h"
+#include "Effect/MushroomEffect.h"
 #include "../../../Framework/Ultis/Ultis.h"
 #include "../../../Framework/GameComponents/Game.h"
 #include "../Mario/Mario.h"
@@ -16,6 +19,12 @@ CBrick::CBrick()
 	startBounceTime = 0;
 	bounceState = 0;
 	bounceDelta = 0.0f;
+	for (int i = 0; i < 4; i++)
+	{
+		CBrickEffect* brickFX = new CBrickEffect();
+		brickFX->LinkToPool(&brickPool);
+		brickPool.Add(brickFX);
+	}
 	itemInfo.tag = ItemTag::None;
 	itemInfo.quantity = 0;
 }
@@ -56,9 +65,9 @@ void CBrick::Update(DWORD dt, CCamera* cam, CCamera* uiCam)
 {
 	if (bounceState == 2)
 	{
-		bounceDelta += 0.48 * dt;
+		bounceDelta += BOUNCE_VEL * dt;
 
-		if (GetTickCount64() - startBounceTime > 50 && startBounceTime != 0)
+		if (GetTickCount64() - startBounceTime > BOUNCE_TIME && startBounceTime != 0)
 		{
 			bounceDelta = 0.0f;
 			startBounceTime = 0;
@@ -68,9 +77,9 @@ void CBrick::Update(DWORD dt, CCamera* cam, CCamera* uiCam)
 
 	if (bounceState == 1)
 	{
-		bounceDelta += -0.48 * dt;
+		bounceDelta += -BOUNCE_VEL * dt;
 
-		if (GetTickCount64() - startBounceTime > 50 && startBounceTime != 0)
+		if (GetTickCount64() - startBounceTime > BOUNCE_TIME && startBounceTime != 0)
 		{
 			bounceState = 2;
 			startBounceTime = GetTickCount64();
@@ -91,10 +100,6 @@ void CBrick::OnOverlappedEnter(CHitBox* selfHitBox, CHitBox* otherHitBox)
 		Bounce();
 		Debris();
 	}
-}
-
-void CBrick::OnCollisionEnter(CHitBox* selfHitBox, std::vector<CollisionEvent*> collisionEvents)
-{
 }
 
 bool CBrick::CanCollideWithThisObject(LPGameObject gO, ObjectTag tag)
@@ -130,6 +135,8 @@ void CBrick::Debris()
 			brickFX->GetPhysicsBody()->SetVelocity(D3DXVECTOR2(velx[i], vely[i]));
 			brickFX->Enable(true);
 			brickFX->SetPosition(GetPosition());
+			auto FX = static_cast<CBrickEffect*>(brickFX);
+			FX->SetStartPosition(this->GetPosition());
 
 			auto grid = activeScene->GetGrid();
 			if (grid != NULL && activeScene->IsSpacePartitioning() == true)
@@ -151,6 +158,74 @@ void CBrick::Bounce()
 
 	if (itemInfo.quantity > 0)
 	{
+		switch (itemInfo.tag)
+		{
+		case ItemTag::Coin:
+		{
+			CCoinEffect* coinObtainedFX = new CCoinEffect();
+			coinObtainedFX->SetStartPosition(transform.position);
+			auto activeScene = CSceneManager::GetInstance()->GetActiveScene();
+			activeScene->AddObject(coinObtainedFX);
+			activeScene->GetGrid()->Move(D3DXVECTOR2(-1, -1), coinObtainedFX);
+			break;
+		}
+		case ItemTag::PowerUp:
+		{
+			if (target == NULL)
+				break;
+			auto marioController = static_cast<CMarioController*>(target);
+			auto currentMario = marioController->GetCurrentStateObject();
+			if (currentMario != NULL)
+			{
+				auto mario = static_cast<CMario*>(currentMario);
+				switch (mario->GettMarioStateTag())
+				{
+				case MarioStates::SmallMario:
+				{
+					CMushroomEffect* mushroomObtainedFX = new CMushroomEffect();
+					mushroomObtainedFX->SetStartPosition(transform.position);
+					mushroomObtainedFX->StartEffect(mario->GetPhysicsBody()->GetNormal().x);
+					auto activeScene = CSceneManager::GetInstance()->GetActiveScene();
+					activeScene->AddObject(mushroomObtainedFX);
+					activeScene->GetGrid()->Move(D3DXVECTOR2(-1, -1), mushroomObtainedFX);
+					break;
+				}
+				case MarioStates::SuperMario:
+				{
+					CMushroomEffect* mushroomObtainedFX = new CMushroomEffect();
+					mushroomObtainedFX->SetStartPosition(transform.position);
+					mushroomObtainedFX->StartEffect(mario->GetPhysicsBody()->GetNormal().x);
+					auto activeScene = CSceneManager::GetInstance()->GetActiveScene();
+					activeScene->AddObject(mushroomObtainedFX);
+					activeScene->GetGrid()->Move(D3DXVECTOR2(-1, -1), mushroomObtainedFX);
+					break;
+				}
+				case MarioStates::FireMario:
+				{
+					CMushroomEffect* mushroomObtainedFX = new CMushroomEffect();
+					mushroomObtainedFX->SetStartPosition(transform.position);
+					mushroomObtainedFX->StartEffect(mario->GetPhysicsBody()->GetNormal().x);
+					auto activeScene = CSceneManager::GetInstance()->GetActiveScene();
+					activeScene->AddObject(mushroomObtainedFX);
+					activeScene->GetGrid()->Move(D3DXVECTOR2(-1, -1), mushroomObtainedFX);
+					break;
+				}
+				case MarioStates::RacoonMario:
+				{
+					CMushroomEffect* mushroomObtainedFX = new CMushroomEffect();
+					mushroomObtainedFX->SetStartPosition(transform.position);
+					mushroomObtainedFX->StartEffect(mario->GetPhysicsBody()->GetNormal().x);
+					auto activeScene = CSceneManager::GetInstance()->GetActiveScene();
+					activeScene->AddObject(mushroomObtainedFX);
+					activeScene->GetGrid()->Move(D3DXVECTOR2(-1, -1), mushroomObtainedFX);
+					break;
+				}
+				}
+			}
+
+			break;
+		}
+		}
 		itemInfo.quantity--;
 		if (itemInfo.quantity <= 0)
 		{

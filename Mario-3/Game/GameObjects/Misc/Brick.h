@@ -23,7 +23,6 @@ public:
 	void Update(DWORD dt, CCamera* cam, CCamera* uiCam) override;
 	void Render(CCamera* cam, int alpha = 255);
 	void OnOverlappedEnter(CHitBox* selfHitBox, CHitBox* otherHitBox) override;
-	void OnCollisionEnter(CHitBox* selfHitBox, std::vector<CollisionEvent*> collisionEvents) override;
 	bool CanCollideWithThisObject(LPGameObject gO, ObjectTag tag) override;
 	void SetType(int type);
 	int GetType();

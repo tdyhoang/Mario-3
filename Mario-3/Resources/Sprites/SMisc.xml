@@ -11,5 +11,11 @@
 		<Sprite id="spr-coin-1" left="970" top="69"  width="16" height="16"/>
 		<Sprite id="spr-coin-2" left="987" top="69"  width="16" height="16"/>
 		<Sprite id="spr-coin-3" left="1004" top="69"  width="16" height="16"/>
+		<Sprite id="spr-brick-0" left="1038" top="1"  width="16" height="16"/>
+		<Sprite id="spr-brick-1" left="1055" top="1"  width="16" height="16"/>
+		<Sprite id="spr-brick-2" left="1072" top="1"  width="16" height="16"/>
+		<Sprite id="spr-brick-3" left="1089" top="1"  width="16" height="16"/>
+		<Sprite id="spr-debris-0" left="1089" top="103" width="9" height="9"/>
+		<Sprite id="spr-debris-1" left="1098" top="103" width="9" height="9"/>
 	</Textures>
 </Textures>

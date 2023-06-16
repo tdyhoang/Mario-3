@@ -177,6 +177,7 @@
     <ClCompile Include="Game\GameObjects\Misc\Effect\CoinEffect.cpp" />
     <ClCompile Include="Game\GameObjects\Misc\Effect\EffectObject.cpp" />
     <ClCompile Include="Game\GameObjects\Misc\Effect\Gift.cpp" />
+    <ClCompile Include="Game\GameObjects\Misc\Effect\HitEffect.cpp" />
     <ClCompile Include="Game\GameObjects\Misc\Effect\MushroomEffect.cpp" />
     <ClCompile Include="Game\GameObjects\Misc\EmptyBlock.cpp" />
     <ClCompile Include="Game\GameObjects\Misc\Pipe.cpp" />
@@ -233,6 +234,7 @@
     <ClInclude Include="Game\GameObjects\Misc\Effect\CoinEffect.h" />
     <ClInclude Include="Game\GameObjects\Misc\Effect\EffectObject.h" />
     <ClInclude Include="Game\GameObjects\Misc\Effect\Gift.h" />
+    <ClInclude Include="Game\GameObjects\Misc\Effect\HitEffect.h" />
     <ClInclude Include="Game\GameObjects\Misc\Effect\MushroomEffect.h" />
     <ClInclude Include="Game\GameObjects\Misc\EmptyBlock.h" />
     <ClInclude Include="Game\GameObjects\Misc\Misc.h" />
