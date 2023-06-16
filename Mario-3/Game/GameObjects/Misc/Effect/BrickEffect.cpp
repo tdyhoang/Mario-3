@@ -32,7 +32,7 @@ void CBrickEffect::Update(DWORD dt, CCamera* cam, CCamera* uiCam)
 	SetPosition(pos + vel * deltaTime);
 
 	vel.y += physicsBody->GetGravity() * deltaTime;
-	vel.y = (vel.y < DEBRIS_MIN_FALL) ? vel.y : DEBRIS_MIN_FALL;
+	vel.y = (vel.y < MUSHROOM_VEL) ? vel.y : MUSHROOM_VEL;
 	physicsBody->SetVelocity(vel);
 
 	if (transform.position.y > startPosition.y && *physicsBody->GetVelocity() > 0)

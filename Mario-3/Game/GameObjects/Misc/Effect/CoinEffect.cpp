@@ -5,7 +5,7 @@
 CCoinEffect::CCoinEffect()
 {
 	LoadAnimation();
-	SetState(COIN_STATE_SPIN);
+	SetState("SPIN");
 	isEnabled = true;
 
 	CHitBox* box = new CHitBox();
@@ -24,7 +24,7 @@ CCoinEffect::CCoinEffect()
 void CCoinEffect::LoadAnimation()
 {
 	auto animations = CAnimationManager::GetInstance();
-	AddAnimation(COIN_STATE_SPIN, animations->Get("ani-coin"));
+	AddAnimation("SPIN", animations->Get("ani-coin"));
 }
 
 void CCoinEffect::Update(DWORD dt, CCamera* cam, CCamera* uiCam)

@@ -19,10 +19,15 @@ const D3DXVECTOR2 BLOCK_BBOX(48, 48);
 const D3DXVECTOR2 BRICK_BBOX(48, 48);
 const D3DXVECTOR2 COIN_BBOX(48, 48);
 
-#define ENEMY_DAMAGED_EFFECT "ENEMY-DAMAGED"
-#define FIRE_BALL_DAMAGED_EFFECT "FIRE-BALL-DAMAGED"
-#define COIN_GRAVITY 0.00093f
-#define COIN_BOUNCE 0.5f
-#define DEBRIS_GRAVITY 0.0026f
-#define DEBRIS_MIN_FALL 0.8f
-#define COIN_STATE_SPIN		"SPIN"
+constexpr auto COIN_GRAVITY = 0.00093f;
+constexpr auto COIN_BOUNCE = 0.5f;
+constexpr auto DEBRIS_GRAVITY = 0.0026f;
+constexpr auto MUSHROOM_VEL = 0.8f;
+constexpr auto MUSHROOM_GRAVITY = 0.00093f *2;
+constexpr auto MUSHROOM_SPEED = 0.05f*2;
+constexpr auto DELTA = 60;
+constexpr auto TIME = 100;
+constexpr auto GROW_MAX_HEIGHT = 50;
+const D3DXVECTOR2 MUSHROOM_BBOX(48, 48);
+constexpr auto MUSHROOM_FORCE_Y = 0.004f;
+constexpr auto MUSHROOM_PUSH_FORCE = 0.02f*2;

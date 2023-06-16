@@ -236,6 +236,9 @@
     <ClCompile Include="Game\GameObjects\Misc\Effect\Gift.cpp">
       <Filter>Game\GameObjects\Misc\Effect</Filter>
     </ClCompile>
+    <ClCompile Include="Game\GameObjects\Misc\Effect\MushroomEffect.cpp">
+      <Filter>Game\GameObjects\Misc\Effect</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\GameComponents\Game.h">
@@ -395,6 +398,9 @@
       <Filter>Game\GameObjects\Misc\Effect</Filter>
     </ClInclude>
     <ClInclude Include="Game\GameObjects\Misc\Effect\Gift.h">
+      <Filter>Game\GameObjects\Misc\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameObjects\Misc\Effect\MushroomEffect.h">
       <Filter>Game\GameObjects\Misc\Effect</Filter>
     </ClInclude>
   </ItemGroup>

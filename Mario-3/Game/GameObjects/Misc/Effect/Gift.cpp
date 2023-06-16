@@ -2,14 +2,14 @@
 #include "../../../../Framework/Ultis/Ultis.h"
 #include "../../Mario/Mario.h"
 
-void CGift::OnCollisionEnter(CHitBox* selfCollisionBox, std::vector<CollisionEvent*> collisionEvents)
+void CGift::OnCollisionEnter(CHitBox* selfHitBox, std::vector<CollisionEvent*> collisionEvents)
 {
 	for (auto collisionEvent : collisionEvents)
 	{
-		auto collisionBox = collisionEvent->obj;
-		if (MarioTag(collisionBox->GetGameObjectAttach()->GetTag()))
-			PowerUp(collisionBox);
-		if (powerupTag == PowerupTag::SuperMushroom && StaticTag(collisionBox->GetGameObjectAttach()->GetTag()))
+		auto hitBox = collisionEvent->obj;
+		if (MarioTag(hitBox->GetGameObjectAttach()->GetTag()))
+			PowerUp(hitBox);
+		if (powerupTag == PowerupTag::SuperMushroom && StaticTag(hitBox->GetGameObjectAttach()->GetTag()))
 			if (collisionEvent->nx != 0)
 			{
 				auto normal = physicsBody->GetNormal();
@@ -19,13 +19,13 @@ void CGift::OnCollisionEnter(CHitBox* selfCollisionBox, std::vector<CollisionEve
 	}
 }
 
-void CGift::OnOverlappedEnter(CHitBox* selfCollisionBox, CHitBox* otherCollisionBox)
+void CGift::OnOverlappedEnter(CHitBox* selfHitBox, CHitBox* otherHitBox)
 {
-	if (MarioTag(otherCollisionBox->GetGameObjectAttach()->GetTag()))
+	if (MarioTag(otherHitBox->GetGameObjectAttach()->GetTag()))
 	{
-		PowerUp(otherCollisionBox);
+		PowerUp(otherHitBox);
 	}
-	if (powerupTag == PowerupTag::SuperMushroom && StaticTag(otherCollisionBox->GetGameObjectAttach()->GetTag()))
+	if (powerupTag == PowerupTag::SuperMushroom && StaticTag(otherHitBox->GetGameObjectAttach()->GetTag()))
 	{
 		auto normal = physicsBody->GetNormal();
 		normal.x = -normal.x;
@@ -38,7 +38,7 @@ bool CGift::CanCollideWithThisObject(LPGameObject gO, ObjectTag tag)
 	return MarioTag(tag);
 }
 
-void CGift::PowerUp(CHitBox* otherCollisionBox)
+void CGift::PowerUp(CHitBox* otherHitBox)
 {
 	isEnabled = false;
 	if (physicsBody->IsDynamic() == true)
@@ -48,7 +48,7 @@ void CGift::PowerUp(CHitBox* otherCollisionBox)
 	}
 	hitBoxs->at(0)->SetEnable(false);
 
-	auto gO = otherCollisionBox->GetGameObjectAttach();
+	auto gO = otherHitBox->GetGameObjectAttach();
 	auto mario = static_cast<CMario*>(gO);
 
 	mario->SetPowerUp(true);

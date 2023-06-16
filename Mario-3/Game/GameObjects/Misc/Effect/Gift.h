@@ -9,13 +9,10 @@ protected:
 	ItemTag itemTag;
 	PowerupTag powerupTag;
 public:
-	CGift();
-	void OnCollisionEnter(CHitBox* selfCollisionBox, std::vector<CollisionEvent*> otherCollisions);
-	void OnTriggerEnter(CHitBox* selfCollisionBox, std::vector<CollisionEvent*> otherCollisions);
-	void OnOverlappedEnter(CHitBox* selfCollisionBox, CHitBox* otherCollisionBox) override;
+	void OnCollisionEnter(CHitBox* selfHitBox, std::vector<CollisionEvent*> otherCollisions);
+	void OnOverlappedEnter(CHitBox* selfHitBox, CHitBox* otherHitBox) override;
 	bool CanCollideWithThisObject(LPGameObject gO, ObjectTag tag) override;
-	void PowerUp(CHitBox* otherCollisionBox);
-
+	void PowerUp(CHitBox* otherHitBox);
 	PowerupTag GetPowerupTag() { return powerupTag; }
 	void SetPowerupTag(PowerupTag pT) { this->powerupTag = pT; }
 };

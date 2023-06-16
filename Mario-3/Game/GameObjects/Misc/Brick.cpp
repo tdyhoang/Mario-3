@@ -84,16 +84,16 @@ void CBrick::Render(CCamera* cam, int alpha)
 	CGameObject::Render(cam, alpha);
 }
 
-void CBrick::OnOverlappedEnter(CHitBox* selfCollisionBox, CHitBox* otherCollisionBox)
+void CBrick::OnOverlappedEnter(CHitBox* selfHitBox, CHitBox* otherHitBox)
 {
-	if (otherCollisionBox->GetGameObjectAttach()->GetTag() == ObjectTag::RaccoonTail)
+	if (otherHitBox->GetGameObjectAttach()->GetTag() == ObjectTag::RaccoonTail)
 	{
 		Bounce();
 		Debris();
 	}
 }
 
-void CBrick::OnCollisionEnter(CHitBox* selfCollisionBox, std::vector<CollisionEvent*> collisionEvents)
+void CBrick::OnCollisionEnter(CHitBox* selfHitBox, std::vector<CollisionEvent*> collisionEvents)
 {
 }
 
