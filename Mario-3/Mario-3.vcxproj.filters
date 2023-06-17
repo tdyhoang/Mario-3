@@ -252,7 +252,10 @@
       <Filter>Game\GameObjects\Enemy</Filter>
     </ClCompile>
     <ClCompile Include="Game\GameObjects\Enemy\Goomba\Goomba.cpp">
-      <Filter>Game\GameObjects\Enemy</Filter>
+      <Filter>Game\GameObjects\Enemy\Goomba</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\GameObjects\Enemy\Goomba\TanGoomba.cpp">
+      <Filter>Game\GameObjects\Enemy\Goomba</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -428,7 +431,10 @@
       <Filter>Game\GameObjects\Enemy</Filter>
     </ClInclude>
     <ClInclude Include="Game\GameObjects\Enemy\Goomba\Goomba.h">
-      <Filter>Game\GameObjects\Enemy</Filter>
+      <Filter>Game\GameObjects\Enemy\Goomba</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameObjects\Enemy\Goomba\TanGoomba.h">
+      <Filter>Game\GameObjects\Enemy\Goomba</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -167,6 +167,7 @@
     <ClCompile Include="Framework\Ultis\Ultis.cpp" />
     <ClCompile Include="Game\GameObjects\Enemy\Enemy.cpp" />
     <ClCompile Include="Game\GameObjects\Enemy\Goomba\Goomba.cpp" />
+    <ClCompile Include="Game\GameObjects\Enemy\Goomba\TanGoomba.cpp" />
     <ClCompile Include="Game\GameObjects\Mario\Mario.cpp" />
     <ClCompile Include="Game\GameObjects\Mario\MarioController.cpp" />
     <ClCompile Include="Game\GameObjects\Mario\MarioHitBox.cpp" />
@@ -224,6 +225,7 @@
     <ClInclude Include="Game\GameObjects\Enemy\Enemy.h" />
     <ClInclude Include="Game\GameObjects\Enemy\EnemyConst.h" />
     <ClInclude Include="Game\GameObjects\Enemy\Goomba\Goomba.h" />
+    <ClInclude Include="Game\GameObjects\Enemy\Goomba\TanGoomba.h" />
     <ClInclude Include="Game\GameObjects\ItemInfo.h" />
     <ClInclude Include="Game\GameObjects\Mario\Mario.h" />
     <ClInclude Include="Game\GameObjects\Mario\MarioConst.h" />
