@@ -12,6 +12,8 @@
 #include "../../../../Game/GameObjects/Misc/EmptyBlock.h"
 #include "../../../../Game/GameObjects/Misc/Brick.h"
 #include "../../../../Game/GameObjects/Misc/Coin.h"
+#include "../../../../Game/GameObjects/Enemy/Goomba/Goomba.h"
+#include "../../../../Game/GameObjects/Enemy/Goomba/TanGoomba.h"
 
 using namespace std;
 
@@ -193,6 +195,12 @@ CTileMap* CTileMap::LoadMap(std::string filePath, std::string fileMap, std::vect
 							currentGOIndex = Index({ cellX, cellY });
 						}
 
+					if (name.compare("Enemy") == 0)
+					{
+						std::string enemyName = object->Attribute("name");
+						std::string enemyType = object->Attribute("type");
+						gameObject = LoadEnemy(position, enemyName, enemyType, object, listGameObjects);
+					}
 					if (name.compare("Solid") == 0)
 					{
 						gameObject = LoadSolidBox(position, size, nameObject, listGameObjects);
@@ -297,6 +305,38 @@ CGameObject* CTileMap::LoadGhostBox(D3DXVECTOR2 position, D3DXVECTOR2 size, std:
 	ghostPlatform->GetHitBox()->at(0)->SetName(name);
 	AddObjectToList(ghostPlatform, listGameObjects);
 	return ghostPlatform;
+}
+
+CGameObject* CTileMap::LoadEnemy(D3DXVECTOR2 position, std::string enemyName, std::string enemyType, tinyxml2::XMLElement* object, std::vector<LPGameObject>& listGameObjects)
+{
+	CGameObject* enemy = NULL;
+	if (enemyName.compare("goomba") == 0)
+	{
+		enemy = LoadGoomba(position, enemyType, listGameObjects);
+	}
+	return enemy;
+}
+
+CGameObject* CTileMap::LoadGoomba(D3DXVECTOR2 position, std::string enemyType, std::vector<LPGameObject>& listGameObjects)
+{
+	CGoomba* goomba = NULL;
+	if (enemyType.compare("tan") == 0)
+	{
+		goomba = new CTanGoomba();
+	}
+	/*if (enemyType.compare("red") == 0)
+	{
+		goomba = new CRedGoomba();
+	}*/
+	if (goomba != NULL)
+	{
+		goomba->SetEnemyType(enemyType);
+		goomba->SetPosition(position - translateConst);
+		goomba->SetStartPosition(position - translateConst);
+		goomba->SetTarget(player);
+		AddObjectToList(goomba, listGameObjects);
+	}
+	return goomba;
 }
 
 CGameObject* CTileMap::LoadQuestionBlock(D3DXVECTOR2 position, int type, std::string name, std::vector<LPGameObject>& listGameObjects)

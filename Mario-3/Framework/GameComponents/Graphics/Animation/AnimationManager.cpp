@@ -29,6 +29,11 @@ void CAnimationManager::Init()
 		DebugOut(L"[ERROR] Can't Load Misc's Animation \n");
 		return;
 	}
+	if (!InitAnAnimationSet("tex-enemies", root->GetFilePathByCategory("Animation", "ani-enemies")))
+	{
+		DebugOut(L"[ERROR] Can't Load Enemies' Animation \n");
+		return;
+	}
 }
 
 bool CAnimationManager::InitAnAnimationSet(std::string textureName, std::string filePath)

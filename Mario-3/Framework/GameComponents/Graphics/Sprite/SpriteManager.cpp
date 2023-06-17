@@ -14,6 +14,7 @@ void CSpriteManager::Init()
 	auto root = CGame::GetInstance();
 	LoadSprite("tex-mario", root->GetFilePathByCategory("Sprite", "spr-mario"));
 	LoadSprite("tex-misc", root->GetFilePathByCategory("Sprite", "spr-misc"));
+	LoadSprite("tex-enemies", root->GetFilePathByCategory("Sprite", "spr-enemies"));
 }
 
 void CSpriteManager::Add(string id, RECT rect, LPDIRECT3DTEXTURE9 tex, int xPivot, D3DXCOLOR transcolor)

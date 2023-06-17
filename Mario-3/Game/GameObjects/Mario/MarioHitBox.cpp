@@ -2,6 +2,7 @@
 #include "../../../Framework/Ultis/Ultis.h"
 #include "MarioConst.h"
 #include "../Enemy/Enemy.h"
+#include "../Enemy/Goomba/Goomba.h"
 #include "../Misc/Brick.h"
 
 void CMarioHitBox::CollisionHandle(DWORD dt, std::vector<CollisionEvent*>& collisionEvents, LPPhysicsBody phyBody, D3DXVECTOR2 vel, int mintx, int minty, float nx, float ny)

@@ -49,6 +49,9 @@ public:
 	CGameObject* LoadSolidBox(D3DXVECTOR2 position, D3DXVECTOR2 size, std::string name, std::vector<LPGameObject>& listGameObjects);
 	CGameObject* LoadGhostBox(D3DXVECTOR2 position, D3DXVECTOR2 size, std::string name, std::vector<LPGameObject>& listGameObjects);
 
+	CGameObject* LoadEnemy(D3DXVECTOR2 position, std::string enemyName, std::string enemyType, tinyxml2::XMLElement* object, std::vector<LPGameObject>& listGameObjects);
+	CGameObject* LoadGoomba(D3DXVECTOR2 position, std::string enemyType, std::vector<LPGameObject>& listGameObjects);
+
 	CGameObject* LoadQuestionBlock(D3DXVECTOR2 position, int type, std::string name, std::vector<LPGameObject>& listGameObjects);
 	CGameObject* LoadBrick(D3DXVECTOR2 position, int type, std::string name, tinyxml2::XMLElement* object, std::vector<LPGameObject>& listGameObjects);
 	CGameObject* LoadCoin(D3DXVECTOR2 position, int type, tinyxml2::XMLElement* object, std::vector<LPGameObject>& listGameObjects);
