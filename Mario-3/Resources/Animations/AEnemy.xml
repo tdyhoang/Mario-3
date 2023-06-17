@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Textures>
+	<Textures gameObjectId= "0" textureId="tex-enemies">
+		<!--Goomba-->
+		<Animation aniId="ani-goomba-idle" frameTime="100" name = "IDLE">
+			<Sprite id="spr-goomba-walk-0" left="0" top="0"  width="16" height="16"/>
+		</Animation>
+		<Animation aniId="ani-goomba-walk" frameTime="100" name = "WALK">
+			<Sprite id="spr-goomba-walk-0" left="0" top="0"  width="16" height="16"/>
+			<Sprite id="spr-goomba-walk-1" left="16" top="0"  width="16" height="16"/>
+		</Animation>
+		<Animation aniId="ani-goomba-die" frameTime="100" name = "DIE">
+			<Sprite id="spr-goomba-die" left="32" top="0"  width="16" height="16"/>
+		</Animation>
+	</Textures>
+</Textures>

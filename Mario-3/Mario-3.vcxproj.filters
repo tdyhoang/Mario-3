@@ -105,6 +105,9 @@
     <Filter Include="Game\GameObjects\Enemy">
       <UniqueIdentifier>{2be7d620-be10-42f6-9d2c-109e494f6d57}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game\GameObjects\Enemy\Goomba">
+      <UniqueIdentifier>{3c952cb8-0a6d-4d44-8df3-c6d333c82d87}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -246,6 +249,9 @@
       <Filter>Game\GameObjects\Misc\Effect</Filter>
     </ClCompile>
     <ClCompile Include="Game\GameObjects\Enemy\Enemy.cpp">
+      <Filter>Game\GameObjects\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\GameObjects\Enemy\Goomba\Goomba.cpp">
       <Filter>Game\GameObjects\Enemy</Filter>
     </ClCompile>
   </ItemGroup>
@@ -418,6 +424,12 @@
     <ClInclude Include="Game\GameObjects\Enemy\Enemy.h">
       <Filter>Game\GameObjects\Enemy</Filter>
     </ClInclude>
+    <ClInclude Include="Game\GameObjects\Enemy\EnemyConst.h">
+      <Filter>Game\GameObjects\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\GameObjects\Enemy\Goomba\Goomba.h">
+      <Filter>Game\GameObjects\Enemy</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Xml Include="Resources\config.xml">
@@ -439,6 +451,12 @@
       <Filter>Resource Files\Animations</Filter>
     </Xml>
     <Xml Include="Resources\Sprites\SMisc.xml">
+      <Filter>Resource Files\Sprites</Filter>
+    </Xml>
+    <Xml Include="Resources\Animations\AEnemy.xml">
+      <Filter>Resource Files\Animations</Filter>
+    </Xml>
+    <Xml Include="Resources\Sprites\SEnemy.xml">
       <Filter>Resource Files\Sprites</Filter>
     </Xml>
   </ItemGroup>

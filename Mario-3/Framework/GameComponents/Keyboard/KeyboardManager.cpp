@@ -84,8 +84,7 @@ void CKeyboardManager::ProcessKeyboard()
 			if (h == DI_OK)
 			{
 				CGame::SetTimeScale(1.0f);
-				DebugOut(L"[INFO] Keyboard re-acquired!\n");
-				// Still cannot receive input after re-acquire
+				DebugOut(L"[INFO] DINPUT8::Aquire\n");
 			}
 			else return;
 		}
@@ -123,8 +122,6 @@ bool CKeyboardManager::CheckESCKey()
 {
 	if (this->GetKeyStateDown(DIK_ESCAPE))
 	{
-		DebugOutTitle(L"Nhan ESC");
-		DebugOut(L"Nhan ESC \n");
 		CGame::GetInstance()->End();
 		PostQuitMessage(0);
 		return true;

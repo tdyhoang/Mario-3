@@ -166,6 +166,7 @@
     <ClCompile Include="Framework\GameComponents\StateMachine\StateMachine.cpp" />
     <ClCompile Include="Framework\Ultis\Ultis.cpp" />
     <ClCompile Include="Game\GameObjects\Enemy\Enemy.cpp" />
+    <ClCompile Include="Game\GameObjects\Enemy\Goomba\Goomba.cpp" />
     <ClCompile Include="Game\GameObjects\Mario\Mario.cpp" />
     <ClCompile Include="Game\GameObjects\Mario\MarioController.cpp" />
     <ClCompile Include="Game\GameObjects\Mario\MarioHitBox.cpp" />
@@ -221,6 +222,8 @@
     <ClInclude Include="Framework\Ultis\Transform.h" />
     <ClInclude Include="Framework\Ultis\Ultis.h" />
     <ClInclude Include="Game\GameObjects\Enemy\Enemy.h" />
+    <ClInclude Include="Game\GameObjects\Enemy\EnemyConst.h" />
+    <ClInclude Include="Game\GameObjects\Enemy\Goomba\Goomba.h" />
     <ClInclude Include="Game\GameObjects\ItemInfo.h" />
     <ClInclude Include="Game\GameObjects\Mario\Mario.h" />
     <ClInclude Include="Game\GameObjects\Mario\MarioConst.h" />
@@ -248,11 +251,13 @@
     <ClInclude Include="TinyXML\tinyxml2.h" />
   </ItemGroup>
   <ItemGroup>
+    <Xml Include="Resources\Animations\AEnemy.xml" />
     <Xml Include="Resources\Animations\AMario.xml" />
     <Xml Include="Resources\Animations\AMisc.xml" />
     <Xml Include="Resources\config.xml" />
     <Xml Include="Resources\root.xml" />
     <Xml Include="Resources\Scenes\Scene1-1.xml" />
+    <Xml Include="Resources\Sprites\SEnemy.xml" />
     <Xml Include="Resources\Sprites\SMario.xml" />
     <Xml Include="Resources\Sprites\SMisc.xml" />
   </ItemGroup>

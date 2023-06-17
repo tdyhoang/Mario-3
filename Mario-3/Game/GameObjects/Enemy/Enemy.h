@@ -1,16 +1,7 @@
 #pragma once
 #include "../../../Framework/GameComponents/GameObject/GameObject.h"
 #include "../Misc/Effect/HitEffect.h"
-
-enum class EnemyType
-{
-	basic, red
-};
-
-enum class EnemyTag
-{
-	Goomba, ParaGoomba, Koopa, KoopaShell, ParaKoopa, Piranha, Venus, BoomerangBrother
-};
+#include "EnemyConst.h"
 
 class CEnemy : public CGameObject
 {
