@@ -798,7 +798,6 @@ void CMario::InvincibleProcess()
 		}
 	}
 
-	// CHANGE LEVEL
 	if (isChangeLevel == true && GetTickCount64() - timeStartChangeLevel > 800)
 	{
 		timeStartChangeLevel = 0;

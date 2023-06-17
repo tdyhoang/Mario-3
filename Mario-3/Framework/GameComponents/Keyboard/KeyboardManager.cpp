@@ -59,14 +59,14 @@ void CKeyboardManager::InitKeyboard(LPKeyEventHandler handler)
 
 	hr = dInputDevice->SetProperty(DIPROP_BUFFERSIZE, &dipdw.diph);
 
+	this->keyEventHandler = handler;
+
 	hr = dInputDevice->Acquire();
 	if (hr != DI_OK)
 	{
 		DebugOut(L"[ERROR] DINPUT8::Acquire failed!\n");
 		return;
 	}
-
-	this->keyEventHandler = handler;
 
 	DebugOut(L"[INFO] End Init Keyboard\n");
 }
